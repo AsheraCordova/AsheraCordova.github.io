@@ -74,13 +74,13 @@
                                     Type in the command prompt or Terminal 
                                     </p>
                                     <div class="code-block">
-                                        <p><code> cordova create com.ashera.helloWorld HelloWorld</code></p>
+                                        <p><code> cordova create HelloWorld com.ashera.hello</code></p>
                                     </div><!--//code-block-->
                                     
                                     <h6>Add the following to config.xml:</h6>
                                         <pre><code class="language-markup">&lt;preference name="AndroidXEnabled" value="true" /&gt;
 &lt;preference name="SplashMaintainAspectRatio" value="true" /&gt;
-&lt;preference name="webScaleFactor" value="1.2" /&gt;
+&lt;preference name="webScaleFactor" value="1.4" /&gt;
                                         
                                         </code>
                                     </pre>
@@ -101,8 +101,8 @@
                                     </div><!--//row-->
                                     <div class="code-block">
                                      	<p><code> cd HelloWorld</code></p>
-                                        <p><code> cordova add platform android</code></p>
-                                        <p><code> cordova add platform ios</code></p>
+                                        <p><code> cordova platform add android</code></p>
+                                        <p><code> cordova platform add ios</code></p>
                                         <p><code> cordova platform add https://github.com/AsheraCordova/cordova-swt.git</code></p>
                                         <p><code> cordova platform add https://github.com/AsheraCordova/cordova-web.git</code></p>
                                     </div><!--//code-block-->
@@ -148,6 +148,15 @@
                                     <p>
                                     Android
                                     </p>
+                   <h6>Remove the following from platforms/android/app/src/main/AndroidManifest.xml:</h6>
+                                        <pre><code class="language-markup">&lt;activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode" android:label="@string/activity_name" android:launchMode="singleTop" android:name="MainActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize"&gt;<br>
+	&lt;intent-filter android:label="@string/launcher_name"&gt;<br>
+		&lt;action android:name="android.intent.action.MAIN" /&gt;<br>
+		&lt;category android:name="android.intent.category.LAUNCHER" /&gt;<br>
+	&lt;/intent-filter&gt;
+&lt;/activity&gt;</code>
+                                    </pre>                 
+                                            
                                     <div class="code-block">
                                         <p><code> cordova run android</code></p>
                                     </div><!--//code-block-->
@@ -166,7 +175,7 @@
                                     	<p><code>cd platforms/browser/app</code></p>
                                         <p><code>gradle execute --info</code></p>
                                         <p><code>npm -g install http-server</code></p>
-                                        <p><code>cd platforms/browser/src/main/assets/www/ </code></p>
+                                        <p><code>cd platforms/browser/app/src/main/assets/www/ </code></p>
                                         <p><code>http-server </code></p>
                                     </div><!--//code-block-->
                                     
