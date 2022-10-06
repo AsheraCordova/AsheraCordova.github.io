@@ -1,0 +1,168 @@
+<html>
+<html lang="en">
+<head>
+    <title>Ashera</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="../assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.min.css">   
+      
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="../assets/css/styles.css">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta http-equiv="Content-Security-Policy" content="default-src *  data: blob: 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; worker-src * data: blob: 'unsafe-inline' 'unsafe-eval';" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    
+</head> 
+
+
+<head>
+    
+    <title>Trade App</title>
+    <style type="text/css">
+    #dpi {
+	    height: 1in;
+	    left: -999999px;
+	    position: absolute;
+	    top:-999999px;
+	    width: 1in;
+	}
+    </style>
+</head>
+<body class="body-green">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="../index.html">
+                            <img alt="" src="../assets/images/icon.png" height="100"><br>
+                            <span class="text-highlight">CORDOVA </span><span class="text-bold">NATIVE</span>
+                        </a>
+                    </h1>
+                    
+                </div><!--//branding-->
+                
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Trade App</li>
+                </ol>
+                
+                
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                
+                <div class="doc-body row">
+                    <div class="doc-content col-md-12 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="installation-section" class="doc-section">
+								
+								<div id="promo-block" class="promo-block">
+									<div class="container">
+										<div class="promo-block-inner">
+											<h3 class="promo-title text-center">Trade App</h3>
+											<div class="row">
+												<div class="figure-holder col-lg-5 col-md-6 col-12">
+													<div class="app">
+														<div id="dpi"></div>
+														<div style="width:100%; height: 600px; position: relative">
+															<div id="shadowhost" style="position: absolute;left: 0;width: 400px;top:0; bottom: 0;margin-left: auto;margin-right: auto;right: 0; "></div>     
+															<div style="font-family:'Roboto'" style="position: absolute;">&nbsp;</div>
+														</div>
+													</div>
+												</div><!--//figure-holder-->
+												<div class="content-holder col-lg-7 col-md-6 col-12">
+													<div class="content-holder-inner">
+														<div class="desc">
+															<h4 class="content-title"><strong> Online Preview of Trade App</strong></h4>
+															<p>Trade App created using Ashera.</p>
+															<p>Trade App is sample application where in the user is able to buy items from a pre-listed items at discounted price offered from store. He can also trade items at higher price than that of the discounted price for which he will get points and the points can be redeemed at the store.</p>
+															<p>The app contains the following screens:</p>
+															<p>
+																<ul>
+																<li>Splash</li>
+																<li>Login</li>
+																<li>Membership Registration</li>
+																<li>Dashboard</li>
+																<li>Notification</li>
+																<li>Buy</li>
+																<li>Trade</li>
+																<li>Redeem Points</li>
+																<li>Change Password</li>
+																<li>Update Profile</li>
+																<li>Tokens</li>
+															</p>
+															
+														</div><!--//desc-->
+														
+														
+														<div class="author"><a href="https://github.com/AsheraCordova/TradeApp" target="_blank">Github link</a></div>
+													</div><!--//content-holder-inner-->
+												</div><!--//content-holder-->
+											</div><!--//row-->
+										</div><!--//promo-block-inner-->  
+									</div><!--//container-->
+								</div>								
+								
+                            </section><!--//doc-section-->
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+	 </div><!--//page-wrapper-->
+	 <footer class="footer text-center">
+        <div class="container">
+            <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+            <small class="copyright">Designed with <span class="sr-only">love</span><i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+	<script>	
+		function loadScript(url) {
+			document.body.appendChild(document.createElement("script")).src = url;
+		}
+
+		function loadedCordova() {
+			let style = document.createElement('style');
+			style.textContent = ':host { all: initial }';
+			var host = document.getElementById('shadowhost');
+			window.shadowRoot=host.attachShadow({mode: 'open'});
+			window.shadowRoot.appendChild(style);
+			
+			if (window.isRTLLayout()) {
+				host.dir = "rtl";
+			}
+			
+			loadScript('cordova.js');  
+			loadScript('js/index.js?v=' + new Date().getTime());
+			main();
+		}
+	</script>
+	<!-- prod script -->
+	<!-- script type="text/javascript" src="cordova.js"></script> -->
+	<!--<script type="text/javascript" src="js/bundle.js"></script> -->
+	<!-- dev script -->
+	<script type="text/javascript" charset="utf-8" src="js/window_ext.js"></script>
+	<script type="text/javascript" charset="utf-8" src="teavm/classes.js" onload="loadedCordova()"></script>
+	<!--script type="text/javascript" src="http://192.168.1.149:8080/assets/www/js/bundle.js?v=149"></script-->
+	<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+		
