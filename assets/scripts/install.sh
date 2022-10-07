@@ -22,3 +22,7 @@ cordova plugin add https://github.com/AsheraCordova/cordova-plugin-camera
 cordova plugin add https://github.com/AsheraCordova/cordova-plugin-camera-swt
 cordova plugin add https://github.com/AsheraCordova/cordova-plugin-qrscanner
 cordova plugin add https://github.com/AsheraCordova/cordova-plugin-qrscanner-swt
+
+cordova plugin add cordova-plugin-sqlite-2
+cordova plugin add https://github.com/AsheraCordova/cordova-plugin-sqlite-2-swt.git
+cordova plugin add https://github.com/AsheraCordova/IndexedDB.git
