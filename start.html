@@ -148,15 +148,7 @@
                                     <h3 class="block-title">7 - Run on platform</h3>
                                     <p>
                                     Android
-                                    </p>
-                   <h6>Remove the following from platforms/android/app/src/main/AndroidManifest.xml:</h6>
-                                        <pre><code class="language-markup">&lt;activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode" android:label="@string/activity_name" android:launchMode="singleTop" android:name="MainActivity" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" android:windowSoftInputMode="adjustResize"&gt;<br>
-	&lt;intent-filter android:label="@string/launcher_name"&gt;<br>
-		&lt;action android:name="android.intent.action.MAIN" /&gt;<br>
-		&lt;category android:name="android.intent.category.LAUNCHER" /&gt;<br>
-	&lt;/intent-filter&gt;
-&lt;/activity&gt;</code></pre>                 
-                                            
+                                    </p>                                            
                                     <div class="code-block">
                                         <p><code> cordova run android</code></p>
                                     </div><!--//code-block-->
@@ -165,11 +157,11 @@
                                     IOS
                                     </p>
 
-                   <h6>Download j2obj2.7 from the below location:</h6>
+                   <h6>Download j2obcj2.7 from the below location:</h6>
                    <a href="https://github.com/google/j2objc/releases" class="btn btn-primary btn-cta"><svg class="svg-inline--fa fa-download" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z"></path></svg><!-- <i class="fas fa-download"></i> Font Awesome fontawesome.com --> Download</a>
                                     </p>
                                      <h6>Create symlink:</h6>
-                                    <p><code>ln -s &lt;Location of j2obj2.7 folder&gt; /Library/j2objc</code></p>
+                                    <p><code>ln -s &lt;Location of j2obcj2.7 folder&gt; /Library/j2objc</code></p>
                                     
 
                                     <div class="code-block">
