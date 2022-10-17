@@ -87,8 +87,30 @@
                                         <pre><code class="language-markup">&lt;preference name="webHistoryUrlPrefix" value="&lt;base url&gt;/" /&gt;</code></pre>
                                     
                                 </div><!--//section-block-->
+                                
                                 <div id="step3"  class="section-block">
-                                    <h3 class="block-title">3 - Add platforms</h3>
+    
+								<div id="step3"  class="section-block">
+                                    <h3 class="block-title">3 - Update package.json with scripts</h3>
+                                   
+                                    <div class="code-block">
+	                                     	<p><pre><code class="language-markup">{
+	...,
+	"scripts": {
+		"swt-run": "cd platforms/swt/app && gradle run",
+		"browser-run": "cd platforms/browser/app && gradle execute && cd src/main/assets/www && http-server",
+		"generate-platform-res": "cd platforms/android/app/src/main/gentool && npm install && npm run resize && npm run start",
+		"generate-platform-js": "cd platforms/android/app/src/main/tsc && npm install && npm run build",
+		...
+  	},
+}
+                                     </code></pre></p>
+                                       
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                
+                                <div id="step4"  class="section-block">
+                                    <h3 class="block-title">4 - Add platforms</h3>
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <h6>Platform supported</h6>
@@ -109,8 +131,8 @@
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                                 
-                                <div id="step4"  class="section-block">
-                                    <h3 class="block-title">4 - Install Ashera core</h3>
+                                <div id="step5"  class="section-block">
+                                    <h3 class="block-title">5 - Install Ashera core</h3>
                                     <p>
                                     Type in the command prompt or Terminal 
                                     </p>
@@ -119,33 +141,28 @@
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                                 
-                                <div id="step5"  class="section-block">
-                                    <h3 class="block-title">5 - Generate cross platform resources</h3>
-                                    <p>
-                                    Type in the command prompt or Terminal 
-                                    </p>
-                                    <div class="code-block">
-                                    	<p><code> cd platforms/android/app/src/main/gentool</code></p>
-                                        <p><code> npm install</code></p>
-                                        <p><code> npm run resize</code></p>
-                                        <p><code> npm run start</code></p>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                
                                 <div id="step6"  class="section-block">
-                                    <h3 class="block-title">6 - Generate cross platform JS</h3>
+                                    <h3 class="block-title">6 - Generate cross platform resources</h3>
                                     <p>
                                     Type in the command prompt or Terminal 
                                     </p>
                                     <div class="code-block">
-                                    	<p><code> cd platforms/android/app/src/main/tsc</code></p>
-                                        <p><code> npm install</code></p>
-                                        <p><code> npm run build</code></p>
+                                    	<p><code> npm run generate-platform-res</code></p>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                                 
                                 <div id="step7"  class="section-block">
-                                    <h3 class="block-title">7 - Run on platform</h3>
+                                    <h3 class="block-title">7 - Generate cross platform JS</h3>
+                                    <p>
+                                    Type in the command prompt or Terminal 
+                                    </p>
+                                    <div class="code-block">
+                                    	<p><code> npm run generate-platform-js</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                                
+                                <div id="step8"  class="section-block">
+                                    <h3 class="block-title">8 - Run on platform</h3>
                                     <p>
                                     Android
                                     </p>                                            
@@ -172,24 +189,20 @@
                                     Browser
                                     </p>
                                     <div class="code-block">
-                                    	<p><code>cd platforms/browser/app</code></p>
-                                        <p><code>gradle execute --info</code></p>
-                                        <p><code>npm -g install http-server</code></p>
-                                        <p><code>cd platforms/browser/app/src/main/assets/www/ </code></p>
-                                        <p><code>http-server </code></p>
+                                    	<p><code>npm -g install http-server</code></p>
+                                    	<p><code>npm run browser-run</code></p>
                                     </div><!--//code-block-->
                                     
                                     <p>
                                     Swt
                                     </p>
                                     <div class="code-block">
-                                    	<p><code>cd platforms/swt/app</code></p>
-                                        <p><code>gradle run</code></p>
+                                    	<p><code>npm run swt-run</code></p>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                                 
-                                <div id="step8"  class="section-block">
-                                    <h3 class="block-title">8 - Install additional Ashera plugins (optional)</h3>
+                                <div id="step9"  class="section-block">
+                                    <h3 class="block-title">9 - Install additional Ashera plugins (optional)</h3>
                                     
                                     <div class="code-block">
                                         <p><code> cordova plugin add https://github.com/AsheraCordova/CapInsets</code></p>
@@ -223,15 +236,15 @@
                                     </div><!--//code-block-->
                               	</div>
                               	
-                              	<div class="callout-block callout-success">
+                              	<!-- div class="callout-block callout-success">
                                         <div class="icon-holder">
                                             <i class="fas fa-thumbs-up"></i>
-                                        </div><!--//icon-holder-->
+                                        </div>
                                         <div class="content">
                                             <h4 class="callout-title">Useful Tip:</h4>
                                             <p>"cd" when used should always be executed at the root of the project</p>
-                                        </div><!--//content-->
-                                    </div>
+                                        </div>
+                                    </div-->
                             </section><!--//doc-section-->
                             
                             <section id="code-section" class="doc-section">
@@ -511,22 +524,26 @@
                                             <a class="nav-link scrollto" href="#step2">2 - Create Cordova project</a>
 	                                    </li>
 	                                    <li class="nav-item">
-                                            <a class="nav-link scrollto" href="#step3">3 - Add platforms</a>
+                                            <a class="nav-link scrollto" href="#step3">3 - Update package.json with scripts</a>
+	                                    </li>
+	                                    
+	                                    <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#step4">4 - Add platforms</a>
 	                                    </li>
 	                                    <li class="nav-item">
-                                            <a class="nav-link scrollto" href="#step4">4 - Install Ashera core</a>
+                                            <a class="nav-link scrollto" href="#step5">5 - Install Ashera core</a>
 	                                    </li>
 	                                    <li class="nav-item">
-                                            <a class="nav-link scrollto" href="#step5">5 - Generate cross platform resources</a>
+                                            <a class="nav-link scrollto" href="#step6">6 - Generate cross platform resources</a>
 	                                    </li>
 	                                    <li class="nav-item">
-                                            <a class="nav-link scrollto" href="#step6">6 - Generate cross platform JS</a>
+                                            <a class="nav-link scrollto" href="#step7">7 - Generate cross platform JS</a>
 	                                    </li>
 	                                     <li class="nav-item">
-                                            <a class="nav-link scrollto" href="#step7">7 - Run on platform</a>
+                                            <a class="nav-link scrollto" href="#step8">8 - Run on platform</a>
 	                                    </li>
 	                                    <li class="nav-item">
-                                            <a class="nav-link scrollto" href="#step8">8 - Install additional Ashera plugins (optional)</a>
+                                            <a class="nav-link scrollto" href="#step9">9 - Install additional Ashera plugins (optional)</a>
 	                                    </li>
                                     </nav><!--//nav-->
                                     <li class="nav-item">
