@@ -127,5 +127,15 @@ module.exports = {
     cleanup: function () {}
 };
 
+let links = ["css/camera.css"];
+
+for (var i=0;i<links.length;i++) {
+	let link = document.createElement('link');
+	link.setAttribute('rel', 'stylesheet');
+	link.setAttribute('href', links[i]);
+	link.setAttribute('type', "text/css");
+	document.body.appendChild(link);
+}
+
 require('cordova/exec/proxy').add('Camera', module.exports);
 });
