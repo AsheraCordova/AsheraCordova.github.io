@@ -193,13 +193,15 @@
     	return height;
 	}
 
+	window.shadowDomWidth = 400;
+	window.shadowDomHeight = 600;
     	
 	window.getScreenWidth = function() {
-		return 400;
+		return window.shadowDomWidth;
 	}
 	
 	window.getScreenHeight = function() {
-		return 600;
+		return window.shadowDomHeight;
 	}
 	
 	window.getNewInputValueOnPaste = function (e) {
@@ -288,6 +290,12 @@
 		return false;
 	}
 	
+		
+	window.addEventListener("resize", function(event) { 
+		var host = document.getElementById('shadowhost');
+		window.shadowDomWidth = shadowhost.clientWidth;
+		window.shadowDomHeight = shadowhost.clientHeight;
+	});
 	window.getScrollbarWidth = function() {
 	  	// Creating invisible container
 	  	const outer = document.createElement('div');

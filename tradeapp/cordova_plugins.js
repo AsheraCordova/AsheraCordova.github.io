@@ -41,20 +41,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-qrscanner.QRScanner",
-      "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
-      "pluginId": "cordova-plugin-qrscanner",
-      "clobbers": [
-        "QRScanner"
-      ]
-    },
-    {
-      "id": "cordova-plugin-qrscanner.QRScannerProxy",
-      "file": "plugins/cordova-plugin-qrscanner/src/browser/plugin.min.js",
-      "pluginId": "cordova-plugin-qrscanner",
-      "runs": true
-    },
-    {
       "id": "cordova-plugin-camera.Camera",
       "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
       "pluginId": "cordova-plugin-camera",
@@ -82,6 +68,20 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "id": "cordova-plugin-camera.CameraProxy",
       "file": "plugins/cordova-plugin-camera/src/browser/CameraProxy.js",
       "pluginId": "cordova-plugin-camera",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-qrscanner.QRScanner",
+      "file": "plugins/cordova-plugin-qrscanner/www/www.min.js",
+      "pluginId": "cordova-plugin-qrscanner",
+      "clobbers": [
+        "QRScanner"
+      ]
+    },
+    {
+      "id": "cordova-plugin-qrscanner.QRScannerProxy",
+      "file": "plugins/cordova-plugin-qrscanner/src/browser/plugin.min.js",
+      "pluginId": "cordova-plugin-qrscanner",
       "runs": true
     },
     {
@@ -115,10 +115,10 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.sdwebimage.ios": "1.0",
     "cordova-plugin-splashscreen-ashera": "1.0",
     "com.filfatstudios.spinnerdialog": "1.0.2",
+    "cordova-plugin-camera": "6.0.1-dev",
     "cordova-plugin-camera-swt": "1.0",
     "cordova-plugin-qrscanner": "3.0.1",
     "cordova-plugin-qrscanner-swt": "1.0",
-    "cordova-plugin-camera": "6.0.1-dev",
     "com.ashera.custom": "1.0",
     "cordova-plugin-splashscreen": "6.0.2"
   };
