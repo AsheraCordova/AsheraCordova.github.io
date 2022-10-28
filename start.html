@@ -101,6 +101,11 @@
 		"browser-run": "cd platforms/browser/app && gradle execute && cd src/main/assets/www && http-server",
 		"generate-platform-res": "cd platforms/android/app/src/main/gentool && npm install && npm run resize && npm run start",
 		"generate-platform-js": "cd platforms/android/app/src/main/tsc && npm install && npm run build",
+		"generate-platform-drawable": "cd platforms/android/app/src/main/gentool && npm run resize",
+		"fix-ios-symLinks": "cd platforms/android/app/src/main/gentool && npm run fixIosSymLinks",
+		"update-ios-plist": "cd platforms/android/app/src/main/gentool && npm run plist",
+		"backup-android": "cd platforms/android/app/src/main/gentool && npm run backup",
+		"restore-android": "cd platforms/android/app/src/main/gentool && npm run restore",
 		...
   	},
 }
@@ -174,11 +179,11 @@
                                     IOS
                                     </p>
 
-                   <h6>Download j2obcj2.7 from the below location:</h6>
+                   <h6>Download j2objc2.7 from the below location:</h6>
                    <a href="https://github.com/google/j2objc/releases" class="btn btn-primary btn-cta"><svg class="svg-inline--fa fa-download" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z"></path></svg><!-- <i class="fas fa-download"></i> Font Awesome fontawesome.com --> Download</a>
                                     </p>
                                      <h6>Create symlink:</h6>
-                                    <p><code>ln -s &lt;Location of j2obcj2.7 folder&gt; /Library/j2objc</code></p>
+                                    <p><code>ln -s &lt;Location of j2objc2.7 folder&gt; /Library/j2objc</code></p>
                                     
 
                                     <div class="code-block">
@@ -269,245 +274,244 @@
                             </section><!--//doc-section-->
                             
 							<section id="scripts" class="doc-section">
-                                <h2 class="section-title">Scripts</h2>
+                                <h2 class="section-title">Understanding folder structure</h2>
                                 
-                                <p>Scripts to install all plugins:</p>
                                 <div id="html" class="section-block">
-                                	<a href="assets/scripts/install.bat" class="btn btn-primary btn-cta"><svg class="svg-inline--fa fa-download" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z"></path></svg><!-- <i class="fas fa-download"></i> Font Awesome fontawesome.com --> Download for Windows</a>
-                                	
-                                	<a  href="assets/scripts/install.sh" class="btn btn-primary btn-cta"><svg class="svg-inline--fa fa-download" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z"></path></svg><!-- <i class="fas fa-download"></i> Font Awesome fontawesome.com --> Download for Mac/Linux</a>
-                                </div>
-                                
-                                <p>Scripts to generate cross platform resources:</p>
-                                <div id="html" class="section-block">
-                                	<a href="assets/scripts/start.bat" class="btn btn-primary btn-cta"><svg class="svg-inline--fa fa-download" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z"></path></svg><!-- <i class="fas fa-download"></i> Font Awesome fontawesome.com --> Download for Windows</a>
-                                	
-                                </div>
-                            </section>
-                            <section id="callouts-section" class="doc-section">
-                                <h2 class="section-title">Callouts</h2>
-                                <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. 
-                                    </p>
-                                </div>
+                                <pre>
+                                <code class="language-plaintext" data-lang="plaintext" style="display: block">android/app/src/main/
+├──  assets/www/
+│   ├── css
+│   ├── js
+│   │	└── <span style="color: red">index.js</span>
+│   └── img
+├── gentool/
+├── java/
+├── res/
+│   ├── color
+│   │	└── border_material_color.xml
+│   ├── drawable
+│   │	├── checkbox_selector.xml
+│   │	└── radio_selector.xml
+│   ├── <span style="color: red">drawable-hdpi</span>
+│   ├── <span style="color: red">drawable-ldpi</span>
+│   ├── <span style="color: red">drawable-mdpi</span>
+│   ├── <span style="color: red">drawable-xhdpi</span>
+│   ├── <span style="color: red">drawable-xxhdpi</span>
+│   ├── drawable-xxxhdpi
+│   ├── font
+│   │	├── droidsansmono.ttf
+│   │	├── robotobold.ttf
+│   │	├── robotobolditalic.ttf
+│   │	├── robotoitalic.ttf
+│   │	└── robotoregular.ttf
+│   ├── layout
+│   │	└── index.xml
+│   ├── menu
+│   │	└── main_menu.xml
+│   ├── navigation
+│   │	└── <span style="color: yellow">nav_graph.xml</span>
+│   ├── values
+│   │	├── <span style="color: yellow">colors.xml</span>
+│   │	├── <span style="color: yellow">dimens.xml</span>
+│   │	├── <span style="color: yellow">strings.xml</span>
+│   │	├── <span style="color: yellow">styles.xml</span>
+│   │	└── <span style="color: yellow">sytem_styles.xml</span>
+│   ├── values-fr
+│   ├── values-w100dp-h100dp
+│   └── xml
+│   	└── <span style="color: yellow">recyclerview</span>_simple<span style="color: yellow">.xml</span>
+├──	<span style="color: red">res-ios/drawable-ios/</span>
+├──	<span style="color: red">res-swt/drawable/</span>
+├──	tsc/src
+│   	└── Index.ts
+└──	 <span style="color: red">resources/</span></code>
+</pre>
 
-                                <div class="section-block">
-                                    <div class="callout-block callout-info">
+                                    <div class="callout-block  callout-warning">
                                         <div class="icon-holder">
                                             <i class="fas fa-info-circle"></i>
                                         </div><!--//icon-holder-->
                                         <div class="content">
-                                            <h4 class="callout-title">Aenean imperdiet</h4>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium <code>&lt;code&gt;</code> , Nemo enim ipsam voluptatem quia voluptas <a href="#">link example</a> sit aspernatur aut odit aut fugit.</p>
-                                        </div><!--//content-->
-                                    </div><!--//callout-block-->
-                                    
-                                    <div class="callout-block callout-warning">
-                                        <div class="icon-holder">
-                                            <i class="fas fa-bug"></i>
-                                        </div><!--//icon-holder-->
-                                        <div class="content">
-                                            <h4 class="callout-title">Morbi posuere</h4>
-                                            <p>Nunc hendrerit odio quis dignissim efficitur. Proin ut finibus libero. Morbi posuere fringilla felis eget sagittis. Fusce sem orci, cursus in tortor <a href="#">link example</a> tellus vel diam viverra elementum.</p>
-                                        </div><!--//content-->
-                                    </div><!--//callout-block-->
-                                    
-                                    <div class="callout-block callout-success">
-                                        <div class="icon-holder">
-                                            <i class="fas fa-thumbs-up"></i>
-                                        </div><!--//icon-holder-->
-                                        <div class="content">
-                                            <h4 class="callout-title">Lorem ipsum dolor sit amet</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <a href="#">Link example</a> aenean commodo ligula eget dolor.</p>
+                                            <h4 class="callout-title">Note</h4>
+                                            <p>The files highlighted in yellow are hardcoded in code and cannot be changed.</p>
                                         </div><!--//content-->
                                     </div><!--//callout-block-->
                                     
                                     <div class="callout-block callout-danger">
                                         <div class="icon-holder">
-                                            <i class="fas fa-exclamation-triangle"></i>
+                                            <i class="fas fa-info-circle"></i>
                                         </div><!--//icon-holder-->
                                         <div class="content">
-                                            <h4 class="callout-title">Interdum et malesuada</h4>
-                                            <p>Morbi eget interdum sapien. Donec sed turpis sed nulla lacinia accumsan vitae ut tellus. Aenean vestibulum <a href="#">Link example</a> maximus ipsum vel dignissim. Morbi ornare elit sit amet massa feugiat, viverra dictum ipsum pellentesque. </p>
+                                            <h4 class="callout-title">Note</h4>
+                                            <p>The files highlighted in red are auto generated and managed by gentool.</p>
                                         </div><!--//content-->
                                     </div><!--//callout-block-->
-                                </div>
-                            </section><!--//doc-section-->
-                            <section id="tables-section" class="doc-section">
-                                <h2 class="section-title">Tables</h2>
-                                <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis.
-                                    </p>
-                                </div>
-                                <div class="section-block">
-                                    <h6>Basic Table</h6>
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Username</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div><!--//table-responsive-->
-                                    <h6>Striped Table</h6>
+
+                                    <p>The following table lists the function of each folder:</p>
+
                                     <div class="table-responsive">
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Username</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                            	<tr>
                                                     <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
+                                                    <td>assets/www</td>
+                                                    <td>Folder which contain cordova files. Ashera uses this folder to load the hidden webview by loading index.html.</td>
                                                 </tr>
+                                                
                                                 <tr>
                                                     <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
+                                                    <td>gentool</td>
+                                                    <td>Folder which consists of tools related to generating index.js, resources and drawable folders.</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
+                                                    <td>res/color</td>
+                                                    <td>Folder which consists of color xml selector files.</td>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>res/color</td>
+                                                    <td>Folder which consists of drawable xml selector files.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>res/drawable-xxxhdpi</td>
+                                                    <td>Folder which consists of png image files required for the application.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">6</th>
+                                                    <td>res/font</td>
+                                                    <td>Folder which consists of ttf font files and custom xml font definition files.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">7</th>
+                                                    <td>res/layout</td>
+                                                    <td>Folder which consists of layout files. The native UI provided by Ashera needs to be created here. This is where most of the ui development takes place.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">8</th>
+                                                    <td>res/menu</td>
+                                                    <td>Folder which consists of menu files required for toolbar widget.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">9</th>
+                                                    <td>res/navigation</td>
+                                                    <td>Folder which consists of nav_graph.xml which is used for building navigation between screens.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">10</th>
+                                                    <td>res/values</td>
+                                                    <td>Folder which consists of colors.xml for defining color definitions, dimens.xml for defining dimension definitions, strings.xml for internationalization, styles.xml for cross platform styling and sytem_styles.xml for theming.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">11</th>
+                                                    <td>res/xml</td>
+                                                    <td>Folder which consists of xml files required for recycler view widget.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">12</th>
+                                                    <td>tsc/src</td>
+                                                    <td>Folder which consists of fragment files backing the xml files. i.e each xml file in layout will have ts file backing it. This will be responsible for handling ui events.</td>
+                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                     </div><!--//table-responsive-->
-                                    <h6>Bordered Table</h6>
+
+
+
+
+                                </div>
+                                
+                                
+                            </section>
+                            <section id="callouts-section" class="doc-section">
+                                <h2 class="section-title">Gen Tool</h2>
+                                <div class="section-block">
+                                    <p>Gen Tool contains tools which help to auto generate files from android xml and ts file which will aid in cross platform development.
+                                    The following table lists the tools available:    
+                                    </p>
+                                </div>
+
+                                <div class="section-block">
                                     <div class="table-responsive">
-                                        <table class="table table-bordered">
+                                        <table class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                    <th>Username</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <th scope="row">1</th>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>@mdo</td>
+                                                    <td>npm run generate-platform-js</td>
+                                                    <td>Tool used to generate index.js from tsc folder.</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">2</th>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>@fat</td>
+                                                    <td>npm run generate-platform-res</td>
+                                                    <td>Tool used to generate files in resources folder and drawable folder</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">3</th>
-                                                    <td>Larry</td>
-                                                    <td>the Bird</td>
-                                                    <td>@twitter</td>
+                                                    <td>npm run generate-platform-drawable</td>
+                                                    <td>Tool used to generate png files in only drawable folders.</td>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="row">4</th>
+                                                    <td>npm run fix-ios-symLinks</td>
+                                                    <td>Tool used to fix the symlinks to resources of android. IOS has bug where running cordova prepare in existing projects, symlinks in resources folders are lost. run this tool to fix the same.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">5</th>
+                                                    <td>npm run update-ios-plist</td>
+                                                    <td>Tool used to update plist with custom fonts. Run if you add an custom font in the font folder.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">6</th>
+                                                    <td>npm run  backup-android</td>
+                                                    <td>Tool used to backup tsc and res folder.</td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <th scope="row">7</th>
+                                                    <td>npm run  restore-android</td>
+                                                    <td>Tool used to restore tsc and res folder.</td>
+                                                </tr>
+                                               
                                             </tbody>
                                         </table>
                                     </div><!--//table-responsive-->
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
-                            <section id="buttons-section" class="doc-section">
-                                <h2 class="section-title">Buttons</h2>
-                                <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
-                                    </p>
-                                    <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <h6>Basic Buttons</h6>
-                                            <ul class="list list-unstyled">
-                                                <li><a href="#" class="btn btn-primary">Primary Button</a></li>
-                                                <li><a href="#" class="btn btn-green">Green Button</a></li>
-                                                <li><a href="#" class="btn btn-blue">Blue Button</a></li>
-                                                <li><a href="#" class="btn btn-orange">Orange Button</a></li>
-                                                <li><a href="#" class="btn btn-red">Red Button</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <h6>CTA Buttons</h6>
-                                            <ul class="list list-unstyled">
-                                                <li><a href="#" class="btn btn-primary btn-cta"><i class="fas fa-download"></i> Download Now</a></li>
-                                                <li><a href="#" class="btn btn-green btn-cta"><i class="fas fa-code-branch"></i> Fork Now</a></li>
-                                                <li><a href="#" class="btn btn-blue btn-cta"><i class="fas fa-play-circle"></i> Find Out Now</a></li>
-                                                <li><a href="#" class="btn btn-orange btn-cta"><i class="fas fa-bug"></i> Report Bugs</a></li>
-                                                <li><a href="#" class="btn btn-red btn-cta"><i class="fas fa-exclamation-circle"></i> Submit Issues</a></li>
-                                            </ul>
-                                        </div>
-                                    </div><!--//row-->
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
-                            <section id="video-section" class="doc-section">
-                                <h2 class="section-title">Video</h2>
-                                <div class="section-block">
-                                    <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <h6>Responsive Video 16:9</h6>
-                                            <!-- 16:9 aspect ratio -->
-                                            <div class="embed-responsive embed-responsive-16by9">
-                                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ejBkOjEG6F0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <h6>Responsive Video 4:3</h6>
-                                            <!-- 4:3 aspect ratio -->
-                                            <div class="embed-responsive embed-responsive-4by3">
-                                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ejBkOjEG6F0?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-                                            </div>
-                                        </div>
-                                    </div><!--//row-->
-                                </div><!--//section-block-->
-                            <section id="icons-section" class="doc-section">
-                                <h2 class="section-title">Icons</h2>
-                                <div class="section-block">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec imperdiet turpis. Curabitur aliquet pulvinar ultrices. Etiam at posuere leo. Proin ultrices ex et dapibus feugiat <a href="#">link example</a> aenean purus leo, faucibus at elit vel, aliquet scelerisque dui. Etiam quis elit euismod, imperdiet augue sit amet, imperdiet odio. Aenean sem erat, hendrerit  eu gravida id, dignissim ut ante. Nam consequat porttitor libero euismod congue. 
-                                    </p>
-                                </div><!--//section-block-->
-                                <div class="section-block">
-                                    <h6>Elegant Icon Font</h6>
-                                    <a href="https://www.elegantthemes.com/blog/resources/elegant-icon-font" target="_blank"><img class="img-fluid" src="assets/images/demo/elegant-icon-font.jpg" alt="elegant icons" /></a>
-                                </div><!--//section-block-->
-                                <div class="section-block">
-                                    <h6>FontAwesome Icon Font</h6>
-                                    <a href="https://fontawesome.com/" target="_blank"><img class="img-fluid" src="assets/images/demo/fontawesome-icons.png" alt="fontawesome" /></a>
-                                </div><!--//section-block-->
-                                
-                            </section><!--//doc-section-->
-                            
-                            </section><!--//doc-section-->
+                              </div>
+                              
+                              <div class="callout-block callout-info">
+                                   <div class="icon-holder">
+                                       <svg class="svg-inline--fa fa-info-circle fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info-circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                   </div><!--//icon-holder-->
+                                   <div class="content">
+                                       <h4 class="callout-title">Development Tips</h4>
+                                       <p>Development of ashera application is done in res folder and tsc folder of android. Run the following in 2 terminal windows during development:<br>
+                                       <code>npm run generate-platform-js</code> <br>
+                                       <code>npm run generate-platform-res</code><br>
+                                       
+                                       This will ensure that resources and index js file are continuously updated.
+                                       <br> If you add image in drawable-xxxhdpi folder, run <br><code>npm run generate-platform-drawable</code><br>
+                                       
+                                       If you are removing android platform, ensure that you back up and restore android files in res and tsc folder. 
+                                       <code>npm run backup-android</code> <br>
+                                       <code>npm run restore-android</code><br>  </p>
+                                   </div><!--//content-->
+                               </div>
+                           </section>
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
@@ -562,8 +566,12 @@
                                     </nav><!--//nav-->
                                     
                                     <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#scripts">Scripts</a>
-                                    </li>                                    
+	                                    <a class="nav-link scrollto" href="#scripts">Understanding folder structure</a>
+                                    </li>
+                                    <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#callouts-section">Gen Tool</a>
+                                    </li>     
+                                                            
 	                            </nav><!--//doc-menu-->
 	                        
                         </div>
@@ -571,38 +579,7 @@
                 </div><!--//doc-body-->              
             </div><!--//container-->
         </div><!--//doc-wrapper-->
-        
-        <div id="promo-block" class="promo-block">
-            <div class="container">
-                <div class="promo-block-inner">
-                    <h3 class="promo-title text-center"><i class="fas fa-heart"></i> <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank">Are you an ambitious and entrepreneurial developer?</a></h3>
-                    <div class="row">
-                        <div class="figure-holder col-lg-5 col-md-6 col-12">
-                            <div class="figure-holder-inner">
-                                <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank"><img class="img-fluid" src="assets/images/demo/instance-promo.jpg" alt="Instance Theme" /></a>
-                                <a class="mask" href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/"><i class="icon fa fa-heart pink"></i></a>
-                                
-                            </div>
-                        </div><!--//figure-holder-->
-                        <div class="content-holder col-lg-7 col-md-6 col-12">
-                            <div class="content-holder-inner">
-                                <div class="desc">
-                                    <h4 class="content-title"><strong> Instance - Bootstrap Portfolio Theme for Aspiring Developers</strong></h4>
-                                    <p>Check out <a href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank">Instance</a> - a Bootstrap personal portfolio theme I created for developers. The UX design is focused on selling a developer’s skills and experience to potential employers or clients, and has <strong class="highlight">all the winning ingredients to get you hired</strong>. It’s not only a HTML site template but also a marketing framework for you to <strong class="highlight">build an impressive online presence with a high conversion rate</strong>. </p>
-                                    <p><strong class="highlight">[Tip for developers]:</strong> If your project is Open Source, you can use this area to promote your other projects or hold third party adverts like Bootstrap and FontAwesome do!</p>
-                                    <a class="btn btn-cta" href="https://themes.3rdwavemedia.com/bootstrap-templates/portfolio/instance-bootstrap-portfolio-theme-for-developers/" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
-                                    
-                                </div><!--//desc-->
-                                
-                                
-                                <div class="author"><a href="https://themes.3rdwavemedia.com">Xiaoying Riley</a></div>
-                            </div><!--//content-holder-inner-->
-                        </div><!--//content-holder-->
-                    </div><!--//row-->
-                </div><!--//promo-block-inner-->  
-            </div><!--//container-->
-        </div><!--//promo-block-->
-        
+                
     </div><!--//page-wrapper-->
     
     <footer id="footer" class="footer text-center">
