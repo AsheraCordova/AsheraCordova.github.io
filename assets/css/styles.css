@@ -186,9 +186,7 @@ code {
 .btn-purple:hover, .btn-purple:focus, .btn-purple:active, .btn-purple.active,
 	.btn-purple.hover, a.btn-purple:hover, a.btn-purple:focus, a.btn-purple:active,
 	a.btn-purple.active, a.btn-purple.hover {
-	background: #7b3995;
-	color: #fff !important;
-	border: 1px solid #7b3995
+
 }
 
 .btn-cta {
@@ -850,7 +848,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="sub
 }
 
 .body-purple .header {
-	border-color: #8A40A7
+	border-color: #ff0
 }
 
 .body-purple a {
@@ -1384,3 +1382,47 @@ input[type="text"], input[type="email"], input[type="password"], input[type="sub
 		width: 560px
 	}
 }
+
+
+.sidebar{}
+.bg-defoult{background-color:#e5db54;}
+.sidebar ul{ list-style:none; margin:0px; padding:0px; }
+.sidebar li a,.sidebar li a.collapsed.active{ display:block; padding:8px 12px; color:#fff;border-left:0px solid #dedede;  text-decoration:none}
+.sidebar li a.active{}
+.sidebar li a:hover{}
+.sidebar li a i{ padding-right:5px;}
+.sidebar ul li .sub-menu li a{ position:relative}
+.sidebar ul li .sub-menu li a:before{
+    font-family: FontAwesome;
+    content: "\f105";
+    display: inline-block;
+    padding-left: 0px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.sidebar ul li .sub-menu li a:hover{ }
+.sub-menu{ border-left:5px solid #ff0;}
+	.sidebar li a .nav-label,.sidebar li a .nav-label+span{ }
+	
+
+	.sidebar.fliph li a .nav-label,.sidebar.fliph li a .nav-label+span{ display:none;transition: all 0.5s  ease-in-out}
+	.sidebar.fliph {
+    width: 42px;transition: all 0.5s  ease-in-out;
+   
+}
+	
+.sidebar.fliph li{ position:relative}
+.sidebar.fliph .sub-menu {
+    position: absolute;
+    left: 39px;
+    top: 0;
+    background-color: #222;
+    width: 150px;
+    z-index: 100;
+}
+	
+	
+.pull-right {
+	float: right;
+}	
