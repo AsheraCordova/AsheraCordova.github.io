@@ -297,6 +297,7 @@
 		return false;
 	}
 	
+	
 	window.getScrollbarWidth = function() {
 	  	// Creating invisible container
 	  	const outer = document.createElement('div');
@@ -317,3 +318,28 @@
 
   		return scrollbarWidth;
 	}
+
+function init() {	
+	let style = document.createElement('style');
+	style.textContent = ':host { all: initial }';
+	var host = document.getElementById('shadowhost');
+	window.shadowRoot=host.attachShadow({mode: 'open'});
+	window.shadowRoot.appendChild(style);
+	
+	if (window.isRTLLayout()) {
+		host.dir = "rtl";
+	}
+	
+	document.addEventListener("DOMContentLoaded", function(event) {
+		loadScript('cordova.js');  
+		var host = document.getElementById('shadowhost');
+		window.shadowDomWidth = shadowhost.clientWidth;
+		window.shadowDomHeight = shadowhost.clientHeight;
+		main();
+	});
+}
+
+function loadScript(url) {
+	document.body.appendChild(document.createElement("script")).src = url;
+}
+init();
