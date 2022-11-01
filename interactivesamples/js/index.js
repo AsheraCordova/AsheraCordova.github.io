@@ -711,6 +711,9 @@ var Index = /** @class */function (_super) {
         switch (_a.label) {
           case 0:
             url = this.getQueryParams(document.location.search)["url"];
+            if (url == null) {
+              url = 'https://raw.githubusercontent.com/AsheraCordova/InteractivePlayGround/main/android_backup/res/layout/event_handler.xml';
+            }
             return [4 /*yield*/, fetch(url, {
               method: 'GET',
               mode: 'cors',
@@ -744,6 +747,15 @@ var Index = /** @class */function (_super) {
     return __awaiter(this, void 0, void 0, function () {
       return __generator(this, function (_a) {
         alert("test");
+        return [2 /*return*/];
+      });
+    });
+  };
+
+  Index.prototype.callInlineFunction = function () {
+    return __awaiter(this, void 0, void 0, function () {
+      return __generator(this, function (_a) {
+        window.showAlert();
         return [2 /*return*/];
       });
     });
@@ -11007,6 +11019,7 @@ var Fragment = /** @class */function () {
   Fragment.prototype.findViewById = function (id, type) {
     return new type(id, undefined, undefined);
   };
+  Fragment.prototype.onCreateView = function (obj) {};
   Fragment.prototype.onAttach = function (obj) {};
   Fragment.prototype.onCreate = function (obj) {};
   Fragment.prototype.onResume = function (obj) {};
@@ -24670,9 +24683,14 @@ var App = /** @class */function () {
   App.prototype.nativeEvent = function (obj) {
     var currentView = this.getCurrentView(obj);
     console.log(obj.event + " " + obj.actionUrl + obj.fragmentId);
-    currentView[obj.event](obj);
+    if (currentView[obj.event]) {
+      currentView[obj.event](obj);
+    }
     if (obj.event == 'onDetach') {
       this.currentViewMap.delete(obj.fragmentId);
+    }
+    if (obj.javascript) {
+      eval(obj.javascript);
     }
   };
   return App;
