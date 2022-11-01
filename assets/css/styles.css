@@ -1442,6 +1442,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="sub
 
 .pagination-nav__link--previous {
     color: black !important;
+    margin-bottom: 10px;
 }
 .pagination-nav__label {
 	font-weight: bold;

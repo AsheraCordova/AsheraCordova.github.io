@@ -74,12 +74,10 @@
                     </div><!--//doc-sidebar-->
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold"">Ashera Fundamentals</h1>
+							<h1 style="font-size: 35px; font-weight:bold"">Handling EditText</h1>
                                 <p>
-									Ashera Native runs on Apache Cordova, a popular open source library for building cross platform user interfaces with html5 and JavaScript. 
-									Ashera Native hides the webview in Apache Cordova and introduces its own native ui based on Android xml. Webview is only used for event handling.
-									Hence it combines the best of native and hybrid development. 
-									The main power of Ashera lies in reusing the cordova plugins which have already been developed rather than developing from scratch.
+									EditText is a Core Component that allows the user to enter text. It has an ontext prop that takes a function to be called every time the text changed, and an onSubmitEditing prop that takes a function to be called when the text is submitted.
+
 								</p>  
 								<p>	This section can get you started or can serve as a refresher course.</p>
 
@@ -297,73 +295,14 @@ export default class CatHello extends Fragment
 The code above declares CatHello fragment. goToPreviousScreen is a ui handler. This can be called on click of button. CatHello extends Fragment i.e Fragment has lifecycle method which can be overridden in CatHello component.
 </p>
                                     </div><!--//anwser-->
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
-                            
-                            
-                             <section id="EventHandling" class="doc-section">
-                                <h2 class="section-title">Event handler & Lifecycle Events</h2>
-                                <div class="section-block">
-									<p>
-									Ashera native provides on(*) attributes on widgets which needs to be be used in xml to tie click listener to method on Webview fragment.
-									</p>
-									
-									<p>
-                    				<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fevent_handler.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
-                    				</p>
-                                    <p>
-                                    	The fragment backing the xml has a method callInlineFunction which will be called on click of the Button:
-                                    	
-                                    	<pre class=" language-markup"><code class=" language-markup">&lt;Button
-        android:id="@+id/cat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="callInlineFunction"
-        android:text="Poke Me!">&lt;/Button&gt;</code></pre>
-                                         <pre class=" language-markup"><code class=" language-markup">async callInlineFunction() {
-	 window.showAlert();
-}</code></pre>
-     </p>
-     
-     <p>
-     
-     The webview Fragment has the following methods:
-     <pre class=" language-markup"><code class=" language-markup">public onCreateView (obj:any) {
-}
-public onAttach(obj:any) {
-}
-
-public onCreate(obj:any) {
-}
-
-public onResume(obj:any) {
-}
-
-public onError(obj:any) {
-}
-
-public onPause(obj:any) {
-}
-
-public onDestroy(obj:any) {
-}
-
-public onDetach(obj:any) {
-}
-
-public onCloseDialog(obj:any) {
-}
-</code></pre>
-The native android fragment will send events to these lifecycle methods in the webview fragment. 
-     
-     </p>
-                                </div><!--//section-block-->
-                                
-                                                   		 <hr>
+                   		 <hr>
                     	<p>Now that you’ve covered Ashera Native’s Core Components, let’s dive deeper on some of these core components by looking at handling &lt;EditText&gt;.
                     	<p>
 
-                                
+                    
+                    
+                                    
+                                </div><!--//section-block-->
                             </section><!--//doc-section-->
                         </div><!--//content-inner-->
                         
@@ -372,7 +311,7 @@ The native android fragment will send events to these lifecycle methods in the w
 								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-core-components.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Core Components and Native Components</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted-handlingedittext.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Handling EditText</div></a>
+								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Core Components and Native Components</div></a>
 							</div>
 						</div>
                         
@@ -392,9 +331,7 @@ The native android fragment will send events to these lifecycle methods in the w
 	                                    <a class="nav-link scrollto" href="#fragment">Android Fragment and Webview Fragment</a>
 		                            </li>
 		                            
-		                            <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#EventHandling">Event handler & Lifecycle Events</a>
-		                            </li>
+		                            
 	                            </ul><!--//doc-menu-->
 	                            
                         	</div>
