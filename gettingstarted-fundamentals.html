@@ -50,21 +50,16 @@
                 	<div class="doc-sidebar col-md-2 col-12 order-0 d-none d-md-flex " style="padding : 0px">
                     	<div class="sidebar left bg-defoult" style="width: 100%">
 						  <ul class="list-sidebar bg-defoult">
-						    <!--<li class="nav-header "> <span> <img alt="image" class="img-circle" src="http://placehold.it/150x150"> </span>
-						      <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-						        <li><a href="#">Regular link</a></li>
-						        <li class="disabled"><a href="#">Disabled link</a></li>
-						        <li><a href="#">Another link</a></li> 
-						      </ul> -->
-						    </li>
 						    <li> 
-						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#dashboard" class=" active" > 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#dashboard" class=" active" aria-expanded="true"> 
 						    		<span class="nav-label"> The Basics </span>
-						    		<span class="fa fa-chevron-left pull-right"></span>
+						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="sub-menu" id="dashboard">
+						      	<ul class="sub-menu show" id="dashboard">
 						        	<li><a href="gettingstarted.html">Introduction</a></li>
-						        	<li  class="active"><a href="gettingstarted-core-components.html">Core Components and Native Components</a></li>
+						        	<li><a href="gettingstarted-core-components.html">Core Components and Native Components</a></li>
+						        	<li class="active"><a href="gettingstarted-fundamentals.html">Ashera Fundamentals</a></li>
+						        	<li><a href="gettingstarted-handlingedittext.html">Handling EditText</a></li>
 						      	</ul>
 						    </li>
 						  </ul>
@@ -89,6 +84,7 @@
 										<li>Backing Fragment in typescript</li>
 										<li>Lifecycle of Fragment</li>
 										<li>Event Handling</li>
+										<li>State</li>
 									</ul>							
                                 </p>
                         
@@ -360,10 +356,34 @@ The native android fragment will send events to these lifecycle methods in the w
                                 </div><!--//section-block-->
                                 
                                                    		 <hr>
-                    	<p>Now that you’ve covered Ashera Native’s Core Components, let’s dive deeper on some of these core components by looking at handling &lt;EditText&gt;.
-                    	<p>
+		                    	<p>Now that you’ve covered Ashera Native’s Core Components, let’s dive deeper on some of these core components by looking at handling &lt;EditText&gt;.
+		                    	<p>
 
                                 
+                            </section><!--//doc-section-->
+                            
+                            
+                            <section id="State" class="doc-section">
+                                <h2 class="section-title">State</h2>
+                                <div class="section-block">
+                                    <div class="answer">
+                                        <p>
+                                        	State is like a component’s personal data storage. State is useful for handling data that changes over time or that comes from user interaction. State gives your components memory!
+                                        </p>
+                                        
+                                        <p>
+                                        	Given that ashera native has a native side backed by webview component, we have choice to store state in either webview or on the native component.
+                                        	
+                                        	However, it is recommended to store state on the native side and keep the webview stateless and use it as webclient for making http calls.  
+                                        </p>
+                                        <p>
+                                        The following example takes place in a cat cafe where two hungry cats are waiting to be fed. Their hunger, which we expect to change over time (unlike their names), is stored as state. To feed the cats, press their buttons—which will update their state.
+                                        </p>
+                                        <p>
+											<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fcustom_component.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+										</p>
+                                    </div><!--//anwser-->
+                                </div><!--//section-block-->
                             </section><!--//doc-section-->
                         </div><!--//content-inner-->
                         
@@ -395,6 +415,11 @@ The native android fragment will send events to these lifecycle methods in the w
 		                            <li class="nav-item">
 	                                    <a class="nav-link scrollto" href="#EventHandling">Event handler & Lifecycle Events</a>
 		                            </li>
+		                            
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#State">State</a>
+		                            </li>
+		                            
 	                            </ul><!--//doc-menu-->
 	                            
                         	</div>

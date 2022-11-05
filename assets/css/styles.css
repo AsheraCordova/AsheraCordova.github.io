@@ -1399,18 +1399,12 @@ input[type="text"], input[type="email"], input[type="password"], input[type="sub
     vertical-align: middle;
 }
 
-.sidebar ul li .sub-menu li.active{
-   	border-left:5px solid #8A40A7;
-}
-
-.sidebar ul li .sub-menu li{
+.sidebar ul li .sub-menu li.active a{
+   	border: 1px solid #ff0;
    	border-left:5px solid #ff0;
+   	
 }
 
-.sidebar ul li .sub-menu li a:hover{ }
-.sub-menu{ }
-.sidebar li a .nav-label,.sidebar li a .nav-label+span{ }
-	
 
 .sidebar.fliph li a .nav-label,.sidebar.fliph li a .nav-label+span{ display:none;transition: all 0.5s  ease-in-out}
 .sidebar.fliph {
