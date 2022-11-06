@@ -59,7 +59,9 @@
 						        	<li><a href="gettingstarted.html">Introduction</a></li>
 						        	<li><a href="gettingstarted-core-components.html">Core Components and Native Components</a></li>
 						        	<li><a href="gettingstarted-fundamentals.html">Ashera Fundamentals</a></li>
-						        	<li class="active"><a href="gettingstarted-handlingedittext.html">Handling EditText</a></li>
+						        	<li><a href="gettingstarted-handlingedittext.html">Handling EditText</a></li>
+						        	<li class="active"><a href="gettingstarted-scrollview.html">Using a ScrollView</a></li>
+						        	
 						      	</ul>
 						    </li>
 						  </ul>
@@ -69,35 +71,30 @@
                     </div><!--//doc-sidebar-->
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold"">Handling EditText</h1>
+							<h1 style="font-size: 35px; font-weight:bold"">Using a ScrollView</h1>
                                 <p>
-									EditText is a Core Component that allows the user to enter text. onTextChanged method is called every time a text is changed.
-
+									The ScrollView is a generic scrolling container that can contain multiple components and views. The scrollable items can be heterogeneous, and you can scroll both vertically and horizontally (by using ScrollView and HorizontalScrollView components).
 								</p>  
-								<p>	For example, let's say that as the user types, you're translating their words into a different language. In this new language, every single word is written the same way: 🍕. So the sentence "Hello there Bob" would be translated as "🍕 🍕 🍕".</p>
+								<p>	This example creates a vertical ScrollView with both images and text mixed together.</p>
 
                         
 								<p>
-									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fedittext_translate.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fscrollview.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
 								</p>
 									
 								<p>
-								In this example, we store text in the state, because it changes over time.								
+								The ScrollView works best to present a small number of things of a limited size. All the elements and views of a ScrollView are rendered, even if they are not currently shown on the screen. If you have a long list of items which cannot fit on the screen, you should use a Recycler view instead. So let's learn about list views next.
 								</p>	
 								
-								<p>
-								EditText is one of the ways the user interacts with the app. Next, let's look at ScrollView and learn how to use it.
-								</p>
-                            
                             
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-fundamentals.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Ashera Fundamentals</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-handlingedittext.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Handling EditText</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted-scrollview.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using a ScrollView</div></a>
+								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted-listview.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using List Views</div></a>
 							</div>
 						</div>
                         
@@ -107,6 +104,7 @@
                     	<div class="sidebar left " style="position: relative">
                     		<div id="doc-nav" class="doc-nav" style="position : inherit">
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
+		                            
 		                            
 	                            </ul><!--//doc-menu-->
 	                            

@@ -317,7 +317,7 @@ The code above declares CatHello fragment. goToPreviousScreen is a ui handler. T
         android:onClick="callInlineFunction"
         android:text="Poke Me!">&lt;/Button&gt;</code></pre>
                                          <pre class=" language-markup"><code class=" language-markup">async callInlineFunction() {
-	 window.showAlert();
+	 window.inlineFunction();
 }</code></pre>
      </p>
      
@@ -355,11 +355,6 @@ The native android fragment will send events to these lifecycle methods in the w
      </p>
                                 </div><!--//section-block-->
                                 
-                                                   		 <hr>
-		                    	<p>Now that you’ve covered Ashera Native’s Core Components, let’s dive deeper on some of these core components by looking at handling &lt;EditText&gt;.
-		                    	<p>
-
-                                
                             </section><!--//doc-section-->
                             
                             
@@ -380,11 +375,69 @@ The native android fragment will send events to these lifecycle methods in the w
                                         The following example takes place in a cat cafe where two hungry cats are waiting to be fed. Their hunger, which we expect to change over time (unlike their names), is stored as state. To feed the cats, press their buttons—which will update their state.
                                         </p>
                                         <p>
-											<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fcustom_component.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fhungry_cat.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
 										</p>
+										<p>
+										First you create a component. Variables used in the component like isHungry and name are scoped to the component. 
+										</p>
+<pre class=" language-markup"><code class=" language-markup">&lt;LinearLayout
+	android:id="@+id/parent"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+
+	&lt;TextView
+		modelPojoToUi="text = . from name->component"
+		textFormat="I am %s."
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" /&gt;
+
+	&lt;TextView
+		android:id="@+id/status"
+		modelPojoToUi="text = ternary(.) from isHungry->component"
+		modelPojoToUiParams="false:hungry;true:Full"
+		textFormat="I am %s"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" /&gt;
+
+	&lt;Button
+		android:id="@+id/feedMeBtn"
+		android:onClick="callInlineFunction"
+		modelPojoToUi="text = ternary(.) from isHungry->component"
+		modelPojoToUiParams="false:Pour me some milk, please!;true:Thank You!!!"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="40dp"/&gt;
+&lt;/LinearLayout&gt;</code></pre>            
+									<p>
+									Next you reference the component using include tag. Initial parameters values and type of parameter are passed to the component.
+									</p>
+
+<pre class=" language-markup"><code class=" language-markup">&lt;include
+	name="Munkustrap"
+	componentId="test"
+	isHungry="false"
+	isHungry_type="bool"
+	layout="@layout/hungry_cat_component" /&gt;</code></pre>
+									<p>
+									On click of button in the component, update the component data using the code below.
+									Component scope data is stored in view scope with key &lt;Component Id&gt;#&lt;variable name&gt;.
+									Component Id is passed as one of the event parameters.
+									</p>
+									
+<pre class=" language-markup"><code class=" language-markup">window.inlineFunction = function(fragment, command, obj) {
+	command.updateModelData(obj.componentId + "#" + "isHungry->component as bool", true).refreshUiFromModel(
+		obj.componentId + "#status," + obj.componentId + "#feedMeBtn");
+     fragment.executeCommand(command);
+}
+</code></pre>
                                     </div><!--//anwser-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
+                            
+							<hr>
+	                    	<p>Now that you’ve covered Ashera Native’s Core Components, let’s dive deeper on some of these core components by looking at handling &lt;EditText&gt;.
+	                    	<p>
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
