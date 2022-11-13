@@ -64,7 +64,7 @@
 						        	<li><a href="gettingstarted-listview.html">Using List View</a></li>
 						      	</ul>
 						    </li>
-						    <li> 
+						   <li> 
 						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#essentials" class=" collapsed" aria-expanded="false"> 
 						    		<span class="nav-label"> The Essentials </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
@@ -73,6 +73,25 @@
 						      		<li><a href="01gettingstarted-essentials.html">Creating your first project</a></li>
 						        	<li><a href="01gettingstarted-devenv.html">Setting up the development environment</a></li>
 						        	<li><a href="01gettingstarted-theming.html">Theming</a></li>
+						        	<li><a href="01gettingstarted-uifragment.html">Creating your ui & backing fragment</a></li>
+						        	<li><a href="01gettingstarted-validation.html">Validation</a></li>
+						        	<li><a href="01gettingstarted-databinding.html">Data binding</a></li>
+						        	<li><a href="01gettingstarted-navigation.html">Navigation</a></li>
+						        	<li><a href="01gettingstarted-nativeformatting.html">Native Formatting</a></li>
+						      	</ul>
+						    </li>
+						    
+						    <li> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#advanced" class=" collapsed" aria-expanded="false"> 
+						    		<span class="nav-label"> The Advanced </span>
+						    		<span class="fa fa-chevron-down pull-right"></span>
+						    	</a>
+						      	<ul class="sub-menu collapse" id="advanced">
+						        	<li><a href="02gettingstarted-newvalidation.html">Add new Validator</a></li>
+						        	<li><a href="02gettingstarted-newattribute.html">Add new Attribute to existing widget</a></li>
+						        	<li><a href="02gettingstarted-newnativeformatter.html">Add new Native Formatter</a></li>
+						        	<li><a href="02gettingstarted-newandroidwidget.html">New Android Widget</a></li>
+						        	<li><a href="02gettingstarted-newwidget.html">New Widget</a></li>
 						      	</ul>
 						    </li>
 						  </ul>
@@ -121,6 +140,137 @@
                                 <iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Ftry_editing_me.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
                             </section><!--//doc-section-->
                             
+                            <section id="whyashera" class="doc-section">
+                                <h2 class="section-title">Why Ashera was created?</h2>
+                                <div class="section-block">
+                                    <p>Ashera was created with the following goals: </p>
+
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Reusability using Code poaching</h4>
+                                            <p>Don't reinvent the wheel. Ashera uses android as it base for creating layouts. Layouting code on android is factored out using a technique known as "code poaching" where reusable code is extracted out from the android java file using java parser and rest of the code is stubbed and ensured that the code does not fail. This technique is powerful as Ashera supports the advanced layouts supported by Android such as Recycler View, Constraint Layout on other platforms such as IOS, Browser and SWT.</p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Design Time Preview</h4>
+                                            <p>Most of the cross platform framework provides live preview on device. However design time preview is thought to require lot of development effort where an IDE has to be developed. By simulating Android for other platform, Android studio can be used for ui development and no extra effort is required for design preview of xml design files.</p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Dynamic UI</h4>
+                                            <p>One of classic examples of creating dynamic UI is that of CMS, the user can create ui on the fly with a few drag and drop and the UI should be downloadable onto the device. Ashera is bundled with tagsoup parser and Javacc css parser. Android xml created using studio can be downloaded using http and executed on device to get an native interface.</p>
+                                        </div><!--//content-->
+                                    </div>
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Widget Overiding and Mixing</h4>
+                                            <p>Ashera uses native widgets for rendering. One of problems of using native widgets is that you are tied to the short coming of the widgets provided by the underlying framework.
+                                            Let us take an example of EditText in android. It provides single line and multiline capability.
+                                            However in IOS, we have UITextField and UITextView where UITextField provides single line capability and UITextView provides multiline capability.
+                                            To solve this problem, Ashera supports widget overiding and mixing so that you can choose what widget you want at runtime.   
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Simulation vs Emulation</h4>
+                                            <p>Ashera simulates android platform on other platforms and tries to only reuse the layouting mechanism of android on other platforms. One of the drawbacks of this method is that, the widgets might have unimplemented attributes. However, a score is given to each widget simulated which refers to the degree to which it closely simulates an Android widget.    
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Extensible</h4>
+                                            <p>Ashera is designed to be extensible in all direction. Idea is to add new attributes, replace widgets, register new widgets, create new validators through a extensible registration framework.       
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Plugin framework</h4>
+                                            <p>Plugin based frameworks are usually successful. Ashera uses cordova which already provides the plugin backbone code required to create additional functionality required by the usecases.       
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">IDE Reusability</h4>
+                                            <p>Ashera recommends using Android Studio by Google and Visual Studio code by Microsoft for development. It's main aim was to reuse the IDE features provided by existing providers rather than creating a new IDE from scratch.
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                     <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Data Binding & Validations</h4>
+                                            <p>Ashera provides a framework for storing and retrieving model on the native side. It is recommended to store data on the native side and keep webview stateless and use it as an http client. The main idea here was that usually network call takes time in order of 1-2 seconds. The time required for the request to pass from native to the webview will be negligible when compared to he network call. In such cases, it is perfectly fine to use webview for handling ui events.
+                                                       
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                    <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">WebView UI Events vs Native events</h4>
+                                            <p>Ashera provides a framework where ui events from native reaches the webview and javascript framework handles the same. In some cases, it might not be possible to handle the event on the webview side as the ui performance delivered might be poor. Ashera provides a mechanism where you can write event handler code using java and deliver native performance by eliminating the webview call.
+                                                       
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+                                    
+                                     <div class="callout-block callout-info">
+                                        <div class="icon-holder">
+                                            <svg class="svg-inline--fa fa-circle-info" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle-info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z"></path></svg><!-- <i class="fas fa-info-circle"></i> Font Awesome fontawesome.com -->
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Native formatters </h4>
+                                            <p>An usual scenario which we encounter, model on the native side needs to be displayed on ui with some kind of formatting applied to the attribute of the model.
+                                            Ashera provides a formatting framework, where the model can be tranformed on the native side without an additional trip to the webview thereby exibiting native performance.   
+                                                       
+                                            </p>
+                                        </div><!--//content-->
+                                    </div>
+								</div>
+							</section>     
+                            
                             <section id="formatting" class="doc-section">
                                 <h2 class="section-title">Formatting</h2>
                                 <div class="section-block">
@@ -148,6 +298,9 @@
 		                            </li>
 		                            <li class="nav-item">
 	                                     <a class="nav-link scrollto" href="#interactiveexamples">Interactive examples</a>
+		                            </li>
+		                             <li class="nav-item">
+	                                     <a class="nav-link scrollto" href="#whyashera">Why Ashera was created?</a>
 		                            </li>
 		                            <li class="nav-item">
 	                                     <a class="nav-link scrollto" href="#formatting">Formatting</a>

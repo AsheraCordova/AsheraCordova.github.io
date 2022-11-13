@@ -1449,3 +1449,8 @@ input[type="text"], input[type="email"], input[type="password"], input[type="sub
     padding: 10px;
     text-decoration: none;
 }
+
+.list-sidebar > li > a {
+	font-weight: bold;
+	font-size: 16px;
+}
