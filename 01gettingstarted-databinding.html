@@ -101,125 +101,305 @@
                     </div><!--//doc-sidebar-->
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold"">Theming</h1>
+							<h1 style="font-size: 35px; font-weight:bold"">Data Binding</h1>
 							<p>
-							The first step in Ashera is to theme the widgets. The theme of the widgets have to be done in system_style.xml.
-							Customization per widget can be done using style.xml 
+							Object to UI and UI to Object is the provided as part of the core framework. It is achieved using storing objects in certain scope of the application and the ui synchronizing it whenever an event happens. This provides easy but powerful way to achieve synchronizing ui to objects and vice versa by configuring few attributes on widgets.
 							</p>
+
 								
-								<section id="system_style" class="doc-section" >
-									<h2 class="section-title">system_style.xml</h2>
+								<section id="Scope" class="doc-section" >
+									<h2 class="section-title">Scope</h2>
 									<div class="section-block">
-									<p>
-										Given that Ashera Native is based on Android i.e Android first, we should be able to do anything which we are capable of achieving in Android.
-										Then we simulate the same in other platforms. 
-									</p> 
-									<p>
-									Android has concept of theming widgets by creating a Theme and applying theme to widget to widgets using style.xml.
-									
-									Ashera however created separate xml - system_system.xml where you can use Android theming.  
-									Here is snippet of system_system.xml:
-									</p>
-									
-									
-									<p>
-									<pre><code class="language-markup">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;resources&gt;
- 
-    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
-        &lt;item name="editTextStyle"&gt;@style/EditText&lt;/item&gt;
-        &lt;item name="checkboxStyle"&gt;@style/CheckBox&lt;/item&gt;
-        &lt;item name="buttonStyle"&gt;@style/Button&lt;/item&gt;
-        &lt;item name="radioButtonStyle"&gt;@style/RadioButton&lt;/item&gt;
-        &lt;item name="imageButtonStyle"&gt;@style/ImageButton&lt;/item&gt;
-        &lt;item name="android:spinnerItemStyle"&gt;@style/Spinner&lt;/item&gt;
-        &lt;item name="colorPrimaryDark"&gt;#000&lt;/item&gt;
-    &lt;/style&gt;
-
-    &lt;!-- form widgets --&gt;
-    &lt;style name="TextView"&gt;
-        &lt;item name="android:typeface"&gt;sans&lt;/item&gt;
-    &lt;/style&gt;
-    &lt;style name="EditText" parent="@android:style/Widget.EditText" constructor_attrs="swtTextStyle:single" attrs="swtUseTabForNavigation:true;borderBottomWidth:1dp;borderColor:@color/border_material_color;onFocusChange:"&gt;
-        &lt;item name="android:textColor"&gt;#000&lt;/item&gt;
-        &lt;item name="android:textColorHint"&gt;#fff&lt;/item&gt;
-        &lt;item name="android:padding"&gt;10dp&lt;/item&gt;
-        &lt;item name="singleLine"&gt;true&lt;/item&gt;
-        &lt;item name="android:inputType" android="true"&gt;text&lt;/item&gt;
-        &lt;item name="android:typeface"&gt;sans&lt;/item&gt;
-    &lt;/style&gt;
-    ...
-&lt;/resources&gt;</code></pre>
-									</p>
-									<p>
-									It is worth noting that system_style.xml can refer any android resource i.e. android system resource.
-									For e.g, the style tag parent can be android resource <code>parent="@android:style/Widget.EditText"</code>.
-									Also when refering to android system resource, add <code>android="true"</code>. This means that this attribute is for only android and 
-									will not be used to applied to the other platforms.
-									</p>
-									<p>
-									The system_style.xml adheres to strict convention to achieve cross platform theming.
-									</p>
-									<p>
-									In the above example, editTextStyle of App theme has been styled with <code>@style/EditText</code>.
-									The name of style is the group name of widgets i.e. the android tag name. 
-									</p>
-									<p>
-									By overriding the editTextStyle of AppTheme, you have setup the Android EditText.
-									</p>
-									<p>
-									To apply theming to other platforms, the attributes without <code>android="true"</code> are applied to other widgets by the looking at the name of the style and matching the tag name.
-									But there might be some cases where you need to apply non-android attributes to other platforms.
-									In this case you use constructor_attrs and attrs on style which can be used to theme other attributes which cannot be declared inside item tags. 
-									</p>
-									<p>
-									To refer to a style declared in system_style.xml, you cannot use the style attribute. Instead you need to use systemStyle attribute.									 
-									</p>
+										<p>
+											Scope where an object is stored can be one of the following:
+											<ul>
+												<li>view - It is stored on the fragment which is the root for all views. When a fragment is destroyed, the object is also removed along with the fragment.</li>
+												<li>component - It is stored in view scope with key &lt;component id&gt;#&lt;key&gt;.</li>
+												<li>session - It is stored on the application object. As long as the application is alive, the object is available.</li>
+												<li>loopvar - Whenever we loop on object, a loopvar is created and stored on the widget on which we are looping.</li>
+											</ul>
+										</p>
 									</div>
-	                          	</section>
-	                          	
-	                          	<section id="style" class="doc-section" >
-									<h2 class="section-title">style.xml</h2>
+								</section>
+								<section id="DataType" class="doc-section" >
+									<h2 class="section-title">Data Type</h2>
+									<div class="section-block">
+										<p>
+											Objects can be stored in scope as:
+											<ul>
+												<li>map - Simple map containing key value pair.</li>
+												<li>list - list of objects.</li>
+												<li>plainmap - hierarchical map. This simplifies querying map for inner objects.</li>
+												<li>bool - boolean</li>
+												<li>int - integer</li>
+												<li>number - floating point number</li>
+												<li>string - String</li>
+											</ul>
+										</p>
+									</div>
+								</section>
+								<section id="ExpressionStatement" class="doc-section" >
+									<h2 class="section-title">Expression Statement</h2>
+									<div class="section-block">
+										<p>
+										Expression statement is written to identity, move, store objects from ui to object and vice versa.
+										</p>
+										<p>
+										<b>var - e.g let x = . from y->view into session as map</b>
+										</p>
+										<p>
+										The above statement stores a intermediate variable x into session as map
+										</p>
+										<p>
+										<table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>modelPojoToUi</td>
+                                                    <td>e.g text=abcd from x->view Set text attribute on widget to abcd attribute from object x stored in scope view. </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>modelUiToPojo</td>
+                                                    <td>e.g abcd=text into x->view Set abcd attribute on object x stored in scope view to text attribute on widget. </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Event</td>
+                                                    <td>e.g y=z from z->view Store y to from object in scope view into event map.  </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>var store</td>
+                                                    <td>e.g y->intent as pathmap. Store the object into a variable y on intent with type pathmap.  </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td>var get</td>
+                                                    <td>e.g z from z->view Get z attribute from object z in scope view.  </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>loop var</td>
+                                                    <td>e.g let x in c from y->view into session as pathmap. Loop over c attribute of type list on object y in scope view. Create loop var x of type pathmap.</td>
+                                                </tr>
+                                           </tbody>
+                                      	</table>
+                                  	</p>
+                                  	</div>
+								</section>
+								<section id="CustomMethodsAttributes" class="doc-section" >
+									<h2 class="section-title">Custom Methods/Attributes</h2>
+									<div class="section-block">
+										<p>
+										The View/ViewGroup has been enhanced with custom attributes to handle data binding.
+										</p>
+										<p>
+										<table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>modelPojoToUi</td>
+                                                    <td>Used for synchronizing object to ui.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>modelPojoToUiParams</td>
+                                                    <td>Method expression params.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>modelUiToPojo</td>
+                                                    <td>Used for synchronizing ui to object.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>modelUiToPojoEventIds</td>
+                                                    <td>List of widget ids to be refreshed using refreshUiFromModel after an event occurs.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>modelSyncEvents</td>
+                                                    <td>Used for synchronizing ui to object.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>refreshUiFromModel</td>
+                                                    <td> Used for refreshing the ui from the path configured using modelUiToPojo.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>modelParam</td>
+                                                    <td>Store intermediate variables to scope.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>updateModelData</td>
+                                                    <td>Used to update object data in certain scope.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>modelFor</td>
+                                                    <td>Used to loop on list to create multiple user interface elements.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>modelIdPath</td>
+                                                    <td>Identifier property path in the object.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>addModel</td>
+                                                    <td>Append object to list stored in scope and update the user interface element.</td>
+                                                </tr>
+                                                 <tr>
+                                                    <td>removeModelAtIndex</td>
+                                                    <td>Remove object to list at index stored in scope and update the user interface element.</td>
+                                                </tr>
+                                                 <tr>
+                                                    <td>removeModelById</td>
+                                                    <td>Remove object to list by id stored in scope and update the user interface element.</td>
+                                                </tr>
+                                          	</tbody>
+                                     	</table>
+                                     	</p>
+									</div>
+								</section>
+								
+								
+								<section id="Usage" class="doc-section" >
+									<h2 class="section-title">Usage</h2>
+									<div class="section-block">
+										<p>
+										The following is general flow of application and this depicts where the methods and expression has to be used:
+										
+										<h3>Navigate to Page</h3>
+										<p>
+											Javascript data objects are born in the ts fragment files and finally stored in scope in native code. When we redirect to native screen, data is passed into method and this data is stored in certain scope as defined by the statement expression.
+										</p>
+<pre><code class="language-markup">await this.navController.navigate(recyclerview_1000_items, 
+	  "testObj->view as pathmap", 
+	  {looptest: {textlayout: data}}).executeCommand();</code></pre>
+										<p>
+										The example above uses <b>var store</b> expression to store data specified into key <b>testObj</b> with scope view.
+										</p>
+										<h3>Sync of data displayed</h3> 
+										<p>
+										The data stored in scope is synched back and from the ui to object using modelPojoToUi, modelUiToPojo and modelSyncEvents.
+										</p>
+
+<pre><code class="language-markup">&lt;EditText 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    modelPojoToUi="text = emailIntent from testObj->session"
+    modelUiToPojo="emailIntent = text into testObj->session"
+    modelSyncEvents="onTextChange"
+    onTextChange=""/&gt;</code></pre>
+										<p>
+										The above example shows that testObj is present in session scope. The property text of the EditText is always kept in sync with the emailIntent of testObj in session scope. The sync from UI to Object only happens when text change event is triggered.
+										</p>
+										<h3>Get Modified data</h3>
+										<p>
+										The object stored in scope are modified in step 2. When event occurs, we can request the modified data such as click of a button.
+										</p>
+<pre><code class="language-markup">&lt;Button android:layout_width="wrap_content"
+	  android:layout_height="wrap_content" 
+      android:text="Get Data"
+      android:onClick="getData(model=. from items->view)" /&gt;</code></pre>
+									<p>
+									The above example requests an object stored with key <b>items</b> with scope view on event <b>onClick</b> of button.
+									</p>
+									<h3>Sync dependent widget</h3>
+<pre><code class="language-markup">&lt;EditText 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    modelPojoToUi="text = emailIntent from testObj->session"
+    modelUiToPojo="emailIntent = text into testObj->session"
+    modelSyncEvents="onTextChange"
+    modelUiToPojoEventIds="label"	    
+    onTextChange=""/&gt;
+&lt;TextView 
+    android:id="@+id/label"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    modelPojoToUi="text = emailIntent from testObj->session"/&gt;</code></pre>
+										<p>
+										The above example syncs emailIntent on object testObj when onTextChange event occurs. Also after the event has finished, the TextView with id <b>label</b> is refreshed with the latest value of emailIntent.
+										</p>
+									</div>
+								</section>
+								<section id="LoginExample" class="doc-section" >
+									<h2 class="section-title">Login Example</h2>
 									
 									<div class="section-block">
 									<p>
-										style.xml is reserved for cross platform theming. 
+										We have already created login.xml with validation in the previous section. Let us add data binding to it.
 									</p> 
 									<p>
-									Here is snippet of style.xml:
-<pre><code class="language-markup">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;resources&gt;
-
-	...
-    &lt;style name="h2_white"&gt;
-        &lt;item name="android:textSize"&gt;@dimen/font_normal&lt;/item&gt;
-        &lt;item name="android:textColor"&gt;@color/color_white&lt;/item&gt;
-    &lt;/style&gt;
-	...
-
-&lt;/resources&gt;</code></pre>
-</p>		
-								<p>
-									It is worth noting that style.xml can refer only attributes supported in the api documentation. 
-									It cannot reference any android system resource.									
-								</p>
-								<p>
-									To refer to a style declared in style.xml, you can use the style attribute. 									 
-								</p>
+										<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Flogin_component_with_databinding.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>								
+									</p>
+									<p>
+									Enter email as a@a.com and password as test. You will see this alert:
+									
+									<pre><code class="language-markup">{"password":"test","email":"a@a.com"}</code></pre>
+									</p>
+								</div>
+								</section>	
+								<section id="Syncdependentwidget" class="doc-section" >
+									<h2 class="section-title">Sync dependent widget</h2>
+									
+									<div class="section-block">
+									<p>
+										Here is interactive sample of sync dependent widgets discussed earlier.
+									</p> 
+									<p>
+										<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fsync_dependentwidget.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>								
+									</p>									
 								</div>
 								</section>
-	                          	
-	                          	<p>
-	                          	By splitting the style into 2 separate xml, you get simple but powerful way to style android widgets and applying the styling in other platforms. 
-	                          	</p>
+								
+								<section id="ListViewExample" class="doc-section" >
+									<h2 class="section-title">List View Example</h2>
+									
+									<div class="section-block">
+									<p>
+										The following example shows how a Recycler view uses the data binding methods to update its view.
+									</p> 
+									<p>
+										<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecycler_view_add_delete.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>								
+									</p>					
+									<p>
+									The ts code in the backing fragment:
+									    <pre><code class="language-markup">id = 3;
+@Inject({ id : "@+id/listView"})
+private items!: RecyclerView;
+async addItem(obj:any) {
+	this.items.addModel({"id":this.id, "name": "test" + (this.id - 2), "gender":"@+id/radio0"});
+	await this.executeCommand(this.items);
+	this.id++;
+}
+
+async removeCurrentItem(obj:any) {
+	this.items.removeModelById(obj.model.id);
+	await this.executeCommand(this.items);	
+}
+
+async getData(obj:any) {
+	alert(JSON.stringify(obj.model));
+}
+
+async clearItem(obj:any) {
+	this.items.updateModelData("items->view as list", []);
+	this.items.notifyDataSetChanged(true);
+	await this.executeCommand(this.items);
+}</code></pre>
+									</p>				
+								</div>
+								</section>		
+															
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-handlingedittext.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Handling EditText</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="01gettingstarted-validation.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Validation</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted-listview.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using List Views</div></a>
+								<a class="pagination-nav__link pagination-nav__link--next" href="01gettingstarted-navigation.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Navigation</div></a>
 							</div>
 						</div>
                         
@@ -231,10 +411,28 @@
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
 		                            
 		                             <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#system_style">system_style.xml</a>
+	                                    <a class="nav-link scrollto" href="#Scope">Scope</a>
 		                            </li>
 		                            <li class="nav-item">
-		                             <a class="nav-link scrollto" href="#style">style</a>
+		                             <a class="nav-link scrollto" href="#DataType">Data Type</a>
+		                             </li>
+		                             <li class="nav-item">
+		                             <a class="nav-link scrollto" href="#ExpressionStatement">Expression Statement</a>
+		                             </li>
+		                             <li class="nav-item">
+		                             <a class="nav-link scrollto" href="#CustomMethodsAttributes">Custom Methods/Attributes</a>
+		                             </li>
+		                             <li class="nav-item">
+		                             <a class="nav-link scrollto" href="#Usage">Usage</a>
+		                             </li>
+		                             <li class="nav-item">
+		                             <a class="nav-link scrollto" href="#LoginExample"> Login Example</a>
+		                             </li>
+		                             <li class="nav-item">
+		                             <a class="nav-link scrollto" href="#Syncdependentwidget"> Sync dependent widget</a>
+		                             </li>
+		                             <li class="nav-item">
+		                             <a class="nav-link scrollto" href="#ListViewExample">List View Example</a>
 		                             </li>
 	                            </ul><!--//doc-menu-->
 	                            
