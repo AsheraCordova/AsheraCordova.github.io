@@ -101,125 +101,70 @@
                     </div><!--//doc-sidebar-->
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold"">Theming</h1>
+							<h1 style="font-size: 35px; font-weight:bold"">Extensibility</h1>
 							<p>
-							The first step in Ashera is to theme the widgets. The theme of the widgets have to be done in system_style.xml.
-							Customization per widget can be done using style.xml 
+							One of most looked onto features of the framework is the Extensibility. One of the main aim of Ashera is the ability of the framework to extend existing functionality in a cross platform way.							
+							</p>
+							<p>
+							Ashera provides ability to extend existing functionality through factory registration. We can extend the following functionalities:
+							 <ul>
+							 <li>Validation</li>
+							 <li>Add new attributes to existing widgets</li>
+							 <li>Add new native formatter</li>
+							 <li>Add a new widget</li>
+							 <li>Add a new image loader</li>
+							 <li>Add a decorator where in attribute is added to all widgets like Borderdecorator</li>
+							 <li>Mixing widget</li>
+							 <li>Widget overriding</li>
+							 </ul>
+							 These extensions are discussed in the future sections.
 							</p>
 								
-								<section id="system_style" class="doc-section" >
-									<h2 class="section-title">system_style.xml</h2>
+								<section id="Addinganewvalidator" class="doc-section" >
+									<h2 class="section-title">Adding a new validator</h2>
 									<div class="section-block">
 									<p>
-										Given that Ashera Native is based on Android i.e Android first, we should be able to do anything which we are capable of achieving in Android.
-										Then we simulate the same in other platforms. 
+										Ashera provides predefined validators which has been discussed in the previous section <a href="01gettingstarted-validation.html">here</a>.
 									</p> 
 									<p>
-									Android has concept of theming widgets by creating a Theme and applying theme to widget to widgets using style.xml.
-									
-									Ashera however created separate xml - system_system.xml where you can use Android theming.  
-									Here is snippet of system_system.xml:
+									In most cases this is sufficient. However Ashera provides framework to create validators in cross platform way.									
 									</p>
 									
 									
 									<p>
-									<pre><code class="language-markup">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;resources&gt;
- 
-    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
-        &lt;item name="editTextStyle"&gt;@style/EditText&lt;/item&gt;
-        &lt;item name="checkboxStyle"&gt;@style/CheckBox&lt;/item&gt;
-        &lt;item name="buttonStyle"&gt;@style/Button&lt;/item&gt;
-        &lt;item name="radioButtonStyle"&gt;@style/RadioButton&lt;/item&gt;
-        &lt;item name="imageButtonStyle"&gt;@style/ImageButton&lt;/item&gt;
-        &lt;item name="android:spinnerItemStyle"&gt;@style/Spinner&lt;/item&gt;
-        &lt;item name="colorPrimaryDark"&gt;#000&lt;/item&gt;
-    &lt;/style&gt;
-
-    &lt;!-- form widgets --&gt;
-    &lt;style name="TextView"&gt;
-        &lt;item name="android:typeface"&gt;sans&lt;/item&gt;
-    &lt;/style&gt;
-    &lt;style name="EditText" parent="@android:style/Widget.EditText" constructor_attrs="swtTextStyle:single" attrs="swtUseTabForNavigation:true;borderBottomWidth:1dp;borderColor:@color/border_material_color;onFocusChange:"&gt;
-        &lt;item name="android:textColor"&gt;#000&lt;/item&gt;
-        &lt;item name="android:textColorHint"&gt;#fff&lt;/item&gt;
-        &lt;item name="android:padding"&gt;10dp&lt;/item&gt;
-        &lt;item name="singleLine"&gt;true&lt;/item&gt;
-        &lt;item name="android:inputType" android="true"&gt;text&lt;/item&gt;
-        &lt;item name="android:typeface"&gt;sans&lt;/item&gt;
-    &lt;/style&gt;
-    ...
-&lt;/resources&gt;</code></pre>
-									</p>
-									<p>
-									It is worth noting that system_style.xml can refer any android resource i.e. android system resource.
-									For e.g, the style tag parent can be android resource <code>parent="@android:style/Widget.EditText"</code>.
-									Also when refering to android system resource, add <code>android="true"</code>. This means that this attribute is for only android and 
-									will not be used to applied to the other platforms.
-									</p>
-									<p>
-									The system_style.xml adheres to strict convention to achieve cross platform theming.
-									</p>
-									<p>
-									In the above example, editTextStyle of App theme has been styled with <code>@style/EditText</code>.
-									The name of style is the group name of widgets i.e. the android tag name. 
-									</p>
-									<p>
-									By overriding the editTextStyle of AppTheme, you have setup the Android EditText.
-									</p>
-									<p>
-									To apply theming to other platforms, the attributes without <code>android="true"</code> are applied to other widgets by the looking at the name of the style and matching the tag name.
-									But there might be some cases where you need to apply non-android attributes to other platforms.
-									In this case you use constructor_attrs and attrs on style which can be used to theme other attributes which cannot be declared inside item tags. 
-									</p>
-									<p>
-									To refer to a style declared in system_style.xml, you cannot use the style attribute. Instead you need to use systemStyle attribute.									 
+									The following are the steps to create new validator:
+									<ul>
+										<li>Clone the repository <a href="https://github.com/AsheraCordova/Custom.git">https://github.com/AsheraCordova/Custom.git</a> into the project folder. This project acts as a template for adding custom cross platform functionality.</li>
+										<li>Install the plugin onto the project using command <code>cordova plugin add Custom</code>.</li>
+										<li>Import the project into your favorite ide. e.g. eclipse</li>
+										<li>Sample validator can be found in the project <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">here</a></li>
+										<li>After you create your new validator, you need to register it as follows <code>ValidatorFactory.register("lowercaseonly", new CustomValidator());</code>
+										<li>Also given that the project is cordova plugin, you need to update plugin.xml and reinstall the plugin for any new functionality to take effect.</li>  
+									</ul>	
 									</p>
 									</div>
 	                          	</section>
 	                          	
-	                          	<section id="style" class="doc-section" >
-									<h2 class="section-title">style.xml</h2>
+	                          	<section id="Lowercaseonlyvalidation" class="doc-section" >
+									<h2 class="section-title">Example - Lowercase only validation</h2>
 									
 									<div class="section-block">
 									<p>
-										style.xml is reserved for cross platform theming. 
+										The following example validates if the text entered contains only lower case letters. If upper case letters are entered, validation fails.
 									</p> 
 									<p>
-									Here is snippet of style.xml:
-<pre><code class="language-markup">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;resources&gt;
-
-	...
-    &lt;style name="h2_white"&gt;
-        &lt;item name="android:textSize"&gt;@dimen/font_normal&lt;/item&gt;
-        &lt;item name="android:textColor"&gt;@color/color_white&lt;/item&gt;
-    &lt;/style&gt;
-	...
-
-&lt;/resources&gt;</code></pre>
-</p>		
-								<p>
-									It is worth noting that style.xml can refer only attributes supported in the api documentation. 
-									It cannot reference any android system resource.									
-								</p>
-								<p>
-									To refer to a style declared in style.xml, you can use the style attribute. 									 
-								</p>
-								</div>
-								</section>
-	                          	
-	                          	<p>
-	                          	By splitting the style into 2 separate xml, you get simple but powerful way to style android widgets and applying the styling in other platforms. 
-	                          	</p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fcustom_validator.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
+									
+									</p>
+							</div>
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-handlingedittext.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Handling EditText</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="01gettingstarted-nativeformatting.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Native Formatting</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted-listview.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using List Views</div></a>
+								<a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newattribute.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Adding new attribute</div></a>
 							</div>
 						</div>
                         
@@ -231,10 +176,10 @@
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
 		                            
 		                             <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#system_style">system_style.xml</a>
+	                                    <a class="nav-link scrollto" href="#Addinganewvalidator">Adding a new validator</a>
 		                            </li>
 		                            <li class="nav-item">
-		                             <a class="nav-link scrollto" href="#style">style</a>
+		                             <a class="nav-link scrollto" href="#Lowercaseonlyvalidation">Example - Lowercase only validation</a>
 		                             </li>
 	                            </ul><!--//doc-menu-->
 	                            

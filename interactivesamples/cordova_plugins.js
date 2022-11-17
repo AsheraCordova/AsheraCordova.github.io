@@ -55,6 +55,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.shutterbug": "1.0",
     "com.ashera.glide": "1.0",
     "com.ashera.sdwebimage.ios": "1.0",
-    "com.filfatstudios.spinnerdialog": "1.0.2"
+    "com.filfatstudios.spinnerdialog": "1.0.2",
+    "com.ashera.custom": "1.0"
   };
 });
