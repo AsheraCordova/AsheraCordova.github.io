@@ -153,9 +153,8 @@ gradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blackColor].C
 [view.layer insertSublayer:gradient atIndex:0];</code></pre>						                        
 						                        </div>
 						                        <div class="tab-pane fade in" id="tab3default">
-<pre><code class="language-markup">one.setBackground(new Color[] { shell.getDisplay().getSystemColor(SWT.COLOR_RED),
-        shell.getDisplay().getSystemColor(SWT.COLOR_GREEN),
-        shell.getDisplay().getSystemColor(SWT.COLOR_BLUE) }, new int[] { 50, 50 });</code></pre>
+<pre><code class="language-markup">gc.setBackgrouind(display,getSystemColor(SWT.COLOR_BLUE));
+gc.fillGradientRectangle(5,5,90,45,false);</code></pre>
 						                        </div>
 						                        <div class="tab-pane fade in" id="tab4default">
 <pre><code class="language-markup">#grad {
@@ -182,13 +181,13 @@ gradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blackColor].C
 										<li>Install the plugin onto the project using command <code>cordova plugin add CustomWidgetExtension</code>.</li>
 										<li>Import the project into your favorite ide. e.g. eclipse</li>
 										<li>Create the extension for each platform by implementing the IAttributable interface</li>
-										<li>After you create your new attribute extension, you need to register it as follows <code>WidgetFactory.registerAttributableFor("View", new CustomAttributeExtensionImpl());</code>
+										<li>After you create your new attribute extension, you need to register it as follows <code>WidgetFactory.registerAttributableFor("View", new CustomWidgetExtensionViewImpl());</code>
 										<li>Sample linear Gradient extension can be found at the following location:
 										<br>
-										 <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">Android</a><br>
-										 <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">iOS</a><br>
-										 <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">SWT</a><br>
-										 <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">Browser</a>
+										 <a href="https://github.com/AsheraCordova/CustomWidgetExtension/blob/main/android/src/com/ashera/customwidgetextension/CustomWidgetExtensionViewImpl.java">Android</a><br>
+										 <a href="https://github.com/AsheraCordova/CustomWidgetExtension/blob/main/ios/src/main/java/com/ashera/customwidgetextension/CustomWidgetExtensionViewImpl.java">iOS</a><br>
+										 <a href="https://github.com/AsheraCordova/CustomWidgetExtension/blob/main/swt/src/main/java/com/ashera/customwidgetextension/CustomWidgetExtensionViewImpl.java">SWT</a><br>
+										 <a href="https://github.com/AsheraCordova/CustomWidgetExtension/blob/main/browser/src/main/java/com/ashera/customwidgetextension/CustomWidgetExtensionViewImpl.java">Browser</a>
 										</li>
 									</ul>	
 									</p>
@@ -203,7 +202,7 @@ gradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blackColor].C
 										The following example shows the Linear Gradient attribute in action:
 									</p> 
 									<p>
-									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fcustom_nativeformatter.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Flinear_gradient.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
 									
 									</p>
 								</div>
