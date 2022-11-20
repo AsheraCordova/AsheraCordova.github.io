@@ -101,125 +101,122 @@
                     </div><!--//doc-sidebar-->
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold">Theming</h1>
+							<h1 style="font-size: 35px; font-weight:bold">Adding new attribute to existing widget</h1>
 							<p>
-							The first step in Ashera is to theme the widgets. The theme of the widgets have to be done in system_style.xml.
-							Customization per widget can be done using style.xml 
+							Ashera provides attribute extension using factory registration. 
 							</p>
 								
-								<section id="system_style" class="doc-section" >
-									<h2 class="section-title">system_style.xml</h2>
+								<section id="Introduction" class="doc-section" >
+									<h2 class="section-title">Introduction</h2>
 									<div class="section-block">
 									<p>
-										Given that Ashera Native is based on Android i.e Android first, we should be able to do anything which we are capable of achieving in Android.
-										Then we simulate the same in other platforms. 
-									</p> 
-									<p>
-									Android has concept of theming widgets by creating a Theme and applying theme to widget to widgets using style.xml.
-									
-									Ashera however created separate xml - system_system.xml where you can use Android theming.  
-									Here is snippet of system_system.xml:
+									Let us take an example on how to build a plugin which extends a View to add gradient background support.
+									You need to build a cross platform plugin which is is required to work on iOS, Android, Desktop app (SWT) and browser
+									You find out in the internet on how to draw gradient in each of the platform. You come up with the following snippets:
 									</p>
-									
-									
 									<p>
-									<pre><code class="language-markup">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;resources&gt;
- 
-    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
-        &lt;item name="editTextStyle"&gt;@style/EditText&lt;/item&gt;
-        &lt;item name="checkboxStyle"&gt;@style/CheckBox&lt;/item&gt;
-        &lt;item name="buttonStyle"&gt;@style/Button&lt;/item&gt;
-        &lt;item name="radioButtonStyle"&gt;@style/RadioButton&lt;/item&gt;
-        &lt;item name="imageButtonStyle"&gt;@style/ImageButton&lt;/item&gt;
-        &lt;item name="android:spinnerItemStyle"&gt;@style/Spinner&lt;/item&gt;
-        &lt;item name="colorPrimaryDark"&gt;#000&lt;/item&gt;
-    &lt;/style&gt;
+									<ul class="nav nav-tabs">
+										  	<li class="nav-item">
+										    	<a class="nav-link active" data-bs-toggle="tab" aria-current="page" href="#tab1default">Android</a>
+										  	</li>
+										  	<li class="nav-item">
+										    	<a class="nav-link" data-bs-toggle="tab" href="#tab2default">iOS</a>
+										  	</li>
+										  	<li class="nav-item">
+										    	<a class="nav-link" data-bs-toggle="tab" href="#tab3default">SWT</a>
+										  	</li>
+										  	<li class="nav-item">
+										    	<a class="nav-link" data-bs-toggle="tab" href="#tab4default">Browser</a>
+										  	</li>
+										</ul>
+										
+										<div class="panel-body">
+						                    <div class="tab-content">
+						                        <div class="tab-pane fade in active show" id="tab1default">
+<pre><code class="language-markup">int[] colors = {Color.parseColor("#008000"),Color.parseColor("#ADFF2F")};
 
-    &lt;!-- form widgets --&gt;
-    &lt;style name="TextView"&gt;
-        &lt;item name="android:typeface"&gt;sans&lt;/item&gt;
-    &lt;/style&gt;
-    &lt;style name="EditText" parent="@android:style/Widget.EditText" constructor_attrs="swtTextStyle:single" attrs="swtUseTabForNavigation:true;borderBottomWidth:1dp;borderColor:@color/border_material_color;onFocusChange:"&gt;
-        &lt;item name="android:textColor"&gt;#000&lt;/item&gt;
-        &lt;item name="android:textColorHint"&gt;#fff&lt;/item&gt;
-        &lt;item name="android:padding"&gt;10dp&lt;/item&gt;
-        &lt;item name="singleLine"&gt;true&lt;/item&gt;
-        &lt;item name="android:inputType" android="true"&gt;text&lt;/item&gt;
-        &lt;item name="android:typeface"&gt;sans&lt;/item&gt;
-    &lt;/style&gt;
-    ...
-&lt;/resources&gt;</code></pre>
+//create a new gradient color
+GradientDrawable gd = new GradientDrawable(
+GradientDrawable.Orientation.TOP_BOTTOM, colors);
+
+gd.setCornerRadius(0f);
+//apply the button background to newly created drawable gradient
+btn.setBackground(gd);</code></pre>
+						                        </div>
+						                        <div class="tab-pane fade in" id="tab2default">
+<pre><code class="language-markup">UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+CAGradientLayer *gradient = [CAGradientLayer layer];
+
+gradient.frame = view.bounds;
+gradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blackColor].CGColor];
+
+[view.layer insertSublayer:gradient atIndex:0];</code></pre>						                        
+						                        </div>
+						                        <div class="tab-pane fade in" id="tab3default">
+<pre><code class="language-markup">one.setBackground(new Color[] { shell.getDisplay().getSystemColor(SWT.COLOR_RED),
+        shell.getDisplay().getSystemColor(SWT.COLOR_GREEN),
+        shell.getDisplay().getSystemColor(SWT.COLOR_BLUE) }, new int[] { 50, 50 });</code></pre>
+						                        </div>
+						                        <div class="tab-pane fade in" id="tab4default">
+<pre><code class="language-markup">#grad {
+  background-image: linear-gradient(red, yellow);
+}</code></pre>
+						                        </div>
+						                 	</div>
+						            	</div>
 									</p>
 									<p>
-									It is worth noting that system_style.xml can refer any android resource i.e. android system resource.
-									For e.g, the style tag parent can be android resource <code>parent="@android:style/Widget.EditText"</code>.
-									Also when refering to android system resource, add <code>android="true"</code>. This means that this attribute is for only android and 
-									will not be used to applied to the other platforms.
+									For us to develop a very simple gradient plugin, we require 2 colors to to passed onto the view. i.e gradientStart and gradientEnd.
+									This plugin we are going to develop adds an attribute linearGradientBackground to widget which needs to have comma separated color.
 									</p>
 									<p>
-									The system_style.xml adheres to strict convention to achieve cross platform theming.
+									<code>linearGradientBackground="#000,#fff"</code>
 									</p>
 									<p>
-									In the above example, editTextStyle of App theme has been styled with <code>@style/EditText</code>.
-									The name of style is the group name of widgets i.e. the android tag name. 
+									The following are the steps required to create the plugin:
 									</p>
-									<p>
-									By overriding the editTextStyle of AppTheme, you have setup the Android EditText.
-									</p>
-									<p>
-									To apply theming to other platforms, the attributes without <code>android="true"</code> are applied to other widgets by the looking at the name of the style and matching the tag name.
-									But there might be some cases where you need to apply non-android attributes to other platforms.
-									In this case you use constructor_attrs and attrs on style which can be used to theme other attributes which cannot be declared inside item tags. 
-									</p>
-									<p>
-									To refer to a style declared in system_style.xml, you cannot use the style attribute. Instead you need to use systemStyle attribute.									 
+									
+									<ul>
+										<li>Download a copy of <a href="https://github.com/AsheraCordova/CustomWidgetExtension.git">https://github.com/AsheraCordova/CustomWidgetExtension.git</a> into the project folder. 
+										This project acts as a template for adding custom cross platform functionality related to adding new widget/ widget extension.</li>
+										<li>Install the plugin onto the project using command <code>cordova plugin add CustomWidgetExtension</code>.</li>
+										<li>Import the project into your favorite ide. e.g. eclipse</li>
+										<li>Create the extension for each platform by implementing the IAttributable interface</li>
+										<li>After you create your new attribute extension, you need to register it as follows <code>WidgetFactory.registerAttributableFor("View", new CustomAttributeExtensionImpl());</code>
+										<li>Sample linear Gradient extension can be found at the following location:
+										<br>
+										 <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">Android</a><br>
+										 <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">iOS</a><br>
+										 <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">SWT</a><br>
+										 <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomValidator.java">Browser</a>
+										</li>
+									</ul>	
 									</p>
 									</div>
 	                          	</section>
 	                          	
-	                          	<section id="style" class="doc-section" >
-									<h2 class="section-title">style.xml</h2>
+	                          	<section id="LinearGradientExample" class="doc-section" >
+									<h2 class="section-title">Preview - Linear Gradient in action</h2>
 									
 									<div class="section-block">
 									<p>
-										style.xml is reserved for cross platform theming. 
+										The following example shows the Linear Gradient attribute in action:
 									</p> 
 									<p>
-									Here is snippet of style.xml:
-<pre><code class="language-markup">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;resources&gt;
-
-	...
-    &lt;style name="h2_white"&gt;
-        &lt;item name="android:textSize"&gt;@dimen/font_normal&lt;/item&gt;
-        &lt;item name="android:textColor"&gt;@color/color_white&lt;/item&gt;
-    &lt;/style&gt;
-	...
-
-&lt;/resources&gt;</code></pre>
-</p>		
-								<p>
-									It is worth noting that style.xml can refer only attributes supported in the api documentation. 
-									It cannot reference any android system resource.									
-								</p>
-								<p>
-									To refer to a style declared in style.xml, you can use the style attribute. 									 
-								</p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fcustom_nativeformatter.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
+									
+									</p>
 								</div>
 								</section>
 	                          	
-	                          	<p>
-	                          	By splitting the style into 2 separate xml, you get simple but powerful way to style android widgets and applying the styling in other platforms. 
-	                          	</p>
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-handlingedittext.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Handling EditText</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="02gettingstarted-newvalidation.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Add new validator</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted-listview.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using List Views</div></a>
+								<a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newnativeformatter.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Add new native formatter</div></a>
 							</div>
 						</div>
                         
@@ -231,10 +228,10 @@
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
 		                            
 		                             <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#system_style">system_style.xml</a>
+	                                    <a class="nav-link scrollto" href="#Introduction">Introduction</a>
 		                            </li>
 		                            <li class="nav-item">
-		                             <a class="nav-link scrollto" href="#style">style</a>
+		                             <a class="nav-link scrollto" href="#LinearGradientExample">Preview - Linear Gradient in action</a>
 		                             </li>
 	                            </ul><!--//doc-menu-->
 	                            
