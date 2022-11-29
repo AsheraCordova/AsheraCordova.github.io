@@ -207,7 +207,40 @@
                                 </div><!--//section-block-->
                                 
                                 <div id="step9"  class="section-block">
-                                    <h3 class="block-title">9 - Install additional Ashera plugins (optional)</h3>
+                                    <h3 class="block-title">9 - Patch cordova library files</h3>
+                                    <p>
+                                    Ashera requires minor patches to the existing cordova installation to fix plugin add and rm plugin operations on swt and browser platforms.  
+                                    </p>
+                                    <p>
+                                    The following changes have to be done manually:
+                                    </p>
+                                    
+                                    <p>
+                                    Search platformsConfig.json under cordova node_modules. Example file location can be found below: 
+                                    </p>
+                                    <p>
+                                    <code>&lt;&lt;node installation&gt;&gt;/node_modules/cordova/node_modules/cordova-lib/src/platforms/platformsConfig.json</code> 
+                                    </p>
+                                    <p>
+                                    Add <code>"swt" : {}</code> as one of the platforms.
+                                    </p>
+                                    <p>
+                                    Search ConfigFile.js in the project under node_modules. Example file location can be found below: 
+                                     
+                                    </p>
+                                    <p>
+                                    <code>&lt;&lt;project dir&gt;&gt;/node_modules/cordova-common/src/ConfigChanges/ConfigFile.js</code> 
+                                    </p>
+                                    Search for function resolveConfigFilePath in this file. Add the code snippet as the first line of the method:
+                                    <p>
+<pre><code class="language-markup"> if (file === 'config.xml' && platform === 'browser') {
+	return path.join(project_dir, 'config.xml');
+}</code></pre>
+                                    </p>	
+                                </div>
+                                
+                                <div id="step10"  class="section-block">
+                                    <h3 class="block-title">10 - Install additional Ashera plugins (optional)</h3>
                                     
                                     <div class="code-block">
                                         <p><code> cordova plugin add https://github.com/AsheraCordova/CapInsets</code></p>
@@ -388,7 +421,10 @@
                                             <a class="nav-link scrollto" href="#step8">8 - Run on platform</a>
 	                                    </li>
 	                                    <li class="nav-item">
-                                            <a class="nav-link scrollto" href="#step9">9 - Install additional Ashera plugins (optional)</a>
+                                            <a class="nav-link scrollto" href="#step9">9 - Patch cordova library files</a>
+	                                    </li>
+	                                    <li class="nav-item">
+                                            <a class="nav-link scrollto" href="#step10">10 - Install additional Ashera plugins (optional)</a>
 	                                    </li>
                                     </nav><!--//nav-->
                                     <li class="nav-item">

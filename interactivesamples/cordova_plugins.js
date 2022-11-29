@@ -39,6 +39,20 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "SpinnerDialog"
       ]
+    },
+    {
+      "id": "cordova-plugin-splashscreen.SplashScreenProxy",
+      "file": "plugins/cordova-plugin-splashscreen/src/browser/SplashScreenProxy.js",
+      "pluginId": "cordova-plugin-splashscreen",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-splashscreen.SplashScreen",
+      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+      "pluginId": "cordova-plugin-splashscreen",
+      "clobbers": [
+        "navigator.splashscreen"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -57,6 +71,9 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.sdwebimage.ios": "1.0",
     "com.filfatstudios.spinnerdialog": "1.0.2",
     "com.ashera.custom": "1.0",
-    "com.ashera.customwidgetextension": "1.0.0"
+    "com.ashera.customwidgetextension": "1.0.0",
+    "com.ashera.absolutelayout": "1.0",
+    "cordova-plugin-splashscreen-ashera": "1.0",
+    "cordova-plugin-splashscreen": "6.0.2"
   };
 });
