@@ -323,11 +323,14 @@ public class AbsoluteLayout extends ViewGroup {
 	                          			<li>Generate plugin.xml</li>
 	                          			<li>Generate widget.xml which will aid in creation of attributes for a widget</li>
 	                          		</ul>
-	                          		
-	                          		<a class="github-button" href="https://github.com/AsheraCordova/code-poacher" data-size="large" aria-label="GitHub">Code Poacher@Github</a>
+	                          		 <div class="social-container">
+	                          		<div class="github-btn mb-2">
+	                          		<a class="github-button" href="https://github.com/AsheraCordova/CodePoacher" data-size="large" aria-label="GitHub">Code Poacher@Github</a>
+	                          		</div>
+	                          		</div>
 	                          		</p>
 	                          		<p>
-	                          		The folder structure of project is explained below:
+	                          		The folder structure of Code Poacher project is given below:
 	                          		
 	                          		<pre>
                                 <code class="language-plaintext" data-lang="plaintext" style="display: block">src/main/
@@ -336,26 +339,30 @@ public class AbsoluteLayout extends ViewGroup {
 │   ├── PluginXmlGenerator.java
 │   ├── WidgetGenerator.java
 │   └── WidgetXmlGenerator.java
-├── codegen/
-│   └── WidgetConfig.xml
-├── config/
-│   ├── &lt;id from file.properties&gt;.code
-│   ├── &lt;id from file.properties&gt;.config
-│   ├── config-&lt;id from file.properties&gt;.xml
-│   ├── copyfiles.properties
-│   └── files.properties
 ├── configimpl/
 │   └── ...
 ├── plugin/
 │   └── ...	
 ├── resources/	
 │   └── ...
-├──	templates/
-│    └── ...
-└──	 config.properties    
-</code></pre>
+└──	templates/
+     └── ...</code></pre>
 	                          		</p>
-	                          		                                    <p>The following table lists the function of each file:</p>
+	                          		The folder structure of absolute layout - codepoacher folder is given below:
+	                          		<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">codepoacher/
+├── codegen/
+│   └── WidgetConfig.xml
+├── config/
+│   ├── absolutelayout.code
+│   ├── absolutelayout.config
+│   ├── config-absolutelayout.xml
+│   ├── copyfiles.properties
+│   └── files.properties
+└──	 config.properties</code></pre>
+	                          		</p>
+	                          		
+	                          		
+									<p>The following table lists the function of each file:</p>
 
                                     <div class="table-responsive">
                                         <table class="table table-striped">
@@ -400,12 +407,12 @@ public class AbsoluteLayout extends ViewGroup {
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">7</th>
-                                                    <td>&lt;id from file.properties&gt;.config</td>
+                                                    <td>absolutelayout.config</td>
                                                     <td>Property file containing methods to be extracted from Android source.</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">8</th>
-                                                    <td>&lt;id from file.properties&gt;.code</td>
+                                                    <td>absolutelayout.code</td>
                                                     <td>Extra code which needs to be added to final java file.</td>
                                                 </tr>
                                                 <tr>
@@ -435,11 +442,10 @@ public class AbsoluteLayout extends ViewGroup {
 										
 									</p>
 									<p>
-										<h2>2 - Create config.properties</h2>
+										<h2>2 - Create config.properties at path e.g <code>D:/Java/github_ashera/AbsoluteLayout/codepoacher</code></h2>
 										<p>
 										config.properties for AbsoluteLayout given below:
-										<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">baseDir=D:/Java/github_ashera
-name=AbsoluteLayout
+										<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">name=AbsoluteLayout
 uniqueid=absolutelayout
 packageprefix=com.ashera
 packageprefixpath=com/ashera
@@ -448,13 +454,13 @@ iospackageprefix=AS</code></pre>
 									<p>
 										<h2>3 - Create plugin project</h2>
 										<p>
-										Create plugin by running ant build at plugin/build.xml. The  plugin project will be created at &lt;baseDir&gt;/&lt;name&gt;. i.e. <code>D:/Java/github_ashera/AbsoluteLayout</code>
+										Create plugin by running ant build at plugin/build.xml with vm arguments <code>-DprojectBaseDir=D:/Java/github_ashera/AbsoluteLayout</code>. The  plugin project will be created at &lt;baseDir&gt;/&lt;name&gt;. i.e. <code>D:/Java/github_ashera/AbsoluteLayout</code>
 										</p>
 									</p>
 									<p>
 										<h2>4 - Create AndroidJ file </h2>
 										<p>
-										Prepare files.properties, copy.properties and absolutelayout.config inside config directory as below:
+										Prepare files.properties, copy.properties and absolutelayout.config inside config directory at path e.g <code>D:/Java/github_ashera/AbsoluteLayout/codepoacher</code> as below:
 										</p>
 										<p>
 										files.properties for AbsoluteLayout given below:
@@ -482,7 +488,7 @@ copy.files.1=../AbsoluteLayout/swt/src/main/java/r/android/widget/AbsoluteLayout
 										</p>
 									</p>
 									<p>
-									Run CodePoacher.java. This will take the above configuration files and generate AbsoluteLayout.java in swt, ios and browser platform folder.
+									Run CodePoacher.java with vm arguments <code>-DbaseDir=D:/Java/github_ashera/AbsoluteLayout</code>. This will take the above configuration files and generate AbsoluteLayout.java in swt, ios and browser platform folder.
 									</p>
 									
 									<p>
@@ -500,7 +506,7 @@ copy.files.1=../AbsoluteLayout/swt/src/main/java/r/android/widget/AbsoluteLayout
     &lt;/WidgetConfig&gt;
 &lt;/WidgetConfigs&gt;</code></pre>
 										
-										Run WidgetXmlGenerator.java. This will generate a xml file inside config directory. The xml file contains basic information. The xml file needs to be modified. The final xml file is given below: 
+										Run WidgetXmlGenerator.java with vm arguments <code>-DbaseDir=D:/Java/github_ashera/AbsoluteLayout</code>. This will generate a xml file inside config directory. The xml file contains basic information. The xml file needs to be modified. The final xml file is given below: 
 										<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
 &lt;Widgets&gt;
     &lt;Widget    
@@ -517,10 +523,10 @@ copy.files.1=../AbsoluteLayout/swt/src/main/java/r/android/widget/AbsoluteLayout
 										</p>
 									</p>
 									<p>
-									Run WidgetGenerator.java. This will take the above xml file and generate com.ashera.absolutelayout.AbsoluteLayoutImpl.java for all platforms.
+									Run WidgetGenerator.java with vm arguments <code>-DbaseDir=D:/Java/github_ashera/AbsoluteLayout</code>. This will take the above xml file and generate com.ashera.absolutelayout.AbsoluteLayoutImpl.java for all platforms.
 									</p>
 									<p>
-									Run PluginXmlGenerator.java. This will update plugin.xml for all platforms and generate the main package.json and plugin.xml required. 
+									Run PluginXmlGenerator.java with vm arguments <code>-DbaseDir=D:/Java/github_ashera/AbsoluteLayout</code>. This will update plugin.xml for all platforms and generate the main package.json and plugin.xml required. 
 									</p>									
 								</div>
 								</section>
@@ -599,7 +605,8 @@ copy.files.1=../AbsoluteLayout/swt/src/main/java/r/android/widget/AbsoluteLayout
     <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
     <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>                                                          
     <script src="assets/js/main.js"></script>
-	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>   
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html> 
 
