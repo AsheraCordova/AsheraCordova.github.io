@@ -1025,15 +1025,13 @@ input[type="text"], input[type="email"], input[type="password"], input[type="sub
 	color: rgba(0, 0, 0, 0.6)
 }
 
-.promo-block .figure-holder-inner {
-	background: #fff;
+.promo-block .figure-holder-inner {	
 	margin-bottom: 30px;
 	position: relative;
 	text-align: center
 }
 
 .promo-block .figure-holder-inner img {
-	border: 5px solid #fff
 }
 
 .promo-block .figure-holder-inner .mask {
