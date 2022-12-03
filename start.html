@@ -97,6 +97,7 @@
 	                                     	<p><pre><code class="language-markup">{
 	...,
 	"scripts": {
+		"clean": "npm install && node cleanup.js",
 		"swt-run": "cd platforms/swt/app && gradle run",
 		"browser-run": "cd platforms/browser/app && gradle execute && cd src/main/assets/www && http-server",
 		"generate-platform-res": "cd platforms/android/app/src/main/gentool && npm install && npm run resize && npm run start",
@@ -106,10 +107,24 @@
 		"update-ios-plist": "cd platforms/android/app/src/main/gentool && npm run plist",
 		"backup-android": "cd platforms/android/app/src/main/gentool && npm run backup",
 		"restore-android": "cd platforms/android/app/src/main/gentool && npm run restore",
+		"start-dev": "cd platforms/android/app/src/main/gentool && npm install && npm run fixIosSymLinks && npm run restore && npm run resize && cd ../tsc && npm install && cd ../gentool && npm run start skip_watch && cd ../tsc && npm run build",
 		...
+  	},
+  	"dependencies": {
+    	"fs-extra": "^10.1.0"
   	},
 }
                                      </code></pre></p>
+                                     
+                                   <p>
+                                   Create a file by named cleanup.js in the root directory.
+                                   </p>
+ <p><pre><code class="language-markup">let projectBasePath = "";
+
+const fs = require('fs-extra');
+fs.removeSync(projectBasePath + "platforms", { recursive: true, force: true });
+fs.removeSync(projectBasePath + "node_modules", { recursive: true, force: true });
+fs.removeSync(projectBasePath + "plugins", { recursive: true, force: true });</code></pre>
                                        
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
@@ -325,41 +340,50 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                            	 <tr>
                                                     <th scope="row">1</th>
+                                                    <td>npm run clean</td>
+                                                    <td>Script used to delete node_modules, platforms and plugin folder.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">2</th>
                                                     <td>npm run generate-platform-js</td>
                                                     <td>Script used to generate index.js from tsc folder.</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">2</th>
+                                                    <th scope="row">3</th>
                                                     <td>npm run generate-platform-res</td>
                                                     <td>Script used to generate files in resources folder and drawable folder</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">3</th>
+                                                    <th scope="row">4</th>
                                                     <td>npm run generate-platform-drawable</td>
                                                     <td>Script used to generate resized png files in drawable folders from drawable-xxxhdpi folder.</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">4</th>
+                                                    <th scope="row">5</th>
                                                     <td>npm run fix-ios-symLinks</td>
                                                     <td>Script used to fix the symlinks to resources of android. IOS has bug where running cordova prepare in existing projects, symlinks in resources folders are lost. Run this script to fix the same.</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">5</th>
+                                                    <th scope="row">6</th>
                                                     <td>npm run update-ios-plist</td>
                                                     <td>Script used to update plist with custom fonts. Run if you add an custom font in the font folder.</td>
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">6</th>
+                                                    <th scope="row">7</th>
                                                     <td>npm run  backup-android</td>
                                                     <td>Script used to backup tsc and res folder.</td>
                                                 </tr>
-                                                
                                                 <tr>
-                                                    <th scope="row">7</th>
+                                                    <th scope="row">8</th>
                                                     <td>npm run  restore-android</td>
                                                     <td>Script used to restore tsc and res folder.</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">9</th>
+                                                    <td>npm run  start-dev</td>
+                                                    <td>Script used to kick-off the development process by generating resources and index.js.</td>
                                                 </tr>
                                                
                                             </tbody>
