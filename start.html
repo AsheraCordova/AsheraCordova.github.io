@@ -224,7 +224,7 @@ fs.removeSync(projectBasePath + "plugins", { recursive: true, force: true });</c
                                 <div id="step9"  class="section-block">
                                     <h3 class="block-title">9 - Patch cordova library files</h3>
                                     <p>
-                                    Ashera requires minor patches to the existing cordova installation to fix plugin add and rm plugin operations on swt and browser platforms.  
+                                    Ashera requires minor patches to the existing cordova installation to fix plugin plugin operations on swt platforms.  
                                     </p>
                                     <p>
                                     The following changes have to be done manually:
@@ -239,19 +239,6 @@ fs.removeSync(projectBasePath + "plugins", { recursive: true, force: true });</c
                                     <p>
                                     Add <code>"swt" : {}</code> as one of the platforms.
                                     </p>
-                                    <p>
-                                    Search ConfigFile.js in the project under node_modules. Example file location can be found below: 
-                                     
-                                    </p>
-                                    <p>
-                                    <code>&lt;&lt;project dir&gt;&gt;/node_modules/cordova-common/src/ConfigChanges/ConfigFile.js</code> 
-                                    </p>
-                                    Search for function resolveConfigFilePath in this file. Add the code snippet as the first line of the method:
-                                    <p>
-<pre><code class="language-markup"> if (file === 'config.xml' && platform === 'browser') {
-	return path.join(project_dir, 'config.xml');
-}</code></pre>
-                                    </p>	
                                 </div>
                                 
                                 <div id="step10"  class="section-block">
