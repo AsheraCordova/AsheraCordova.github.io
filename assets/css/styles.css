@@ -820,7 +820,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="sub
 }
 
 .body-orange .header {
-	border-color: #F88C30
+	border-color: #ff0;
 }
 
 .body-orange a {
