@@ -138,36 +138,10 @@
             
         </div><!--//container-->
     </footer><!--//footer-->
-	<script>	
-		function loadScript(url) {
-	    	document.body.appendChild(document.createElement("script")).src = url;
-		}
-	
-	
-		function loadCordova() {
-			let style = document.createElement('style');
-			style.textContent = ':host { all: initial }';
-			var host = document.getElementById('shadowhost');
-		    window.shadowRoot=host.attachShadow({mode: 'open'});
-		    window.shadowRoot.appendChild(style);
-		    
-		    if (window.isRTLLayout()) {
-		    	host.dir = "rtl";
-		    }
-		    
-			loadScript('cordova.js');  
-			loadScript('js/index.js');
-		}
-		
-		document.addEventListener("DOMContentLoaded", function(event) { 
-			var host = document.getElementById('shadowhost');
-			window.shadowDomWidth = shadowhost.clientWidth;
-			window.shadowDomHeight = shadowhost.clientHeight;
-			main();
-		});
-	</script>
+
 	<script type="text/javascript" charset="utf-8" src="js/window_ext.js"></script>
-	<script type="text/javascript" charset="utf-8" src="teavm/classes.js" onload="loadCordova()"></script>
+	<script type="text/javascript" charset="utf-8" src="teavm/classes.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/index.js" ></script>
 	<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
