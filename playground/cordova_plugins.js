@@ -105,6 +105,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-camera-swt": "1.0",
     "cordova-plugin-qrscanner-swt": "1.0",
     "cordova-plugin-qrscanner": "3.0.1",
-    "com.ashera.toolbar": "1.0"
+    "com.ashera.toolbar": "1.0",
+    "com.ashera.absolutelayout": "1.0"
   };
 });
