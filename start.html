@@ -61,7 +61,15 @@
                                 <div id="step1"  class="section-block">
                                     <h3 class="block-title">1 - Install Cordova</h3>
                                     <p>
-                                    Cordova command-line runs on Node.js and is available on NPM. Open a command prompt or Terminal, and type 
+                                    Prerequisites:
+                                    </p>
+                                    <div class="code-block">
+                                        <p><code>Node.js (V14.16.0)</code></p>
+                                        <p><code>Install <a href="https://gradle.org/next-steps/?version=7.6.2&amp;format=bin">Gradle@7.6.2</a></code></p>
+                                        <p><code>Install <a href="https://imagemagick.org/archive/releases/">Image Magick@7.1.0-36</a></code></p>
+                                    </div><!--//code-block-->
+                                    <p>
+                                    Cordova command-line runs on Node.js (V14.16.0) and is available on NPM. Open a command prompt or Terminal, and type 
                                     </p>
                                     <div class="code-block">
                                         <p><code>npm install -g cordova</code></p>
@@ -271,7 +279,11 @@ fs.removeSync(projectBasePath + "plugins", { recursive: true, force: true });</c
 <p><code> cordova plugin add https://github.com/AsheraCordova/cordova-plugin-qrscanner-swt</code></p>
 
 <p><code> cordova plugin add https://github.com/AsheraCordova/cordova-plugin-sqlite-2-swt.git</code></p>
-<p><code> cordova plugin add https://github.com/AsheraCordova/IndexedDB.git</code></p>
+
+<p><code> cordova plugin add https://github.com/AsheraCordova/TextInputLayout.git</code></p>
+<p><code> cordova plugin add https://github.com/AsheraCordova/ViewPager.git</code></p>
+<p><code> cordova plugin add https://github.com/AsheraCordova/Snackbar.git</code></p>
+<p><code> cordova plugin add https://github.com/AsheraCordova/CoordinatorLayout.git</code></p>
 
 
                                     </div><!--//code-block-->
