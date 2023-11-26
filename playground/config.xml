@@ -69,6 +69,22 @@
         <param name="android-package" value="com.ashera.absolutelayout.CordovaAbsoluteLayoutPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="CordovaViewPagerPlugin">
+        <param name="android-package" value="com.ashera.viewpager.CordovaViewPagerPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="CordovaCoordinatorLayout">
+        <param name="android-package" value="com.ashera.coordinatorlayout.CordovaCoordinatorLayoutPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="CordovaSnackbar">
+        <param name="android-package" value="com.ashera.snackbar.CordovaSnackbarPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="CordovaTextInputLayoutPlugin">
+        <param name="android-package" value="com.ashera.textinputlayout.CordovaTextInputLayoutPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>PlayGround</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -91,21 +107,4 @@
     <preference name="webScaleFactor" value="1.4" />
     <preference name="macScaleFactor" value="1.8" />
     <preference name="iosHidetoolbar" value="true" />
-    <feature name="CordovaViewPagerPlugin">
-        <param name="android-package" value="com.ashera.viewpager.CordovaViewPagerPlugin" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="CordovaCoordinatorLayout">
-        <param name="android-package" value="com.ashera.coordinatorlayout.CordovaCoordinatorLayoutPlugin" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="CordovaSnackbar">
-        <param name="android-package" value="com.ashera.snackbar.CordovaSnackbarPlugin" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="CordovaTextInputLayoutPlugin">
-        <param name="android-package" value="com.ashera.textinputlayout.CordovaTextInputLayoutPlugin" />
-        <param name="onload" value="true" />
-    </feature>
-    <preference name="webHistoryUrlPrefix" value="/playground" />
 </widget>
