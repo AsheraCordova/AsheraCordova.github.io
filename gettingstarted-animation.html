@@ -59,10 +59,10 @@
 						        	<li><a href="gettingstarted.html">Introduction</a></li>
 						        	<li><a href="gettingstarted-core-components.html">Core Components and Native Components</a></li>
 						        	<li><a href="gettingstarted-fundamentals.html">Ashera Fundamentals</a></li>
-						        	<li class="active"><a href="gettingstarted-handlingedittext.html">Handling EditText</a></li>
+						        	<li><a href="gettingstarted-handlingedittext.html">Handling EditText</a></li>
 						        	<li><a href="gettingstarted-scrollview.html">Using a ScrollView</a></li>
 						        	<li><a href="gettingstarted-listview.html">Using List View</a></li>
-						        	<li><a href="gettingstarted-animation.html">Animation</a></li>
+						        	<li class="active"><a href="gettingstarted-animation.html">Animation</a></li>
 						      	</ul>
 						    </li>
 						    <li> 
@@ -259,35 +259,67 @@
 
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold">Handling EditText</h1>
+							<h1 style="font-size: 35px; font-weight:bold">Animation</h1>
                                 <p>
-									EditText is a Core Component that allows the user to enter text. onTextChanged method is called every time a text is changed.
+									Ashera supports cross platform animation using motion layout.
+								</p>
+								
+								<section id="howtouse" class="doc-section">
 
-								</p>  
-								<p>	For example, let's say that as the user types, you're translating their words into a different language. In this new language, every single word is written the same way: ðŸ?•. So the sentence "Hello there Bob" would be translated as "ðŸ?• ðŸ?• ðŸ?•".</p>
+                                <h2 class="section-title">Motion Layout</h2>
+                                <div class="section-block">
+                                    								<p>MotionLayout bridges the gap between layout transitions and complex motion handling, offering a mix of features between the property animation framework, TransitionManager, and CoordinatorLayout.</p>
+								<p>In addition to describing transitions between layouts, MotionLayout lets you animate any layout properties. Moreover, it inherently supports seekable transitions. This means you can instantly show any point within the transition based on some condition, such as touch input. MotionLayout also supports keyframes, enabling fully customized transitions to suit your needs.</p>
+								<p>MotionLayout is fully declarative, meaning you can describe any transitions in XML, no matter how complex.</p>
 
-                        
+                                </div><!--//section-block-->                                
+								
+								<h2 class="section-title">Basic Motion</h2>  
+
+
+								<p>This example contains a single view that you can touch and drag to move horizontally.</p>
 								<p>
-									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fedittext_translate.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_02_basic.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
 								</p>
 									
+									
+								<h2 class="section-title">Custom attribute - backgroundColor</h2>  
+								<p>This example is similar to the Basic motion example. In addition to the basic motion, the background color of the view changes as the view moves.</p>
 								<p>
-								In this example, we store text in the state, because it changes over time.								
-								</p>	
-								
-								<p>
-								EditText is one of the ways the user interacts with the app. Next, let's look at ScrollView and learn how to use it.
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_03_custom_attribute.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
 								</p>
-                            
+								<h2 class="section-title">Keyframe position</h2>  
+								<p>This example uses &lt;KeyFrameSet&gt; to alter the Y position of the view during motion.</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_06_keyframe.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								<h2 class="section-title">Keyframe interpolation</h2>  
+								<p>This example builds on the Keyframe position example, adding rotation and scaling to the view transition.</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_07_keyframe.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								<h2 class="section-title">Keyframe cycle</h2>  
+								<p>This example adds &lt;KeyCycle&gt; elements to add wavelike motion to the view</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_08_cycle.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								<h2 class="section-title">KeyTrigger</h2>  
+								<p>This example demonstrates how to hide/show a view when the transition crosses a progress threshold..</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_25_keytrigger.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								
+                            	</section>
+								
                             
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-fundamentals.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Ashera Fundamentals</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-listview.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">List View</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted-scrollview.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using a ScrollView</div></a>
+								<a class="pagination-nav__link pagination-nav__link--next" href="01gettingstarted-essentials.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">The Essentials</div></a>
 							</div>
 						</div>
                         
@@ -297,6 +329,7 @@
                     	<div class="sidebar left " style="position: relative">
                     		<div id="doc-nav" class="doc-nav" style="position : inherit">
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
+		                            
 		                            
 	                            </ul><!--//doc-menu-->
 	                            
