@@ -66,11 +66,11 @@
 						      	</ul>
 						    </li>
 						    <li> 
-						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#essentials" class="essentials active" aria-expanded="true"> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#essentials" class="essentials collapsed" aria-expanded="false"> 
 						    		<span class="nav-label"> The Essentials </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="show sub-menu" id="essentials">
+						      	<ul class="essentials sub-menu collapse" id="essentials">
 						      		<li><a href="01gettingstarted-essentials.html">Creating your first project</a></li>
 						        	<li><a href="01gettingstarted-devenv.html">Setting up the development environment</a></li>
 						        	<li><a href="01gettingstarted-theming.html">Theming</a></li>
@@ -78,21 +78,21 @@
 						        	<li><a href="01gettingstarted-validation.html">Validation</a></li>
 						        	<li><a href="01gettingstarted-databinding.html">Data binding</a></li>
 						        	<li><a href="01gettingstarted-navigation.html">Navigation</a></li>
-						        	<li class="active"><a href="01gettingstarted-nativeformatting.html">Native Formatting</a></li>
+						        	<li><a href="01gettingstarted-nativeformatting.html">Native Formatting</a></li>
 						      	</ul>
 						    </li>
 						    
 						    <li> 
-						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#advanced" class="advanced collapsed" aria-expanded="false"> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#advanced" class="advanced active" aria-expanded="true"> 
 						    		<span class="nav-label"> The Advanced </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="advanced sub-menu collapse" id="advanced">
+						      	<ul class="show sub-menu" id="advanced">
 						        	<li><a href="02gettingstarted-newvalidation.html">Add new Validator</a></li>
 						        	<li><a href="02gettingstarted-newattribute.html">Add new Attribute to existing widget</a></li>
 						        	<li><a href="02gettingstarted-newnativeformatter.html">Add new Native Formatter</a></li>
 						        	<li><a href="02gettingstarted-newandroidwidget.html">New Android Container View</a></li>
-						        	<li><a href="02gettingstarted-neweventhandler.html">Add new Native Event Handler</a></li>
+						        	<li class="active"><a href="02gettingstarted-neweventhandler.html">Add new Native Event Handler</a></li>
 						      	</ul>
 						    </li>
 						  </ul>
@@ -290,147 +290,55 @@
 
 
 
-                    <div class="doc-content col-md-8 col-12">
+					<div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold">Native Formatting</h1>
+							<h1 style="font-size: 35px; font-weight:bold">New Native Event Handler</h1>
 							<p>
-							Ashera provides formatting framework which helps to format the objects on native side onto to the use interface without a round trip to the webview.
+							Ashera provides framework to create predefined event handler in cross platform way.
 							</p>
-							
 								
-								<section id="Introduction" class="doc-section" >
-									<h2 class="section-title">Introduction</h2>
+								<section id="Installation" class="doc-section" >
+									<h2 class="section-title">Installation</h2>
 									<div class="section-block">
-								<p>
-							The objects are stored in particular scope on the native side. Let us take a example, where a list is stored on the native side. If we want to display the sum of an attribute in a list, we need to request the entire list into the webview and loop over it do the sum and update the total on the textView. 
-							Instead simple expression in modelPojoToUi will allow you to format the result of the expression to a string. 
-							</p>
-<pre><code class="language-markup">&lt;TextView
-    style="@style/h2_bold_black"
-    modelPojoToUi="text = total(.) from allocatedItems->view"
-    modelPojoToUiParams="path:memPrice;numberFormat:##.00"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:text="10.23" /&gt;</code></pre>
-	
-							<p>The above example shows a scenario where textView is displaying the total of allocatedItems list which is stored in a view. The total is formatted to 2 decimal format.
-						total(.) specifies that when a modelPojoToUi is done, it needs to send the result to total method with params, path as memPrice and numberFormat as ##.00. 
-						</p>
-						<p>
-						The formatting framework handles the total call, loops over the object and sums the memPrice and finally formats it and returns the result. The result is set on the TextView. This helps to achieve native performance rather than being handled by the webview.
-						</p>
-						<p>
-						
-						The list of methods available in formatting framework are give below:
-						
-						<table class="table table-striped">
-                             <thead>
-                                 <tr>
-                                     <th>Name</th>
-                                     <th>Params</th>
-                                     <th>Description</th>
-                                 </tr>
-                             </thead>
-                             <tbody>
-                                 <tr>
-                                     <td>toString</td>
-                                     <td>-</td>
-                                     <td>Converts object attribute to string</td>
-                                 </tr>
-                                 <tr>
-                                     <td>not</td>
-                                     <td>-</td>
-                                     <td>Boolean object is negated</td>
-                                 </tr>
-                                 <tr>
-                                     <td>listToString</td>
-                                     <td>separator</td>
-                                     <td>list of strings to <b>separator</b> separated string. Default is comma</td>
-                                 </tr>
-                                 <tr>
-                                     <td>concat</td>
-                                     <td>fields, separator</td>
-                                     <td>concat list of fields using separator specified. Default separator is whitespace</td>
-                                 </tr>
-                                 <tr>
-                                     <td>size</td>
-                                     <td>-</td>
-                                     <td>Count of list object.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>visible</td>
-                                     <td>-</td>
-                                     <td>If the target object is list, size > 0. If the object is string, string is checked if it is not empty. If the object is boolean, the value must be true. In all these cases, the widget is visible else it is hidden</td>
-                                 </tr>
-                                 <tr>
-                                     <td>gone</td>
-                                     <td>-</td>
-                                     <td>Opposite of visible.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>getDescFromModel</td>
-                                     <td>scope, id, value</td>
-                                     <td>Displays the description for the id passed in. The scope contains the list though which you loop to match the id and return value in the model.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>formatString</td>
-                                     <td>format, fields</td>
-                                     <td>Display the string using String.format method with the values retirved by path specified in the comma separated field list.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>getDescFromRes</td>
-                                     <td>separator, entries, values</td>
-                                     <td>Multi selected list is converted to string with separator. The values array is used to match the values in list so that the entries array description are displayed.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>multiply</td>
-                                     <td>op1, op2</td>
-                                     <td>Multiples model retrieved by op1 and op2.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>total</td>
-                                     <td>path</td>
-                                     <td>Sum of all list retrieved by path specified.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>baseElapsedTimeInMillis</td>
-                                     <td>defaultValue, allowNegativeValues</td>
-                                     <td>Used in chronometer to calculate the baseElapsedTimeInMillis. If the object retrieved is null, return defaultValues. If allowNegativeValues is false, the value if negative is zero.</td>
-                                 </tr>
-                                 <tr>
-                                     <td>getFileAsset</td>
-                                     <td>-</td>
-                                     <td>Get the file asset as a string.</td>
-                                 </tr>
-                            </tbody>
-                      	</table>
-							</p>
+									
+									<p>
+									The following are the steps to create new event handler:
+									<ul>
+										<li>Download a copy of <a href="https://github.com/AsheraCordova/Custom.git">https://github.com/AsheraCordova/Custom.git</a> into the project folder. This project acts as a template for adding custom cross platform functionality.</li>
+										<li>Install the plugin onto the project using command <code>cordova plugin add Custom</code>.</li>
+										<li>Import the project into your favorite ide. e.g. eclipse</li>
+										<li>Sample event handler can be found in the project <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomEventCommand.java">here</a></li>
+										<li>After you create your new event handler, you need to register it as follows <code>com.ashera.widget.EventCommandFactory.registerCommand("custom", new CustomEventCommand());</code>
+										<li>The following code shows native event handler which is invoked on onPageScrolled event: <br></b><code>onPageScrolled="+custom#onPageScrolled()"</code><br>
+										The + indicates that it is native event delivered to event handler with registration  "custom".    
+										</li>
+										<li>Also given that the project is cordova plugin, you need to update plugin.xml and reinstall the plugin for any new functionality to take effect.</li>  
+									</ul>	
+									</p>
 									</div>
 	                          	</section>
 	                          	
-	                          	<section id="style" class="doc-section" >
-									<h2 class="section-title">Example - List View Total & Size</h2>
+	                          	<section id="Pointsearned" class="doc-section" >
+									<h2 class="section-title">Example - View Pager</h2>
 									
 									<div class="section-block">
 									<p>
-										Let us take an example of displaying the size of list and sum of an attribute in the list.
+										This example shows how you can add motion when swiping between ViewPager tabs. 
+
 									</p> 
 									<p>
-									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecycler_view_add_delete_native_formating.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
-									</p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_16_viewpager.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
 									
-								<p>
-	                          	</p>
-	                          </div>
+									</p>
+							</div>
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="01gettingstarted-navigation.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Navigation</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="02gettingstarted-newandroidwidget.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">New Android Container View</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newvalidation.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Adding new validator</div></a>
+								<!-- a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newandroidwidget.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">New Android Container View</div></a> -->
 							</div>
 						</div>
                         
@@ -442,17 +350,16 @@
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
 		                            
 		                             <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#Introduction">Introduction</a>
+	                                    <a class="nav-link scrollto" href="#Installation">Installation</a>
 		                            </li>
 		                            <li class="nav-item">
-		                             <a class="nav-link scrollto" href="#style">Example - List View Total & Size</a>
+		                             <a class="nav-link scrollto" href="#Pointsearned">Example - View Pager</a>
 		                             </li>
 	                            </ul><!--//doc-menu-->
 	                            
                         	</div>
                     	</div>
                     </div>
-                    
                 </div><!--//doc-body-->              
             </div><!--//container-->
         </div><!--//doc-wrapper-->
@@ -515,7 +422,8 @@
     <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
     <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>                                                          
     <script src="assets/js/main.js"></script>
-	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>   
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html> 
 
