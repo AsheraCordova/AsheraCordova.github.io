@@ -74,6 +74,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.customwidgetextension": "1.0.0",
     "com.ashera.absolutelayout": "1.0",
     "cordova-plugin-splashscreen-ashera": "1.0",
-    "cordova-plugin-splashscreen": "6.0.2"
+    "cordova-plugin-splashscreen": "6.0.2",
+    "com.ashera.viewpager": "1.0"
   };
 });
