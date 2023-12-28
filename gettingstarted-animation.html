@@ -294,10 +294,37 @@
                         <div class="content-inner">
 							<h1 style="font-size: 35px; font-weight:bold">Animation</h1>
                                 <p>
-									Ashera supports cross platform animation using motion layout.
+                                	Ashera supports cross platform animation using animation set and also supports motion layout which adds animation to constraint layout.
 								</p>
 								
-								<section id="howtouse" class="doc-section">
+								<section id="animationset" class="doc-section">
+								<h2 class="section-title">Animation Set</h2>
+								<div class="section-block">
+								<p>
+								Animation set represents a group of Animations that should be played together. The transformation of each individual animation are composed together into a single transform.
+								</p>
+								<p>
+								The animation set is defined in xml file under res/animator. Interpolators are defined in xml file under anim res/folder.
+								</p>
+								<p>
+								To support animation on a view, Ashera has extended view to add the following attributes:
+								<ul>
+								<li>animatorXml</li>
+								<li>startAnimator</li>
+								<li>endAnimator</li>
+								<li>onAnimationStart</li>
+								<li>onAnimationEnd</li>
+								</ul>
+								</p>
+								</div>
+								
+								<p>This example shows different animations that are supported.</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fview_animation.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								</section>
+								
+								<section id="motionlayout" class="doc-section">
 
                                 <h2 class="section-title">Motion Layout</h2>
                                 <div class="section-block">
@@ -362,6 +389,12 @@
                     	<div class="sidebar left " style="position: relative">
                     		<div id="doc-nav" class="doc-nav" style="position : inherit">
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#animationset">Animation Set</a>
+		                            </li>
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#motionlayout">Motion Layout</a>
+		                            </li>
 		                            
 		                            
 	                            </ul><!--//doc-menu-->
