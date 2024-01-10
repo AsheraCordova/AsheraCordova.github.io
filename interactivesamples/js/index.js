@@ -1140,7 +1140,7 @@ var Index = /** @class */function (_super) {
           case 0:
             url = this.getQueryParams(document.location.search)["url"];
             if (url == null) {
-              url = 'http://localhost:8081/res/layout/view_animation.xml';
+              url = 'http://192.168.1.35:8081/res/layout/view_animate_layout_changes.xml';
             }
             return [4 /*yield*/, fetch(url, {
               method: 'GET',
