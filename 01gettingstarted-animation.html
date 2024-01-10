@@ -65,11 +65,11 @@
 						      	</ul>
 						    </li>
 						    <li> 
-						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#essentials" class="essentials collapsed" aria-expanded="false"> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#essentials" class="essentials active" aria-expanded="true"> 
 						    		<span class="nav-label"> The Essentials </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="essentials sub-menu collapse" id="essentials">
+						      	<ul class="show sub-menu" id="essentials">
 						      		<li><a href="01gettingstarted-essentials.html">Creating your first project</a></li>
 						        	<li><a href="01gettingstarted-devenv.html">Setting up the development environment</a></li>
 						        	<li><a href="01gettingstarted-theming.html">Theming</a></li>
@@ -77,22 +77,22 @@
 						        	<li><a href="01gettingstarted-validation.html">Validation</a></li>
 						        	<li><a href="01gettingstarted-databinding.html">Data binding</a></li>
 						        	<li><a href="01gettingstarted-navigation.html">Navigation</a></li>
-						        	<li><a href="01gettingstarted-animation.html">Animation</a></li>
+						        	<li class="active"><a href="01gettingstarted-animation.html">Animation</a></li>
 						        	<li><a href="01gettingstarted-nativeformatting.html">Native Formatting</a></li>
 						      	</ul>
 						    </li>
 						    
 						    <li> 
-						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#advanced" class="advanced active" aria-expanded="true"> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#advanced" class="advanced collapsed" aria-expanded="false"> 
 						    		<span class="nav-label"> The Advanced </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="show sub-menu" id="advanced">
+						      	<ul class="advanced sub-menu collapse" id="advanced">
 						        	<li><a href="02gettingstarted-newvalidation.html">Add new Validator</a></li>
 						        	<li><a href="02gettingstarted-newattribute.html">Add new Attribute to existing widget</a></li>
 						        	<li><a href="02gettingstarted-newnativeformatter.html">Add new Native Formatter</a></li>
 						        	<li><a href="02gettingstarted-newandroidwidget.html">New Android Container View</a></li>
-						        	<li class="active"><a href="02gettingstarted-neweventhandler.html">Add new Native Event Handler</a></li>
+						        	<li><a href="02gettingstarted-neweventhandler.html">Add new Native Event Handler</a></li>
 						      	</ul>
 						    </li>
 						  </ul>
@@ -306,55 +306,117 @@
 
 
 
-					<div class="doc-content col-md-8 col-12">
+                    <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold">New Native Event Handler</h1>
-							<p>
-							Ashera provides framework to create predefined event handler in cross platform way.
-							</p>
+							<h1 style="font-size: 35px; font-weight:bold">Animation</h1>
+                                <p>
+                                	Ashera supports cross platform animation using animation set and also supports motion layout which adds animation to constraint layout.
+								</p>
 								
-								<section id="Installation" class="doc-section" >
-									<h2 class="section-title">Installation</h2>
-									<div class="section-block">
-									
-									<p>
-									The following are the steps to create new event handler:
-									<ul>
-										<li>Download a copy of <a href="https://github.com/AsheraCordova/Custom.git">https://github.com/AsheraCordova/Custom.git</a> into the project folder. This project acts as a template for adding custom cross platform functionality.</li>
-										<li>Install the plugin onto the project using command <code>cordova plugin add Custom</code>.</li>
-										<li>Import the project into your favorite ide. e.g. eclipse</li>
-										<li>Sample event handler can be found in the project <a href="https://github.com/AsheraCordova/Custom/blob/main/src/main/java/com/ashera/custom/CustomEventCommand.java">here</a></li>
-										<li>After you create your new event handler, you need to register it as follows <code>com.ashera.widget.EventCommandFactory.registerCommand("custom", new CustomEventCommand());</code>
-										<li>The following code shows native event handler which is invoked on onPageScrolled event: <br></b><code>onPageScrolled="+custom#onPageScrolled()"</code><br>
-										The + indicates that it is native event delivered to event handler with registration  "custom".    
-										</li>
-										<li>Also given that the project is cordova plugin, you need to update plugin.xml and reinstall the plugin for any new functionality to take effect.</li>  
-									</ul>	
-									</p>
-									</div>
-	                          	</section>
-	                          	
-	                          	<section id="Pointsearned" class="doc-section" >
-									<h2 class="section-title">Example - View Pager</h2>
-									
-									<div class="section-block">
-									<p>
-										This example shows how you can add motion when swiping between ViewPager tabs. 
+								<section id="animationset" class="doc-section">
+								<h2 class="section-title">Animation Set</h2>
+								<div class="section-block">
+								<p>
+								Animation set represents a group of Animations that should be played together. The transformation of each individual animation are composed together into a single transform.
+								</p>
+								<p>
+								The animation set is defined in xml file under res/animator. Interpolators are defined in xml file under anim res/folder.
+								</p>
+								<p>
+								To support animation on a view, Ashera has extended view to add the following attributes:
+								<ul>
+								<li>animatorXml</li>
+								<li>startAnimator</li>
+								<li>endAnimator</li>
+								<li>onAnimationStart</li>
+								<li>onAnimationEnd</li>
+								</ul>
+								</p>
+								</div>
+								
+								<p>This example shows different animations that are supported.</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fview_animation.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								</section>
+								
+								<section id="layouttransition" class="doc-section">
 
-									</p> 
-									<p>
-									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_16_viewpager.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
+                                <h2 class="section-title">Auto-animate layout updates</h2>
+                                <div class="section-block">
+								Ashera offers preloaded animation that runs when you change the layout. Set an attribute in the layout to tell the system to animate these layout changes, and it carries out system-default animations for you.
+								</div>
+								<p>
+								
+								In layout XML file, set the android:animateLayoutChanges attribute to true for the layout that you want to enable animations for:
+
+								<pre><code class="language-markup">&lt;LinearLayout android:id="@+id/container"
+	android:animateLayoutChanges="true"
+	...
+/&gt;</code></pre>
+								</p>
+								
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fview_animate_layout_changes.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								</section>
+								
+								<section id="motionlayout" class="doc-section">
+
+                                <h2 class="section-title">Motion Layout</h2>
+                                <div class="section-block">
+                                    								<p>MotionLayout bridges the gap between layout transitions and complex motion handling, offering a mix of features between the property animation framework, TransitionManager, and CoordinatorLayout.</p>
+								<p>In addition to describing transitions between layouts, MotionLayout lets you animate any layout properties. Moreover, it inherently supports seekable transitions. This means you can instantly show any point within the transition based on some condition, such as touch input. MotionLayout also supports keyframes, enabling fully customized transitions to suit your needs.</p>
+								<p>MotionLayout is fully declarative, meaning you can describe any transitions in XML, no matter how complex.</p>
+
+                                </div><!--//section-block-->                                
+								
+								<h2 class="section-title">Basic Motion</h2>  
+
+
+								<p>This example contains a single view that you can touch and drag to move horizontally.</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_02_basic.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
 									
-									</p>
-							</div>
+									
+								<h2 class="section-title">Custom attribute - backgroundColor</h2>  
+								<p>This example is similar to the Basic motion example. In addition to the basic motion, the background color of the view changes as the view moves.</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_03_custom_attribute.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								<h2 class="section-title">Keyframe position</h2>  
+								<p>This example uses &lt;KeyFrameSet&gt; to alter the Y position of the view during motion.</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_06_keyframe.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								<h2 class="section-title">Keyframe interpolation</h2>  
+								<p>This example builds on the Keyframe position example, adding rotation and scaling to the view transition.</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_07_keyframe.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								<h2 class="section-title">Keyframe cycle</h2>  
+								<p>This example adds &lt;KeyCycle&gt; elements to add wavelike motion to the view</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_08_cycle.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								<h2 class="section-title">KeyTrigger</h2>  
+								<p>This example demonstrates how to hide/show a view when the transition crosses a progress threshold..</p>
+								<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_25_keytrigger.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+								</p>
+								
+                            	</section>
+								
+                            
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="02gettingstarted-newandroidwidget.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">New Android Container View</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="01gettingstarted-navigation.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Navigation</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<!-- a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newandroidwidget.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">New Android Container View</div></a> -->
+								<a class="pagination-nav__link pagination-nav__link--next" href="01gettingstarted-nativeformatting.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Native Formatting</div></a>
 							</div>
 						</div>
                         
@@ -364,18 +426,24 @@
                     	<div class="sidebar left " style="position: relative">
                     		<div id="doc-nav" class="doc-nav" style="position : inherit">
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
-		                            
-		                             <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#Installation">Installation</a>
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#animationset">Animation Set</a>
 		                            </li>
 		                            <li class="nav-item">
-		                             <a class="nav-link scrollto" href="#Pointsearned">Example - View Pager</a>
-		                             </li>
+	                                    <a class="nav-link scrollto" href="#layouttransition">Auto-animate layout updates</a>
+		                            </li>
+		                            
+		                            <li class="nav-item">
+	                                    <a class="nav-link scrollto" href="#motionlayout">Motion Layout</a>
+		                            </li>
+		                            
+		                            
 	                            </ul><!--//doc-menu-->
 	                            
                         	</div>
                     	</div>
                     </div>
+                    
                 </div><!--//doc-body-->              
             </div><!--//container-->
         </div><!--//doc-wrapper-->
@@ -438,8 +506,7 @@
     <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
     <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>                                                          
     <script src="assets/js/main.js"></script>
-	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script async defer src="https://buttons.github.io/buttons.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>   
 </body>
 </html> 
 
