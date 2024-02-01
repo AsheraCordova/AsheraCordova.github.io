@@ -110,6 +110,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.viewpager": "1.0",
     "com.ashera.coordinatorlayout": "1.0",
     "com.ashera.snackbar": "1.0",
-    "com.ashera.textinputlayout": "1.0"
+    "com.ashera.textinputlayout": "1.0",
+    "com.ashera.appbarlayout": "1.0",
+    "com.ashera.nestedscrollview": "1.0"
   };
 });

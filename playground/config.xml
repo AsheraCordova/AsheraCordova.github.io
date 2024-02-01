@@ -85,6 +85,14 @@
         <param name="android-package" value="com.ashera.textinputlayout.CordovaTextInputLayoutPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="CordovaAppBarLayoutPlugin">
+        <param name="android-package" value="com.ashera.appbarlayout.CordovaAppBarLayoutPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="CordovaNestedScrollViewPlugin">
+        <param name="android-package" value="com.ashera.nestedscrollview.CordovaNestedScrollViewPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>PlayGround</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
