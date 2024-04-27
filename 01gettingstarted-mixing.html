@@ -65,11 +65,11 @@
 						      	</ul>
 						    </li>
 						    <li> 
-						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#essentials" class="essentials collapsed" aria-expanded="false"> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#essentials" class="essentials active" aria-expanded="true"> 
 						    		<span class="nav-label"> The Essentials </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="essentials sub-menu collapse" id="essentials">
+						      	<ul class="show sub-menu" id="essentials">
 						      		<li><a href="01gettingstarted-essentials.html">Creating your first project</a></li>
 						        	<li><a href="01gettingstarted-devenv.html">Setting up the development environment</a></li>
 						        	<li><a href="01gettingstarted-theming.html">Theming</a></li>
@@ -79,16 +79,16 @@
 						        	<li><a href="01gettingstarted-navigation.html">Navigation</a></li>
 						        	<li><a href="01gettingstarted-animation.html">Animation</a></li>
 						        	<li><a href="01gettingstarted-nativeformatting.html">Native Formatting</a></li>
-						        	<li><a href="01gettingstarted-mixing.html">Mixing</a></li>
+						        	<li class="active"><a href="01gettingstarted-mixing.html">Mixing</a></li>
 						      	</ul>
 						    </li>
 						    
 						    <li> 
-						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#advanced" class="advanced active" aria-expanded="true"> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#advanced" class="advanced collapsed" aria-expanded="false"> 
 						    		<span class="nav-label"> The Advanced </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="show sub-menu" id="advanced">
+						      	<ul class="advanced sub-menu collapse" id="advanced">
 						        	<li><a href="02gettingstarted-newvalidation.html">Add new Validator</a></li>
 						        	<li><a href="02gettingstarted-newattribute.html">Add new Attribute to existing widget</a></li>
 						        	<li><a href="02gettingstarted-newnativeformatter.html">Add new Native Formatter</a></li>
@@ -325,125 +325,72 @@
 
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold">Theming</h1>
+							<h1 style="font-size: 35px; font-weight:bold">Mixing</h1>
 							<p>
-							The first step in Ashera is to theme the widgets. The theme of the widgets have to be done in system_style.xml.
-							Customization per widget can be done using style.xml 
+							Ashera provides cross platform widgets which can mixed and matched.  
 							</p>
+							
 								
-								<section id="system_style" class="doc-section" >
-									<h2 class="section-title">system_style.xml</h2>
+								<section id="Introduction" class="doc-section" >
+									<h2 class="section-title">Example</h2>
 									<div class="section-block">
-									<p>
-										Given that Ashera Native is based on Android i.e Android first, we should be able to do anything which we are capable of achieving in Android.
-										Then we simulate the same in other platforms. 
-									</p> 
-									<p>
-									Android has concept of theming widgets by creating a Theme and applying theme to widget to widgets using style.xml.
-									
-									Ashera however created separate xml - system_system.xml where you can use Android theming.  
-									Here is snippet of system_system.xml:
-									</p>
-									
-									
-									<p>
-									<pre><code class="language-markup">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;resources&gt;
- 
-    &lt;style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"&gt;
-        &lt;item name="editTextStyle"&gt;@style/EditText&lt;/item&gt;
-        &lt;item name="checkboxStyle"&gt;@style/CheckBox&lt;/item&gt;
-        &lt;item name="buttonStyle"&gt;@style/Button&lt;/item&gt;
-        &lt;item name="radioButtonStyle"&gt;@style/RadioButton&lt;/item&gt;
-        &lt;item name="imageButtonStyle"&gt;@style/ImageButton&lt;/item&gt;
-        &lt;item name="android:spinnerItemStyle"&gt;@style/Spinner&lt;/item&gt;
-        &lt;item name="colorPrimaryDark"&gt;#000&lt;/item&gt;
-    &lt;/style&gt;
+								<p>
+							For example, TextView in android can be mapped to either UITextView or UILabel in ios. This is achieved using widget-override attribute in xml. In ts file, we can use ts-mixer to mix the widgets so that we can access functions on both widgets. 
+							</p>
+<pre><code class="language-markup">&lt;TextView
+    style="@style/h2_bold_black"
+    widget-override-ios="ASUITextViewLabel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="10.23" /&gt;</code></pre>
+	
+							<p>The above example shows where a TextView in android is matched with ASUITextViewLabel rather than ASUILabel. 
+						</p>
+						<p>
+						The mixing of the two widgets at ts level is shown below:
+						</p>
+<pre><code class="language-markup">import "reflect-metadata";
+import 'babel-polyfill';
+import {Mixin} from 'ts-mixer';
 
-    &lt;!-- form widgets --&gt;
-    &lt;style name="TextView"&gt;
-        &lt;item name="android:typeface"&gt;sans&lt;/item&gt;
-    &lt;/style&gt;
-    &lt;style name="EditText" parent="@android:style/Widget.EditText" constructor_attrs="swtTextStyle:single" attrs="swtUseTabForNavigation:true;borderBottomWidth:1dp;borderColor:@color/border_material_color;onFocusChange:"&gt;
-        &lt;item name="android:textColor"&gt;#000&lt;/item&gt;
-        &lt;item name="android:textColorHint"&gt;#fff&lt;/item&gt;
-        &lt;item name="android:padding"&gt;10dp&lt;/item&gt;
-        &lt;item name="singleLine"&gt;true&lt;/item&gt;
-        &lt;item name="android:inputType" android="true"&gt;text&lt;/item&gt;
-        &lt;item name="android:typeface"&gt;sans&lt;/item&gt;
-    &lt;/style&gt;
-    ...
-&lt;/resources&gt;</code></pre>
-									</p>
-									<p>
-									It is worth noting that system_style.xml can refer any android resource i.e. android system resource.
-									For e.g, the style tag parent can be android resource <code>parent="@android:style/Widget.EditText"</code>.
-									Also when refering to android system resource, add <code>android="true"</code>. This means that this attribute is for only android and 
-									will not be used to applied to the other platforms.
-									</p>
-									<p>
-									The system_style.xml adheres to strict convention to achieve cross platform theming.
-									</p>
-									<p>
-									In the above example, editTextStyle of App theme has been styled with <code>@style/EditText</code>.
-									The name of style is the group name of widgets i.e. the android tag name. 
-									</p>
-									<p>
-									By overriding the editTextStyle of AppTheme, you have setup the Android EditText.
-									</p>
-									<p>
-									To apply theming to other platforms, the attributes without <code>android="true"</code> are applied to other widgets by the looking at the name of the style and matching the tag name.
-									But there might be some cases where you need to apply non-android attributes to other platforms.
-									In this case you use constructor_attrs and attrs on style which can be used to theme other attributes which cannot be declared inside item tags. 
-									</p>
-									<p>
-									To refer to a style declared in system_style.xml, you cannot use the style attribute. Instead you need to use systemStyle attribute.									 
-									</p>
+import {ListView as ADListView} from '../android/widget/ListViewImpl';
+import {ListView as SWTListView} from '../swt/widget/ListViewImpl';
+
+class ListView extends Mixin(ADListView, SWTListView){
+
+}
+
+function applyMixins(derivedCtor: any, baseCtors: any[]) {
+    baseCtors.forEach(baseCtor => {
+        Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
+            Object.defineProperty(derivedCtor.prototype, name, Object.getOwnPropertyDescriptor(baseCtor.prototype, name) as PropertyDescriptor);
+        });
+    });
+
+}
+
+applyMixins(ListView, [ADListView, SWTListView]);
+
+export default ListView;
+</code></pre>
+
+						<p>
+						
+						The above example mixes ListView from android and ListView from swt to produce cross platform neutral ListView where methods on ListView in swt and android is available.  
+						
+							</p>
 									</div>
 	                          	</section>
 	                          	
-	                          	<section id="style" class="doc-section" >
-									<h2 class="section-title">style.xml</h2>
-									
-									<div class="section-block">
-									<p>
-										style.xml is reserved for cross platform theming. 
-									</p> 
-									<p>
-									Here is snippet of style.xml:
-<pre><code class="language-markup">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-&lt;resources&gt;
-
-	...
-    &lt;style name="h2_white"&gt;
-        &lt;item name="android:textSize"&gt;@dimen/font_normal&lt;/item&gt;
-        &lt;item name="android:textColor"&gt;@color/color_white&lt;/item&gt;
-    &lt;/style&gt;
-	...
-
-&lt;/resources&gt;</code></pre>
-</p>		
-								<p>
-									It is worth noting that style.xml can refer only attributes supported in the api documentation. 
-									It cannot reference any android system resource.									
-								</p>
-								<p>
-									To refer to a style declared in style.xml, you can use the style attribute. 									 
-								</p>
-								</div>
-								</section>
-	                          	
-	                          	<p>
-	                          	By splitting the style into 2 separate xml, you get simple but powerful way to style android widgets and applying the styling in other platforms. 
-	                          	</p>
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="gettingstarted-handlingedittext.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Handling EditText</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="01gettingstarted-nativeformatting.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Native Formatting</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="gettingstarted-listview.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using List Views</div></a>
+								<a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newvalidation.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Adding new validator</div></a>
 							</div>
 						</div>
                         
@@ -455,11 +402,9 @@
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
 		                            
 		                             <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#system_style">system_style.xml</a>
+	                                    <a class="nav-link scrollto" href="#Introduction">Example</a>
 		                            </li>
-		                            <li class="nav-item">
-		                             <a class="nav-link scrollto" href="#style">style</a>
-		                             </li>
+		                            
 	                            </ul><!--//doc-menu-->
 	                            
                         	</div>
