@@ -11,6 +11,9 @@ module.exports = {
     },
     executeSimpleCommand: function (commands, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "CoreCordovaPlugin", "executeSimpleCommand", commands);
-    } 
+    },
+    getOs: function (successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "CoreCordovaPlugin", "getOs");
+    }
 };
 });
