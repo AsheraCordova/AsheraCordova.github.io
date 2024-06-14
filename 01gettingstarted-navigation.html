@@ -488,6 +488,22 @@ export default class Index extends Fragment {
 									
 									</div>
 	                          	</section>
+	                          	
+	                          	<section id="ChildFragment" class="doc-section" >
+									<h2 class="section-title">Child Fragment</h2>
+									<div class="section-block">
+									<p>
+										Ashera supports child fragments. You can embed fragment of type "androidx.navigation.fragment.NavHostFragment" and associate it with navigation graph xml to achieve navigation for portion of a screen. This is very use full in scenarions where the app has a fixed bottom tab bar and each of the menu in the tab bar,
+										is associated with a different flow.
+									</p>
+									</div>
+									
+									Example of child navigation is shown below:
+									</p>
+									<p>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fchild_host.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
+									</p>
+								</section>
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
@@ -514,6 +530,10 @@ export default class Index extends Fragment {
 		                             </li>
 		                             <li class="nav-item">
 		                             <a class="nav-link scrollto" href="#NavController">NavController</a>
+		                             </li>
+		                             
+		                             <li class="nav-item">
+		                             <a class="nav-link scrollto" href="#ChildFragment">Child Fragment</a>
 		                             </li>
 		                             
 	                            </ul><!--//doc-menu-->
