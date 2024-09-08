@@ -105,6 +105,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "sqlitePlugin"
       ]
+    },
+    {
+      "id": "cordova-plugin-dialogs.notification",
+      "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
+    },
+    {
+      "id": "cordova-plugin-dialogs.notification_browser",
+      "file": "plugins/cordova-plugin-dialogs/www/browser/notification.js",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -121,7 +137,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.shutterbug": "1.0",
     "com.ashera.glide": "1.0",
     "com.ashera.sdwebimage.ios": "1.0",
-    "cordova-plugin-splashscreen": "6.0.2",
+    "cordova-plugin-splashscreen": "7.0.0-dev",
     "cordova-plugin-splashscreen-ashera": "1.0",
     "com.filfatstudios.spinnerdialog": "1.0.2",
     "cordova-plugin-camera": "6.0.1-dev",
@@ -130,6 +146,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-qrscanner-swt": "1.0",
     "com.ashera.indexeddbshim": "1.0",
     "cordova-plugin-sqlite-2": "1.0.6",
-    "cordova-plugin-sqlite-2-swt": "1.0.6"
+    "cordova-plugin-sqlite-2-swt": "1.0.6",
+    "cordova-plugin-dialogs": "2.0.2",
+    "cordova-plugin-dialogs-ashera": "1.0"
   };
 });
