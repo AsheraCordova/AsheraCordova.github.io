@@ -61,6 +61,10 @@
     <feature name="QRScanner">
         <param name="browser-package" value="QRScanner" />
     </feature>
+    <feature name="CordovaNavigationViewPlugin">
+        <param name="android-package" value="com.ashera.navigationview.CordovaNavigationViewPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>HelloCordova</name>
     <description>Sample Apache Cordova App</description>
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
@@ -74,6 +78,5 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="webScaleFactor" value="1.4" />
     <preference name="macScaleFactor" value="1.8" />
-    <preference name="webHistoryUrlPrefix" value="/tradeapp" />
     <preference name="iosHidetoolbar" value="true" />
 </widget>
