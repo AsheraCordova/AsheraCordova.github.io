@@ -51,7 +51,7 @@
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Quick Start</h1>
-                    <div class="meta"><i class="far fa-clock"></i> Last updated: October 05th, 2022</div>
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: September 08th, 2024</div>
                 </div><!--//doc-header-->
                 <div class="doc-body row">
                     <div class="doc-content col-md-9 col-12 order-1">
@@ -64,15 +64,15 @@
                                     Prerequisites:
                                     </p>
                                     <div class="code-block">
-                                        <p><code>Node.js (V14.16.0)</code></p>
+                                        <p><code>Node.js (V20.17.0)</code></p>
                                         <p><code>Install <a href="https://gradle.org/next-steps/?version=7.6.2&amp;format=bin">Gradle@7.6.2</a></code></p>
                                         <p><code>Install <a href="https://imagemagick.org/archive/releases/">Image Magick@7.1.0-36</a></code></p>
                                     </div><!--//code-block-->
                                     <p>
-                                    Cordova command-line runs on Node.js (V14.16.0) and is available on NPM. Open a command prompt or Terminal, and type 
+                                    Cordova command-line runs on Node.js (V20.17.0) and is available on NPM. Open a command prompt or Terminal, and type 
                                     </p>
                                     <div class="code-block">
-                                        <p><code>npm install -g cordova</code></p>
+                                        <p><code>npm install -g cordova@12.0.0</code></p>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                                 
@@ -106,17 +106,17 @@
 	...,
 	"scripts": {
 		"clean": "npm install && node cleanup.js",
-		"swt": "cd platforms/swt/app && gradle run",
-    	"prebrowser": "cd platforms/browser/app && gradle execute",
-		"browser": "cd platforms/browser/app/src/main/assets/www && npm install -g http-server && http-server",
-		"generate-platform-res": "cd platforms/android/app/src/main/gentool && npm install && npm run resize && npm run start",
-		"generate-platform-js": "cd platforms/android/app/src/main/tsc && npm install && npm run build",
-		"generate-platform-drawable": "cd platforms/android/app/src/main/gentool && npm run resize",
-		"fix-ios-symLinks": "cd platforms/android/app/src/main/gentool && npm run fixIosSymLinks",
-		"update-ios-plist": "cd platforms/android/app/src/main/gentool && npm run plist",
-		"backup-android": "cd platforms/android/app/src/main/gentool && npm run backup",
-		"restore-android": "cd platforms/android/app/src/main/gentool && npm run restore",
-		"start-dev": "cd platforms/android/app/src/main/gentool && npm install && npm run fixIosSymLinks && npm run restore && npm run resize && cd ../tsc && npm install && cd ../gentool && npm run start skip_watch && cd ../tsc && npm run build",
+	    "swt": "cd platforms/swt/app && gradle run",
+	    "prebrowser": "cd platforms/browser/app && gradle execute",
+	    "browser": "cd platforms/browser/app/src/main/assets/www && npm install -g http-server && http-server",
+	    "generate-platform-res": "cd platforms/android/app/src/main/gentool && npm install --legacy-peer-deps && npm run resize && npm run start",
+	    "generate-platform-js": "cd platforms/android/app/src/main/tsc && npm install --legacy-peer-deps && npm run build",
+	    "generate-platform-drawable": "cd platforms/android/app/src/main/gentool && npm run resize",
+	    "fix-ios-symLinks": "cd platforms/android/app/src/main/gentool && npm run fixIosSymLinks",
+	    "update-ios-plist": "cd platforms/android/app/src/main/gentool && npm run plist",
+	    "backup-android": "cd platforms/android/app/src/main/gentool && npm run backup",
+	    "restore-android": "cd platforms/android/app/src/main/gentool && npm run restore",
+	    "start-dev": "cd platforms/android/app/src/main/gentool && npm install --legacy-peer-deps && npm run fixIosSymLinks && npm run restore && npm run resize && cd ../tsc && npm install --legacy-peer-deps && cd ../gentool && npm run start skip_watch && cd ../tsc && npm run build",
 		...
   	},
   	"dependencies": {
@@ -287,7 +287,7 @@ fs.removeSync(projectBasePath + "plugins", { recursive: true, force: true });</c
 <p><code> cordova plugin add https://github.com/AsheraCordova/CoordinatorLayout.git</code></p>
 <p><code> cordova plugin add https://github.com/AsheraCordova/AppBarLayout.git</code></p>
 <p><code> cordova plugin add https://github.com/AsheraCordova/NestedScrollView.git</code></p>
-
+<p><code> cordova plugin add https://github.com/AsheraCordova/NavigationView.git</code></p>
 
                                     </div><!--//code-block-->
                               	</div>
