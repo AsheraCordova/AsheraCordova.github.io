@@ -53,6 +53,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "navigator.splashscreen"
       ]
+    },
+    {
+      "id": "cordova-plugin-dialogs.notification",
+      "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
+    },
+    {
+      "id": "cordova-plugin-dialogs.notification_browser",
+      "file": "plugins/cordova-plugin-dialogs/www/browser/notification.js",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -74,7 +90,10 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.customwidgetextension": "1.0.0",
     "com.ashera.absolutelayout": "1.0",
     "cordova-plugin-splashscreen-ashera": "1.0",
-    "cordova-plugin-splashscreen": "6.0.2",
-    "com.ashera.viewpager": "1.0"
+    "cordova-plugin-splashscreen": "7.0.0-dev",
+    "com.ashera.viewpager": "1.0",
+    "cordova-plugin-dialogs": "2.0.2",
+    "cordova-plugin-dialogs-ashera": "1.0",
+    "com.ashera.navigationview": "1.0"
   };
 });
