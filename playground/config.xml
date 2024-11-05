@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ashera.playground" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="CordovaTabLayoutPlugin">
+        <param name="android-package" value="com.ashera.tablayout.CordovaTabLayoutPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="CoreCordovaPlugin">
         <param name="android-package" value="com.ashera.core.CoreCordovaPlugin" />
         <param name="onload" value="true" />
@@ -119,4 +123,5 @@
     <preference name="webScaleFactor" value="1.4" />
     <preference name="macScaleFactor" value="1.8" />
     <preference name="iosHidetoolbar" value="true" />
+    <preference name="webHistoryUrlPrefix" value="/playground" />
 </widget>
