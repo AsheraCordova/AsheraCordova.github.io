@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ashera.interactiveplayground" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <feature name="CordovaTabLayoutPlugin">
-        <param name="android-package" value="com.ashera.tablayout.CordovaTabLayoutPlugin" />
+    <feature name="CordovaCardViewPlugin">
+        <param name="android-package" value="com.ashera.cardview.CordovaCardViewPlugin" />
         <param name="onload" value="true" />
     </feature>
     <feature name="CoreCordovaPlugin">
@@ -77,6 +77,10 @@
     </feature>
     <feature name="CordovaNavigationViewPlugin">
         <param name="android-package" value="com.ashera.navigationview.CordovaNavigationViewPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="CordovaTabLayoutPlugin">
+        <param name="android-package" value="com.ashera.tablayout.CordovaTabLayoutPlugin" />
         <param name="onload" value="true" />
     </feature>
     <name>HelloCordova</name>
