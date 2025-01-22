@@ -102,7 +102,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
-    "com.ashera.tablayout": "1.0",
     "com.ashera.core": "1.0",
     "com.ashera.capinsets": "1.0",
     "com.ashera.constraintlayout": "1.0",
@@ -132,6 +131,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.nestedscrollview": "1.0",
     "cordova-plugin-dialogs": "2.0.2",
     "cordova-plugin-dialogs-ashera": "1.0",
-    "com.ashera.navigationview": "1.0"
+    "com.ashera.navigationview": "1.0",
+    "com.ashera.tablayout": "1.0",
+    "com.ashera.cardview": "1.0"
   };
 });
