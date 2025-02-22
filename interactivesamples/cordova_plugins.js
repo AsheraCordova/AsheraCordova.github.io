@@ -69,10 +69,15 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "merges": [
         "navigator.notification"
       ]
+    },
+    {
+      "id": "com.ashera.chip.coreAddRes",
+      "file": "plugins/com.ashera.chip/browser/www/js/add_res.js",
+      "pluginId": "com.ashera.chip",
+      "runs": true
     }
   ];
   module.exports.metadata = {
-    "com.ashera.cardview": "1.0",
     "com.ashera.core": "1.0",
     "com.ashera.capinsets": "1.0",
     "com.ashera.constraintlayout": "1.0",
@@ -96,6 +101,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-dialogs": "2.0.2",
     "cordova-plugin-dialogs-ashera": "1.0",
     "com.ashera.navigationview": "1.0",
-    "com.ashera.tablayout": "1.0"
+    "com.ashera.tablayout": "1.0",
+    "com.ashera.cardview": "1.0",
+    "com.ashera.chip": "1.0"
   };
 });
