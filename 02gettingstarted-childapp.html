@@ -92,11 +92,11 @@
 						        	<li><a href="02gettingstarted-newvalidation.html">Add new Validator</a></li>
 						        	<li><a href="02gettingstarted-filtercustom.html">Add new Filter</a></li>
 						        	
-						        	<li class="active"><a href="02gettingstarted-newattribute.html">Add new Attribute to existing widget</a></li>
+						        	<li><a href="02gettingstarted-newattribute.html">Add new Attribute to existing widget</a></li>
 						        	<li><a href="02gettingstarted-newnativeformatter.html">Add new Native Formatter</a></li>
 						        	<li><a href="02gettingstarted-newandroidwidget.html">New Android Container View</a></li>
 						        	<li><a href="02gettingstarted-neweventhandler.html">Add new Native Event Handler</a></li>
-						        	<li><a href="02gettingstarted-childapp.html">Create Child application</a></li>
+						        	<li class="active"><a href="02gettingstarted-childapp.html">Create Child application</a></li>
 						        	
 						      	</ul>
 						    </li>
@@ -1861,123 +1861,417 @@
 
 
 
-                    <div class="doc-content col-md-8 col-12">
+					<div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-							<h1 style="font-size: 35px; font-weight:bold">Adding new attribute to existing widget</h1>
+							<h1 style="font-size: 35px; font-weight:bold">Child Application</h1>
 							<p>
-							Ashera provides attribute extension using factory registration. 
-							</p>
+									Child application is a downloadable application which is available over internet in the form of zip file and rendered in a fragment. The child application is self-contained and should be complete as the application rendered as child application do not depend on main application assets for rendering but only the shared the native code required to execute the application.							</p>
 								
-								<section id="Introduction" class="doc-section" >
-									<h2 class="section-title">Introduction</h2>
+								<section id="Installation" class="doc-section" >
+									<h2 class="section-title">Development</h2>
 									<div class="section-block">
-									<p>
-									Let us take an example on how to build a plugin which extends a View to add gradient background support.
-									You need to build a cross platform plugin which is is required to work on iOS, Android, Desktop app (SWT) and browser
-									You find out in the internet on how to draw gradient in each of the platform. You come up with the following snippets:
-									</p>
-									<p>
-									<ul class="nav nav-tabs">
-										  	<li class="nav-item">
-										    	<a class="nav-link active" data-bs-toggle="tab" aria-current="page" href="#tab1default">Android</a>
-										  	</li>
-										  	<li class="nav-item">
-										    	<a class="nav-link" data-bs-toggle="tab" href="#tab2default">iOS</a>
-										  	</li>
-										  	<li class="nav-item">
-										    	<a class="nav-link" data-bs-toggle="tab" href="#tab3default">SWT</a>
-										  	</li>
-										  	<li class="nav-item">
-										    	<a class="nav-link" data-bs-toggle="tab" href="#tab4default">Browser</a>
-										  	</li>
-										</ul>
-										
-										<div class="panel-body">
-						                    <div class="tab-content">
-						                        <div class="tab-pane fade in active show" id="tab1default">
-<pre><code class="language-markup">int[] colors = {Color.parseColor("#008000"),Color.parseColor("#ADFF2F")};
 
-//create a new gradient color
-GradientDrawable gd = new GradientDrawable(
-GradientDrawable.Orientation.TOP_BOTTOM, colors);
-
-gd.setCornerRadius(0f);
-//apply the button background to newly created drawable gradient
-btn.setBackground(gd);</code></pre>
-						                        </div>
-						                        <div class="tab-pane fade in" id="tab2default">
-<pre><code class="language-markup">UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-CAGradientLayer *gradient = [CAGradientLayer layer];
-
-gradient.frame = view.bounds;
-gradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor blackColor].CGColor];
-
-[view.layer insertSublayer:gradient atIndex:0];</code></pre>						                        
-						                        </div>
-						                        <div class="tab-pane fade in" id="tab3default">
-<pre><code class="language-markup">gc.setBackgrouind(display,getSystemColor(SWT.COLOR_BLUE));
-gc.fillGradientRectangle(5,5,90,45,false);</code></pre>
-						                        </div>
-						                        <div class="tab-pane fade in" id="tab4default">
-<pre><code class="language-markup">#grad {
-  background-image: linear-gradient(red, yellow);
-}</code></pre>
-						                        </div>
-						                 	</div>
-						            	</div>
-									</p>
+									
 									<p>
-									For us to develop a very simple gradient plugin, we require 2 colors to to passed onto the view. i.e gradientStart and gradientEnd.
-									This plugin we are going to develop adds an attribute linearGradientBackground to widget which needs to have comma separated color.
-									</p>
-									<p>
-									<code>linearGradientBackground="#000,#fff"</code>
-									</p>
-									<p>
-									The following are the steps required to create the plugin:
+									The development of child application is as follows:  
 									</p>
 									
+									<h3>Install  Plugins</h3>
+									<p>
+									Install the following plugin in main application which helps to download zip file into local file system:
+									
+									<p><code> cordova plugin add https://github.com/AsheraCordova/cordova-plugin-file-downloader.git</code></p>	
+									</p>									
+								
+									
+									
+									<h3>Host Child Application</h3>
+									<p>
+									The main application should host the child application in fragment using the namespace and rootDirectory as shown below:
+<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">&lt;fragment
+    android:id="@+id/nav_host_fragment_container"
+	android:name="androidx.navigation.fragment.NavHostFragment"
+	rootDirectory="cordova.file.persistent/CityApp"
+	namespace="CityApp"
+	navGraph="navigation/nav_graph_child"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"&gt;&lt;/fragment&gt;</code></pre>
+            
+            The above code loads the child application in the main application into javascript module index_lite.js into namespace CityApp and displays the content of the zip file which has been unzipped at the location "cordova.file.persistent/CityApp"" 
+            </p>
+            
+            <p>
+<div>Sample fragment with a progressbar:</div>            
+<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">&lt;layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"&gt;
+
+    &lt;data&gt;&lt;/data&gt;
+
+    &lt;LinearLayout
+        fragment="ProgressdialogCityApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"&gt;
+
+        &lt;ProgressBar
+            android:id="@+id/progress"
+            autoInject="true"
+            progress="0"
+            scaleY-android="8"
+            systemAndroidAttrStyle="progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"&gt;&lt;/ProgressBar&gt;
+
+        &lt;RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"&gt;
+
+            &lt;TextView
+                android:layout_alignParentStart="true"
+                style="@style/CustomTextStyle"
+                android:layout_marginTop="5dp"
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/progressText"
+                android:text="Downloading"&gt;&lt;/TextView&gt;
+
+            &lt;TextView
+                android:layout_alignParentEnd="true"
+                android:id="@+id/progressText"
+                style="@style/CustomTextStyle"
+                autoInject="true"
+                textFormat="%s%%"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="0"
+                android:textColor="#fff"&gt;&lt;/TextView&gt;
+        &lt;/RelativeLayout&gt;
+    &lt;/LinearLayout&gt;
+&lt;/layout&gt;</code></pre>
+<div>Backing fragment which downloads the zip file:</div>  
+            <pre><code class="language-plaintext" data-lang="plaintext" style="display: block">//start - import
+import { ProgressBar } from './android/widget/ProgressBarImpl';
+
+import { TextView } from './android/widget/TextViewImpl';
+
+//end - import
+import { Fragment, Inject } from './app/Fragment';
+import { NavController, InjectController } from './navigation/NavController';
+import { ScopedObject } from './app/ScopedObject';
+declare var downloader: any;
+import FragmentFactory from './FragmentFactory';
+//start - className
+export default class ProgressdialogCityApp extends Fragment
+//end - className
+{
+    //start - body
+    @InjectController({})
+    navController!: NavController;
+    @Inject({ id: "@+id/progress" })
+
+    private progress!: ProgressBar;
+    @Inject({ id: "@+id/progressText" })
+
+    private progressText!: TextView;
+
+
+    async goToPreviousScreen() {
+        await this.navController.reset().popBackStack().executeCommand();
+    }
+    //end - body
+    async onCreate() {
+        let baseUrl = "your_base_url";
+    	let namespace = "your_namespace";
+    
+        downloader.init({ folder: namespace, unzip: true });
+
+        let downloadProgress = async (event: any) => {
+            let data: any = event.data;
+            console.log(JSON.stringify(data));
+            this.progress.setProgress(data[0]);
+            this.progressText.setText(data[0] + "");
+            await this.executeCommand(this.progress, this.progressText);
+        };
+
+        let gotFolder = (event: any) => {
+            var data = event.data;
+            //console.log(JSON.stringify(data));
+        };
+
+        let unzipFileEntry = async (event: any) => {
+            const url = URL.createObjectURL(event.data.file);
+            let nativeUrl = event.data.targetFileEntry.toNativeURL();
+            nativeUrl = nativeUrl.substring(nativeUrl.indexOf("persistent/"));
+            localStorage.setItem(nativeUrl, url);
+            if (nativeUrl.endsWith(".9.png") || nativeUrl.endsWith("_9.png")) {
+                const img: any = await this.loadImage(url);
+                document.body.appendChild(img);  // or set it elsewhere
+                console.log(nativeUrl + " image loaded" + url);
+            }
+
+            if (nativeUrl.endsWith("ttf") || nativeUrl.endsWith("otf")) {
+                const key = nativeUrl.substring(nativeUrl.lastIndexOf('/') + 1).replaceAll('/', '_').replaceAll(' ', '_').replaceAll('%20', '_').replaceAll('.', '_');
+                console.log(key + "font loaded");
+                await this.loadFont(key, localStorage.getItem(nativeUrl));
+            }
+
+            if (nativeUrl.endsWith(".properties") || nativeUrl.endsWith(".xml") || nativeUrl.endsWith(".css")) {
+                const text = await this.readTextFromEntry(event.data.targetFileEntry);
+                localStorage.setItem(nativeUrl, text as string);
+            }
+        };
+
+        let successCallBack = async () => {
+            try {
+                let js = await this.readCdvDataAsString("cordova.file.persistent/CityApp/www/js/index_lite.js");
+                const blob = new Blob([js], { type: 'text/javascript' });
+                let blobURL;
+
+                if (js.startsWith("blob:")) {
+                    blobURL = js;
+                } else {
+                    const blob = new Blob([js], { type: 'text/javascript' });
+                    blobURL = URL.createObjectURL(blob);
+                }
+
+                let module: any;
+                try {
+                    module = await import(/* webpackIgnore: true */ blobURL);
+                } catch (e) {
+                    console.error("Error loading module:", e);
+                    blobURL = `${baseUrl}/city_app/index_lite.js`;
+                    try {
+                        module = await import(/* webpackIgnore: true */ blobURL);
+                    } catch (e) {
+                        console.error("Error loading module:", e);
+                        throw e;
+                    }
+                }
+
+                FragmentFactory.registerFragmentMapper('CityApp', module.fragmentMapper);
+                await new module.AppLoader().loadApp("cordova.file.persistent/CityApp");
+                this.removeListeners(downloadProgress, gotFolder, failureCallBack, successCallBack, unzipFileEntry);
+                this.navController.closeDialog().executeCommand();
+            } catch (e) {
+                this.removeListeners(downloadProgress, gotFolder, failureCallBack, successCallBack, unzipFileEntry);
+                await this.navController.closeDialog().executeCommand();
+                alert(e + " Error in loading app. Please try again.");
+            }
+        };
+
+        let failureCallBack = () => {
+            this.removeListeners(downloadProgress, gotFolder, failureCallBack, successCallBack, unzipFileEntry);
+            this.navController.closeDialog().executeCommand();
+        };
+
+        document.addEventListener("DOWNLOADER_downloadProgress", downloadProgress);
+        document.addEventListener("DOWNLOADER_gotFolder", gotFolder);
+        document.addEventListener("DOWNLOADER_downloadError", failureCallBack);
+        document.addEventListener("UNZIP_fileentry", unzipFileEntry);
+        document.addEventListener("DOWNLOADER_unzipSuccess", successCallBack);
+        downloader.setDownloadError(failureCallBack);
+        downloader.get(`${baseUrl}/city_app.zip`);
+    }
+
+
+    private removeListeners(downloadProgress: (event: any) => any, gotFolder: (event: any) => void, failureCallBack: any, successCallBack: any, unzipFileEntry: any) {
+        document.removeEventListener("DOWNLOADER_downloadProgress", downloadProgress);
+        document.removeEventListener("DOWNLOADER_gotFolder", gotFolder);
+        document.removeEventListener("DOWNLOADER_downloadSuccess", successCallBack);
+        document.removeEventListener("DOWNLOADER_unzipSuccess", successCallBack);
+        document.removeEventListener("DOWNLOADER_downloadError", failureCallBack);
+        document.removeEventListener("UNZIP_fileEntry", unzipFileEntry);
+    }
+
+    async loadFont(name: string, url: string | null) {
+        // @ts-ignore
+        const font = new FontFace(name, `url(${url})`);
+        await font.load();             // Wait until font is downloaded and parsed
+        (document as any).fonts.add(font);     // Add to document so it can be used
+        console.log(`Font ${name} loaded ${url}`);
+    }
+    loadImage(url: any) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);     // âœ… resolve with the image element
+            img.onerror = (err) => reject(err);  // â�Œ reject on error
+            img.src = url;
+            img.id = url;
+            img.style.visibility = "hidden";
+        });
+    }
+
+    getFile(fileEntry: any) {
+        return new Promise((resolve, reject) => {
+            fileEntry.file(resolve, reject);
+        });
+    }
+
+    // Read File as text
+    readFileAsText(file: any) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = reject;
+            reader.readAsText(file);
+        });
+    }
+
+    // Usage with async/await
+    async readTextFromEntry(fileEntry: any) {
+        const file = await this.getFile(fileEntry);
+        return await this.readFileAsText(file);
+    }
+
+}</code></pre>
+</p>
+
+ <p>
+ <h3>Child app development</h3> 
 									<ul>
-										<li>Download a copy of <a href="https://github.com/AsheraCordova/CustomWidgetExtension.git">https://github.com/AsheraCordova/CustomWidgetExtension.git</a> into the project folder. 
-										This project acts as a template for adding custom cross platform functionality related to adding new widget/ widget extension.</li>
-										<li>Install the plugin onto the project using command <code>cordova plugin add CustomWidgetExtension</code>.</li>
-										<li>Import the project into your favorite ide. e.g. eclipse</li>
-										<li>Create the extension for each platform by implementing the IAttributable interface</li>
-										<li>After you create your new attribute extension, you need to register it as follows <code>WidgetFactory.registerAttributableFor("View", new CustomWidgetExtensionViewImpl());</code>
-										<li>Sample linear Gradient extension can be found at the following location:
-										<br>
-										 <a href="https://github.com/AsheraCordova/CustomWidgetExtension/blob/main/android/src/com/ashera/customwidgetextension/CustomWidgetExtensionViewImpl.java">Android</a><br>
-										 <a href="https://github.com/AsheraCordova/CustomWidgetExtension/blob/main/ios/src/main/java/com/ashera/customwidgetextension/CustomWidgetExtensionViewImpl.java">iOS</a><br>
-										 <a href="https://github.com/AsheraCordova/CustomWidgetExtension/blob/main/swt/src/main/java/com/ashera/customwidgetextension/CustomWidgetExtensionViewImpl.java">SWT</a><br>
-										 <a href="https://github.com/AsheraCordova/CustomWidgetExtension/blob/main/browser/src/main/java/com/ashera/customwidgetextension/CustomWidgetExtensionViewImpl.java">Browser</a>
-										</li>
+										<li>Develop the child application as standalone application using Ashera framework.</li>
+										<li>In the main page of the application, create child fragment which loads a nav_graph_child.xml.</li>
+										<li>Use child fragment for navigation from one page to another. Do not use navController.</li>
+										<li>Use the command <code>npm run generate-platform-js-child</code> to create index_lite.js </li>
+										<li>Append the following string to index_lite.js.
+										
+										<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">export const fragmentMapper = window.__DYNAMIC_MODULE__.fragmentMapper;
+export const AppLoader = window.__DYNAMIC_MODULE__.AppLoader;</code></pre>
 									</ul>	
-									</p>
+</p>									
+
+									
+									
+									<h3>Create zip file</h3>
+									<p>
+									The structure of zip file is shown below:
+<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">zip file
+├──  www/
+│   ├── css
+│   ├── js
+│   │	└── <span style="color: red">index_lite.js</span>
+│   └── img
+├── res/
+├──	res-ios
+├──	resources
+├──	res-swt
+└──	 res-swt
+</code></pre>
+<p>
+<div>Use the command <code>npm install archiver</code> to install archiver as dependency in child app. </div>
+</p>
+<p>
+<div>Code to create archiver.zip by running command "node zip-folder.js" given below: </div>
+
+<pre><code class="language-plaintext" data-lang="plaintext" style="display: block">#!/usr/bin/env node
+/**
+ * zip-folder.js
+ *
+ * Usage:
+ *   node zip-folder.js
+ *
+ */
+
+const fs = require('fs');
+const path = require('path');
+const archiver = require('archiver');
+
+/**
+ * Zip multiple directories into one archive
+ * @param {string[]} sourceDirs - list of directories
+ * @param {string} outPath - output zip file path
+ */
+async function zipFolders(sourceDirs, outPath) {
+  return new Promise((resolve, reject) => {
+    // Prepare output stream (overwrite if exists)
+    const output = fs.createWriteStream(outPath);
+    const archive = archiver('zip', { zlib: { level: 9 } });
+
+    output.on('close', () => {
+      resolve({
+        bytes: archive.pointer(),
+        outPath,
+      });
+    });
+
+    archive.on('warning', (err) => {
+      if (err.code === 'ENOENT') {
+        console.warn('Archiver warning:', err.message);
+      } else {
+        reject(err);
+      }
+    });
+
+    archive.on('error', (err) => {
+      reject(err);
+    });
+
+    archive.pipe(output);
+
+    // Add each directory
+    for (const dir of sourceDirs) {
+      if (!fs.existsSync(dir) || !fs.statSync(dir).isDirectory()) {
+        console.warn(`Skipping invalid directory: ${dir}`);
+        continue;
+      }
+      const baseName = path.basename(dir);
+      archive.directory(dir, baseName);
+    }
+
+    archive.finalize();
+  });
+}
+
+// CLI handling
+async function main() {
+  const zipDirs = ['platforms/android/app/src/main/assets/www', 'platforms/android/app/src/main/res',
+  'platforms/android/app/src/main/res-ios', 'platforms/android/app/src/main/res-swt', 
+  'platforms/android/app/src/main/resources'];
+  const dirs = zipDirs.map((d) => path.resolve(d));
+
+  console.log(`Zipping directories:`);
+  dirs.forEach((d) => console.log(' -', d));
+
+  try {
+    const res = await zipFolders(dirs, "archiver.zip");
+    console.log(`Done — ${res.bytes} bytes written to ${res.outPath}`);
+  } catch (err) {
+    console.error('Failed to create zip:', err.stack || err);
+    process.exit(1);
+  }
+}
+
+if (require.main === module) main();
+</code></pre>									
+</p>
 									</div>
 	                          	</section>
 	                          	
-	                          	<section id="LinearGradientExample" class="doc-section" >
-									<h2 class="section-title">Preview - Linear Gradient in action</h2>
+	                          	<section id="Pointsearned" class="doc-section" >
+									<h2 class="section-title">Example - Child App</h2>
 									
 									<div class="section-block">
 									<p>
-										The following example shows the Linear Gradient attribute in action:
+										This example demonstrates a child application developed using Ashera. 
+
 									</p> 
 									<p>
-									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Flinear_gradient.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
+									<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Fmotion_16_viewpager.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>
 									
 									</p>
-								</div>
-								</section>
-	                          	
+							</div>
                         </div><!--//content-inner-->
                         
                         <div class="row" style="margin-bottom: 10px">
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--previous" href="02gettingstarted-filtercustom.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Add new filter</div></a>
+								<a class="pagination-nav__link pagination-nav__link--previous" href="02gettingstarted-neweventhandler.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Add New Native Event Handler</div></a>
 							</div>
 	                        <div class="col-md-6 col-12">
-								<a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newnativeformatter.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Add new native formatter</div></a>
+								<!-- a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newandroidwidget.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">New Android Container View</div></a> -->
 							</div>
 						</div>
                         
@@ -1989,17 +2283,16 @@ gc.fillGradientRectangle(5,5,90,45,false);</code></pre>
 	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
 		                            
 		                             <li class="nav-item">
-	                                    <a class="nav-link scrollto" href="#Introduction">Introduction</a>
+	                                    <a class="nav-link scrollto" href="#Installation">Development</a>
 		                            </li>
 		                            <li class="nav-item">
-		                             <a class="nav-link scrollto" href="#LinearGradientExample">Preview - Linear Gradient in action</a>
+		                             <a class="nav-link scrollto" href="#Pointsearned">Example - Child App</a>
 		                             </li>
 	                            </ul><!--//doc-menu-->
 	                            
                         	</div>
                     	</div>
                     </div>
-                    
                 </div><!--//doc-body-->              
             </div><!--//container-->
         </div><!--//doc-wrapper-->
@@ -2062,7 +2355,8 @@ gc.fillGradientRectangle(5,5,90,45,false);</code></pre>
     <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
     <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>                                                          
     <script src="assets/js/main.js"></script>
-	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>   
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 </html> 
 
