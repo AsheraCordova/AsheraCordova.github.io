@@ -55,7 +55,7 @@
 						    		<span class="show nav-label"> The Basics </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="dashboard sub-menu collapse" id="dashboard">
+						      	<ul class="show sub-menu" id="dashboard">
 						        	<li><a href="gettingstarted.html">Introduction</a></li>
 						        	<li><a href="gettingstarted-core-components.html">Core Components and Native Components</a></li>
 						        	<li><a href="gettingstarted-fundamentals.html">Ashera Fundamentals</a></li>
@@ -106,9 +106,9 @@
 						    		<span class="nav-label"> Plugins </span>
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
-						      	<ul class="show sub-menu" id="plugins">
+						      	<ul class="plugins sub-menu collapse" id="plugins">
 						      		<li><a href="03AppBarLayout.html">AppBarLayout</a></li>
-						        	<li class="active"><a href="03AsheraCore.html">AsheraCore</a></li>
+						        	<li><a href="03AsheraCore.html">AsheraCore</a></li>
 						        	<li><a href="03BrowserDialogs.html">BrowserDialogs</a></li>
 						        	<li><a href="03CapInsets.html">CapInsets</a></li>
 						        	<li><a href="03CardView.html">CardView</a></li>
@@ -2669,9 +2669,20 @@ The following resize option are available:</p>
 <td>navigateAsTop(actionId:string, ...scopedObjects:ScopedObject[])</td>
 <td>Remove all screens in stack and make this the top most screen.</td>
 </tr>
+<tr>
+<td>closeDialog(id : string)</td>
+<td>Close the ialog with id of the dialog. Id is used only for android and other platforms closes the top most open dialog</td>
+</tr>
+<tr>
+<td>namespace</td>
+<td>Fragment can display offline content that is stored in the mobile app directory. e.g. TestApp. When namespace TestApp is set, the calls from the native ui to fragment is routed to module TestApp which is loaded dynamically</td>
+</tr>
+<tr>
+<td>rootDirectory</td>
+<td>Fragment can display offline content that is stored in the mobile app directory. e.g. cordova.file.persistent/TestApp. Child app can be downloaded from the internet in zip file and can be store at cordova.file.persistent/TestApp location.</td>
+</tr>
 </tbody>
 </table>
-<p>Note: dialog is not supported in fragments. Instead use navigator.navigate(...) methods and declare dialogs in the main nav_graph.xml.</p>
 <h3>Viewoverlay</h3>
 <table class="table table-striped">
 <thead>
