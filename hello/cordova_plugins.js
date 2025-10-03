@@ -39,7 +39,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
   ];
   module.exports.metadata = {
     "com.ashera.core": "1.0",
-    "cordova-plugin-dialogs": "2.0.2",
-    "cordova-plugin-dialogs-ashera": "1.0"
+    "cordova-plugin-dialogs-ashera": "1.0",
+    "cordova-plugin-dialogs": "2.0.2"
   };
 });
