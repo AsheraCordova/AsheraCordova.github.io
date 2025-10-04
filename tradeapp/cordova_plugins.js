@@ -139,6 +139,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "7.0.0-dev",
     "cordova-plugin-dialogs": "2.0.2",
     "cordova-plugin-dialogs-ashera": "1.0",
-    "com.ashera.navigationview": "1.0"
+    "com.ashera.navigationview": "1.0",
+    "com.ashera.coordinatorlayout": "1.0"
   };
 });

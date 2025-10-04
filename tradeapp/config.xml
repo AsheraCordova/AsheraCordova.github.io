@@ -61,8 +61,16 @@
     <feature name="QRScanner">
         <param name="browser-package" value="QRScanner" />
     </feature>
+    <feature name="CustomCordovaPlugin">
+        <param name="android-package" value="com.ashera.custom.CustomCordovaPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="CordovaNavigationViewPlugin">
         <param name="android-package" value="com.ashera.navigationview.CordovaNavigationViewPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="CordovaCoordinatorLayout">
+        <param name="android-package" value="com.ashera.coordinatorlayout.CordovaCoordinatorLayoutPlugin" />
         <param name="onload" value="true" />
     </feature>
     <name>HelloCordova</name>
