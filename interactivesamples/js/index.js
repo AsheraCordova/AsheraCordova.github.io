@@ -16177,7 +16177,7 @@ var Index = /** @class */function (_super) {
             if (!(obj.actionUrl == 'layout/index.xml')) return [3 /*break*/, 5];
             url = this.getQueryParams(document.location.search)["url"];
             if (url == null) {
-              url = 'http://192.168.1.35:8080/res/layout/launch_child_app.xml';
+              url = 'http://192.168.1.35:8081/res/layout/recyclerview_filter_groupie.xml';
             }
             _a.label = 1;
           case 1:
