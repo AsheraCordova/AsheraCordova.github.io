@@ -148,6 +148,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-sqlite-2": "1.0.6",
     "cordova-plugin-sqlite-2-swt": "1.0.6",
     "cordova-plugin-dialogs": "2.0.2",
-    "cordova-plugin-dialogs-ashera": "1.0"
+    "cordova-plugin-dialogs-ashera": "1.0",
+    "com.ashera.coordinatorlayout": "1.0"
   };
 });
