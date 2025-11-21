@@ -170,7 +170,6 @@
             </p>
             <p>
 				<div>Sample code which loads child application into the fragment with a progressbar to download the zip file:</div>
-				
 				<table class="table table-striped">
 	                <thead>
 	                    <tr>
@@ -198,12 +197,8 @@
 	             	</tbody>
 	     	</table>
 			</p>			
-			
 			 <p>Main app needs to be given permission to download/store the zip file and access the zip file contents:</p>
- 
  <pre class=" language-markup"><code class=" language-markup">&lt;meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://raw.githubusercontent.com/ https://ssl.gstatic.com 'unsafe-eval' blob:; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:  blob:;worker-src 'self' blob:; script-src-elem 'self' blob:;"&gt;</code></pre>
-  
-									
 	<h3>Create zip file of Child App</h3>
 									<p>
 									The structure of zip file is shown below:
@@ -230,7 +225,6 @@
 	"scripts": {
 		"build-child-app": "cd platforms/android/app/src/main/tsc && npm install --legacy-peer-deps && npm run build-child",
 		"postbuild-child-app": "node append-export.js && node zip-folder"
-	
 		...
   	},
   	"dependencies": {
@@ -243,16 +237,10 @@
 	<p>
                                    Create a file by named  <a target="_blank" href="https://github.com/AsheraCordova/ChildApp/blob/main/append-export.js">append-export.js</a> and  <a target="_blank" href="https://github.com/AsheraCordova/ChildApp/blob/main/zip-folder.js">zip-folder.js</a> in the root directory. 
                                    </p>
-                                   
-                                   
  <p>Use the below command to create Child App:</p>
- 
  <pre class=" language-markup"><code class=" language-markup">npm run build-child-app</code></pre>
- 
                                     </div>
 									</div>
-									
-									
 	                          	</section>
 	                          	<section id="Pointsearned" class="doc-section" >
 									<h2 class="section-title">Example - Child App</h2>

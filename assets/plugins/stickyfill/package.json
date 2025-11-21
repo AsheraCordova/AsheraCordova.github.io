@@ -6,7 +6,7 @@
     "sticky",
     "polyfill"
   ],
-  "license": "MIT",
+  "license": "Apache-2.0",
   "homepage": "https://github.com/wilddeer/stickyfill",
   "repository": {
     "type": "git",
