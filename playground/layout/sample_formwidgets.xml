@@ -14,6 +14,17 @@
             style="@style/blackBg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="TextView"></TextView>
+         
+		<TextView
+			android:typeface="@font/nutso2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Custom Font"></TextView>   
+        <TextView
+            style="@style/blackBg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="EditText"></TextView>
 
         <EditText
@@ -218,5 +229,10 @@
             android:max="60"
             android:progress="20"
             android:layout_marginBottom="20dp" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rating="2"/>
     </LinearLayout>
 </ScrollView>
