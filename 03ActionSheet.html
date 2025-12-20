@@ -99,8 +99,8 @@
 						    		<span class="fa fa-chevron-down pull-right"></span>
 						    	</a>
 						      	<ul class="show sub-menu" id="plugins">
-						      		<li><a href="03ActionSheet.html">ActionSheet</a></li>
-						      		<li class="active"><a href="03AppBarLayout.html">AppBarLayout</a></li>
+						      		<li class="active"><a href="03ActionSheet.html">ActionSheet</a></li>
+						      		<li><a href="03AppBarLayout.html">AppBarLayout</a></li>
 						        	<li><a href="03AsheraCore.html">AsheraCore</a></li>
 						        	<li><a href="03BrowserDialogs.html">BrowserDialogs</a></li>
 						        	<li><a href="03CapInsets.html">CapInsets</a></li>
@@ -143,20 +143,183 @@
                     </div><!--//doc-sidebar-->
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-                        	<h1>AppBarLayout</h1>
-<p>Project which adds support for android AppBarLayout.</p>
+                        	<h1>ActionSheet</h1>
+<p>ActionSheet project adds support for ActionSheet widget.</p>
 <h2>Installation</h2>
 <p>To install the plugin use:</p>
-<pre class="language-markup"><code class="language-markup">cordova plugin add https://github.com/AsheraCordova/AppBarLayout.git
+<pre class="language-markup"><code class="language-markup">cordova plugin add https://github.com/AsheraCordova/ActionSheet.git
 </code></pre>
 <h2>Important Links</h2>
 <p><a href="https://asheracordova.github.io/" class="link">https://asheracordova.github.io/</a></p>
 <p><a href="https://asheracordova.github.io/doc/help-doc.html" class="link">https://asheracordova.github.io/doc/help-doc.html</a></p>
-<p><a href="https://asheracordova.github.io/doc/com/google/android/material/appbar/AppBarLayout.html" class="link">https://asheracordova.github.io/doc/com/google/android/material/appbar/AppBarLayout.html</a></p>
-<h2>Widgets</h2>
-<ul>
-<li>com.google.android.material.appbar.AppBarLayout</li>
-</ul>
+<p><a href="https://asheracordova.github.io/playground/index.html" class="link">https://asheracordova.github.io/playground/index.html</a></p>
+<h2>Usage</h2>
+<p><strong>show</strong></p>
+<p>List of attributes supported:</p>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parentFragmentId</td>
+<td>Id of the Fragment from which Action Sheet is launched.</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Title of the Action Sheet.</td>
+</tr>
+<tr>
+<td>titleTextColor</td>
+<td>Text color of title.</td>
+</tr>
+<tr>
+<td>titleBackgroundColor</td>
+<td>Background color of title.</td>
+</tr>
+<tr>
+<td>titleFontFamily</td>
+<td>Text font family of title.</td>
+</tr>
+<tr>
+<td>titleTextSize</td>
+<td>Text size color of title.</td>
+</tr>
+<tr>
+<td>buttonLabels</td>
+<td>List of action sheet buttons which needs to be created</td>
+</tr>
+<tr>
+<td>otherTextColor</td>
+<td>Text color of buttonLabels.</td>
+</tr>
+<tr>
+<td>otherBackgroundColor</td>
+<td>Background color of buttonLabels.</td>
+</tr>
+<tr>
+<td>otherHighlightColor</td>
+<td>Highlight background color of buttonLabels.</td>
+</tr>
+<tr>
+<td>otherFontFamily</td>
+<td>Text font family of buttonLabels.</td>
+</tr>
+<tr>
+<td>otherTextSize</td>
+<td>Text size color of buttonLabels.</td>
+</tr>
+<tr>
+<td>addCancelButtonWithLabel</td>
+<td>Cancel sheet button text.</td>
+</tr>
+<tr>
+<td>cancelTextColor</td>
+<td>Text color of cancel button.</td>
+</tr>
+<tr>
+<td>cancelBackgroundColor</td>
+<td>Background color of cancel button.</td>
+</tr>
+<tr>
+<td>cancelHighlightColor</td>
+<td>Highlight background color of cancel button.</td>
+</tr>
+<tr>
+<td>cancelFontFamily</td>
+<td>Text font family of cancel button.</td>
+</tr>
+<tr>
+<td>cancelTextSize</td>
+<td>Text size of cancel button.</td>
+</tr>
+<tr>
+<td>addDestructiveButtonWithLabel</td>
+<td>Destructive button text.</td>
+</tr>
+<tr>
+<td>destructiveButtonLast</td>
+<td>you can choose where the destructive button is shown</td>
+</tr>
+<tr>
+<td>destructiveTextColor</td>
+<td>Text color of destructive button.</td>
+</tr>
+<tr>
+<td>destructiveBackgroundColor</td>
+<td>Background color of destructive button.</td>
+</tr>
+<tr>
+<td>destructiveHighlightColor</td>
+<td>Highlight background color of destructive button.</td>
+</tr>
+<tr>
+<td>destructiveFontFamily&quot;</td>
+<td>Text font family of destructive button.</td>
+</tr>
+<tr>
+<td>destructiveTextSize</td>
+<td>Text size of destructive button.</td>
+</tr>
+</tbody>
+</table>
+<p>Example of show function below:</p>
+<pre class="language-markup"><code class="language-markup"> var callback = function(buttonIndex) {
+    setTimeout(function() {
+      // like other Cordova plugins (prompt, confirm) the buttonIndex is 1-based (first button is index 1)
+      alert('button index clicked: ' + buttonIndex);
+    });
+  };
+  function testShareSheet(event) {
+    var options = {
+	     parentFragmentId: event[&quot;fragmentId&quot;],
+        title: 'What do you want with this image?',
+        buttonLabels: ['Share via Facebook', 'Share via Twitter'],
+        addCancelButtonWithLabel: 'Cancel',
+        addDestructiveButtonWithLabel : 'Delete it',
+        destructiveButtonLast: true // you can choose where the destructive button is shown
+    };
+    // Depending on the buttonIndex, you can now call shareViaFacebook or shareViaTwitter
+    // of the SocialSharing plugin (https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin)
+    window.plugins.actionsheet.show(options, callback);
+  };
+  function testDeleteSheet(event) {
+    var options = {
+		  'parentFragmentId': event[&quot;fragmentId&quot;],
+        'addCancelButtonWithLabel': 'Cancel',
+        'addDestructiveButtonWithLabel' : 'Delete note'
+    };
+    window.plugins.actionsheet.show(options, callback);
+  };
+  function testLogoutSheet(event) {
+    var options = {
+    	  'parentFragmentId': event[&quot;fragmentId&quot;],
+        'buttonLabels': ['Log out'],
+        'androidEnableCancelButton' : true, // default false
+        'winphoneEnableCancelButton' : true, // default false
+        'addCancelButtonWithLabel': 'Cancel'
+    };
+    window.plugins.actionsheet.show(options, callback);
+  };
+  function testCustomizeSheet(event) {
+	var options = {
+		parentFragmentId: event[&quot;fragmentId&quot;],
+    	title: 'What do you want with this image?',
+    	buttonLabels: ['Share via Facebook', 'Share via Twitter'],
+   		addCancelButtonWithLabel: 'Cancel',
+    	addDestructiveButtonWithLabel : 'Delete it',
+		destructiveTextColor: &quot;#ff0000&quot;,
+		destructiveBackgroundColor: &quot;#000000&quot;,
+		destructiveHighlightColor: &quot;#ffffff&quot;,
+		titleFontFamily: &quot;@font/quicksand&quot;,
+    	destructiveButtonLast: true // you can choose where the destructive button is shown
+	};
+	window.plugins.actionsheet.show(options, callback);
+  };
+</code></pre>
 						</div>	
                     </div><!--//doc-content-->
                 </div><!--//doc-body-->              
