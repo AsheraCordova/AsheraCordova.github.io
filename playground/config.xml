@@ -109,6 +109,10 @@
         <param name="android-package" value="com.ashera.chip.CordovaChipPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="CordovaActionSheetPlugin">
+        <param name="android-package" value="com.ashera.actionsheet.CordovaActionSheetPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>PlayGround</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

@@ -105,6 +105,20 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/com.ashera.chip/browser/www/js/add_res.js",
       "pluginId": "com.ashera.chip",
       "runs": true
+    },
+    {
+      "id": "com.ashera.actionsheet.ActionSheet",
+      "file": "plugins/com.ashera.actionsheet/android/www/ActionSheet.js",
+      "pluginId": "com.ashera.actionsheet",
+      "clobbers": [
+        "window.plugins.actionsheet"
+      ]
+    },
+    {
+      "id": "com.ashera.actionsheet.actionsheetAddRes",
+      "file": "plugins/com.ashera.actionsheet/browser/www/js/add_res.js",
+      "pluginId": "com.ashera.actionsheet",
+      "runs": true
     }
   ];
   module.exports.metadata = {
@@ -140,6 +154,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.navigationview": "1.0",
     "com.ashera.tablayout": "1.0",
     "com.ashera.cardview": "1.0",
-    "com.ashera.chip": "1.0"
+    "com.ashera.chip": "1.0",
+    "com.ashera.actionsheet": "1.0"
   };
 });
