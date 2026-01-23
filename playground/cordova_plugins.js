@@ -122,6 +122,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
+    "com.ashera.swiperefreshlayout": "1.0",
     "com.ashera.core": "1.0",
     "com.ashera.capinsets": "1.0",
     "com.ashera.constraintlayout": "1.0",
