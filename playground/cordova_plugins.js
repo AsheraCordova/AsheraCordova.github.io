@@ -122,7 +122,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
-    "com.ashera.swiperefreshlayout": "1.0",
     "com.ashera.core": "1.0",
     "com.ashera.capinsets": "1.0",
     "com.ashera.constraintlayout": "1.0",
@@ -156,6 +155,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.tablayout": "1.0",
     "com.ashera.cardview": "1.0",
     "com.ashera.chip": "1.0",
-    "com.ashera.actionsheet": "1.0"
+    "com.ashera.actionsheet": "1.0",
+    "com.ashera.swiperefreshlayout": "1.0"
   };
 });
