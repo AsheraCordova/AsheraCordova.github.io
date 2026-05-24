@@ -130,6 +130,8 @@
 						        	<li><a href="03SDWebImagePlugin.html">SDWebImagePlugin</a></li>
 						        	<li><a href="03ShutterBug.html">ShutterBug</a></li>
 						        	<li><a href="03Snackbar.html">Snackbar</a></li>
+						        	<li><a href="03SpatialKit.html">SpatialKit</a></li>
+						        	<li><a href="03SWTSpatialKit.html">SWTSpatialKit</a></li>
 						        	<li><a href="03Splash.html">Splash</a></li>
 						        	<li><a href="03SwipeRefresh.html">SwipeRefresh</a></li>
 						        	<li><a href="03SWTSwitch.html">SWTSwitch</a></li>
@@ -157,6 +159,7 @@
 <li>Enable features</li>
 <li>Drag &amp; Drop</li>
 <li>Resizing Images</li>
+<li>Overlay Images</li>
 <li>Expression Method handler</li>
 <li>HTML support for TextView</li>
 <li>Event Bubbling</li>
@@ -771,6 +774,40 @@ The following resize option are available:</p>
 </tr>
 </tbody>
 </table>
+<h2>Overlay Images</h2>
+<p>SWT framework cannot overlayout one transparent image above the another. When we overlay 2 images over one another using ImageView, the top image of swt covers the bottom image and the bottom image is clipped from view. To overcome the issue, ImageView in swt has attribute which can draw multiple images using gc.
+The attributes are explained below:</p>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gcSrcs</td>
+<td>array (drawable)</td>
+<td>List of images which needs to be drawn one over the other.</td>
+</tr>
+<tr>
+<td>gcSrcIds</td>
+<td>array (id)</td>
+<td>Unique identifier for each drawable in the above image.</td>
+</tr>
+<tr>
+<td>gcSrcRotate</td>
+<td>float</td>
+<td>Rotate a drawable.</td>
+</tr>
+<tr>
+<td>gcSrcDelegateId</td>
+<td>id</td>
+<td>In other platforms, the image is represented by mutiple images. In swt, the images are combined into a single image. When an event arrives on a ImageView, the event is redirected to the main imageview which is specified by the gcSrcDelegateId attribute.</td>
+</tr>
+</tbody>
+</table>
 <h2>HTML support for TextView</h2>
 <p>Android using Html.fromHtml to display html text in TextView. To provide html support, html boolean attribute has been introduced on the TextView. When set to true, the text is parsed using tag soup HTML parser and is set on the TextView.</p>
 <p>The following table lists of tags supported:</p>
@@ -1197,6 +1234,22 @@ The following resize option are available:</p>
 </tr>
 </tbody>
 </table>
+<h4>managers for fragment</h4>
+<p>Each fragment can be configured with one or more managers by specifying a managers attribute in nav_graph.xml.</p>
+<pre class="language-markup"><code class="language-markup">&lt;fragment
+	android:id=&quot;@+id/z_welcome&quot;
+	android:name=&quot;com.ashera.core.GenericFragment&quot;
+	android:label=&quot;z_welcome&quot;
+	tools:layout=&quot;@layout/z_welcome&quot;
+	managers=&quot;compass,maps&quot;&gt;
+&lt;/fragment&gt;
+</code></pre>
+<p>The compass and maps are managers which are part of SpatialKit plugin. They add additional functionality to GenericFragment by adding functionality to well known lifecycle methods of fragment like onCreate, onResume etc.</p>
+<p>Manager class should implement <a href="https://github.com/AsheraCordova/widget_library/blob/main/src/com/ashera/core/IFragmentManager.java" class="link">IFragmentManager</a> and register this manager with <a href="https://github.com/AsheraCordova/widget_library/blob/main/src/com/ashera/core/FragmentManagerFactory.java" class="link">FragmentManagerFactory</a>.</p>
+<p>Example of manager implementation:</p>
+<p><a href="https://github.com/AsheraCordova/SpatialKit/blob/main/android/src/com/ashera/spatialkit/CompassManager.java" class="link">CompassManager</a></p>
+<p><a href="https://github.com/AsheraCordova/SpatialKit/blob/main/android/src/com/ashera/spatialkit/MapManager.java" class="link">MapManager</a></p>
+<p><a href="https://github.com/AsheraCordova/SpatialKit/blob/main/android/src/com/ashera/spatialkit/SpatialKitPlugin.java" class="link">Register map and compass</a></p>
 <h3>Viewoverlay</h3>
 <table class="table table-striped">
 <thead>
