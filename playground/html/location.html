@@ -1,0 +1,60 @@
+<html>
+<body>
+	<script>
+        let watchId = null;
+        let orientationHandler = null;
+		startCompass();
+		window.compassData = {
+			    heading: 0,
+			    lat: 0,
+			    lng: 0
+			};
+		
+		function sendLocation(lat, lng) {
+		    window.compassData.lat = lat;
+			window.compassData.lng = lng;
+		}
+		
+		function sendHeading(heading) {
+			window.compassData.heading = heading;
+		}
+        function startCompass() {
+            // LOCATION
+            if (navigator.geolocation && watchId == null) {
+                watchId = navigator.geolocation.watchPosition(function(pos) {
+                	sendLocation(pos.coords.latitude, pos.coords.longitude);
+                });
+            }
+
+            // COMPASS
+            if (!orientationHandler) {
+                orientationHandler = function(event) {
+                    if (event.alpha == null) return;
+
+                    let heading = 360 - event.alpha;
+                   	sendHeading(heading);
+                };
+
+                window.addEventListener("deviceorientation", orientationHandler);
+            }
+        }
+
+        function stopCompass() {
+        	console.log("in stopCompass");
+            if (orientationHandler) {
+                window.removeEventListener("deviceorientation", orientationHandler);
+                orientationHandler = null;
+            }
+
+            if (navigator.geolocation && watchId != null) {
+                navigator.geolocation.clearWatch(watchId);
+                watchId = null;
+            }
+        }
+
+        // expose globally
+        window.startCompass = startCompass;
+        window.stopCompass = stopCompass;
+        </script>
+</body>
+</html>
