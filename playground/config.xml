@@ -117,6 +117,10 @@
         <param name="android-package" value="com.ashera.swiperefreshlayout.CordovaSwipeRefreshLayoutPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="CordovaSpatialKitPlugin">
+        <param name="android-package" value="com.ashera.spatialkit.CordovaSpatialKitPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <name>PlayGround</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

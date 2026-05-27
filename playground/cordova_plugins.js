@@ -119,6 +119,12 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/com.ashera.actionsheet/browser/www/js/add_res.js",
       "pluginId": "com.ashera.actionsheet",
       "runs": true
+    },
+    {
+      "id": "com.ashera.spatialkit.mapAddRes",
+      "file": "plugins/com.ashera.spatialkit/browser/www/js/add_res.js",
+      "pluginId": "com.ashera.spatialkit",
+      "runs": true
     }
   ];
   module.exports.metadata = {
@@ -156,6 +162,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.ashera.cardview": "1.0",
     "com.ashera.chip": "1.0",
     "com.ashera.actionsheet": "1.0",
-    "com.ashera.swiperefreshlayout": "1.0"
+    "com.ashera.swiperefreshlayout": "1.0",
+    "com.ashera.spatialkit": "1.0",
+    "com.ashera.spatialkit.swt": "1.0"
   };
 });
