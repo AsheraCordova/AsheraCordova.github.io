@@ -215,6 +215,14 @@
 <td>filterQueryStorePath</td>
 <td>Applicable only for groupie adapters. Groupie adapter can have child recycler views. The query of the filter will be passed to the child recycler views using filterQueryGetPath and filterQuerySetPath.</td>
 </tr>
+<tr>
+<td>disableItemAnimator</td>
+<td>Disables ItemAnimator by calling recyclerView.setItemAnimator(null);</td>
+</tr>
+<tr>
+<td>hasFixedSize</td>
+<td>Signifies that recycler view items have fixed size. Setting this to true will improve the performance of recycler view.</td>
+</tr>
 </tbody>
 </table>
 <h2>Configuring Recycler View</h2>
@@ -357,6 +365,110 @@
 &lt;/layout&gt;
 </code></pre>
 <p>The groupie adapter consists of sections which can contain another section, item, header and footer. This type of configuration helps to create complex layout using recycler view.</p>
+<h2>Drag and Drop</h2>
+<p>The following attributes enable drag and drop.</p>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dragDirs</td>
+<td>Direction of drag e.g none</td>
+</tr>
+<tr>
+<td>dragDropMode</td>
+<td>Can be one of these: swaponhighlight (Swap widgets when highlighted), swapwhendropped (Swap widgets on drop)</td>
+</tr>
+<tr>
+<td>dragResetHighlightAttributes</td>
+<td>Style attributes that needs to be applied to Target/source item when unselected.Style attributes that needs to be applied to Target/source item when unselected.</td>
+</tr>
+<tr>
+<td>dragSelectHighlightAttributes</td>
+<td>Style attributes that needs to be applied to Target/source item when unselected.Style attributes that needs to be applied to Target/source item when selected.</td>
+</tr>
+<tr>
+<td>dragStartMode</td>
+<td>Can be one of these: onclick (Start drag on click) longpress (Start drag on long press)</td>
+</tr>
+<tr>
+<td>dragSwapMode</td>
+<td>Can be one of these:notifyItemMoved (Call notifyItemMoved on drop) notifyDataSetChanged (Call notifyDataSetChanged on drop)</td>
+</tr>
+<tr>
+<td>onMove</td>
+<td>Call back to javascript when onMove is called.</td>
+</tr>
+<tr>
+<td>onMoved</td>
+<td>Call back to javascript when onMoved is called.</td>
+</tr>
+<tr>
+<td>onSelectedChanged</td>
+<td>Call back to javascript when onSelectedChanged is called.</td>
+</tr>
+</tbody>
+</table>
+<h2>Swipe</h2>
+<p>The following attributes enable drag and drop.</p>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>swipeDirs</td>
+<td>Direction of swipe e.g none</td>
+</tr>
+<tr>
+<td>onSwiped</td>
+<td>Call back to javascript when onSwiped is called.</td>
+</tr>
+<tr>
+<td>deleteOnSwipe</td>
+<td>Delete on swipe.</td>
+</tr>
+<tr>
+<td>swipeSwapMode</td>
+<td>Can be one of these:notifyItemRemoved (Call notifyItemRemoved on drop) notifyDataSetChanged (Call notifyDataSetChanged on drop)</td>
+</tr>
+</tbody>
+</table>
+<h2>Recycler View as GridView.</h2>
+<p>Recycler view can be configured as grid view with no scroll.</p>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fixedgrid_columnCount</td>
+<td>Column count</td>
+</tr>
+<tr>
+<td>fixedgrid_rowCount</td>
+<td>Row count</td>
+</tr>
+<tr>
+<td>fixedgrid_tileHeight</td>
+<td>Tile size height of grid view. e.g 300 (Say you displaying 200X300 image in grid view)</td>
+</tr>
+<tr>
+<td>fixedgrid_tileWidth</td>
+<td>Tile size of height of grid view. e.g 200 (Say you displaying 200X300 image in grid view)</td>
+</tr>
+</tbody>
+</table>
 						</div>	
                     </div><!--//doc-content-->
                 </div><!--//doc-body-->              
