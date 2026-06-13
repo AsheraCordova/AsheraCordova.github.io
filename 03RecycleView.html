@@ -397,7 +397,7 @@
 </tr>
 <tr>
 <td>dragSwapMode</td>
-<td>Can be one of these:notifyItemMoved (Call notifyItemMoved on drop) notifyDataSetChanged (Call notifyDataSetChanged on drop)</td>
+<td>Can be one of these when ListAdapter is used:notifyItemMoved (Call notifyItemMoved on drop) notifyDataSetChanged (Call notifyDataSetChanged on drop).</td>
 </tr>
 <tr>
 <td>onMove</td>
@@ -414,7 +414,7 @@
 </tbody>
 </table>
 <h2>Swipe</h2>
-<p>The following attributes enable drag and drop.</p>
+<p>The following attributes enable swipe.</p>
 <table class="table table-striped">
 <thead>
 <tr>
@@ -433,14 +433,15 @@
 </tr>
 <tr>
 <td>deleteOnSwipe</td>
-<td>Delete on swipe.</td>
+<td>Enable delete on swipe.</td>
 </tr>
 <tr>
 <td>swipeSwapMode</td>
-<td>Can be one of these:notifyItemRemoved (Call notifyItemRemoved on drop) notifyDataSetChanged (Call notifyDataSetChanged on drop)</td>
+<td>Can be one of these when ListAdapter is used:notifyItemRemoved (Call notifyItemRemoved on drop) notifyDataSetChanged (Call notifyDataSetChanged on drop)</td>
 </tr>
 </tbody>
 </table>
+<p>To enable/disable drag and drop in groupie adapter for header, footer and item, swipeDirs/dragDirs/dragAcrossSections has been add to the xml.</p>
 <h2>Recycler View as GridView.</h2>
 <p>Recycler view can be configured as grid view with no scroll.</p>
 <table class="table table-striped">
