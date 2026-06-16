@@ -4,13 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:ignore="MissingPrefix">
+    tools:ignore="MissingPrefix" >
 
     <TextView
-        android:textSize="@dimen/font_normal"
         android:id="@+id/name"
-        modelPojoToUi="text = a from item->loopvar;background = background from item->loopvar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name" />
+        modelPojoToUi="text = a from item->loopvar;background = background from item->loopvar"
+        android:text="Name"
+        android:padding="10dp"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        os="ios"
+        android:minHeight="5dp"        
+        android:background="@drawable/shape_line_drawable"
+        android:visibility="gone" />
+
 </LinearLayout>
