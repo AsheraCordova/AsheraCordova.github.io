@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ashera</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/prism/prism.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+</head> 
+<body class="body-purple">
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="index.html">
+                            <img alt="" src="assets/images/icon.png" height="100"><br>
+                            <span class="text-highlight">CORDOVA </span><span class="text-bold">NATIVE</span>
+                        </a>
+                    </h1>
+                </div><!--//branding-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Getting Started</li>
+                </ol>
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper1">
+            <div class="container-fluid">
+                <div class="doc-body row flex-xl-nowrap">
+                	<div class="doc-sidebar col-md-2 col-12 order-0 d-none d-md-flex " style="padding : 0px">
+					<div class="sidebar left bg-defoult" style="width: 100%">
+						  <ul class="list-sidebar bg-defoult">
+						     <li> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#dashboard" class="dashboard active" aria-expanded="true"> 
+						    		<span class="show nav-label"> The Basics </span>
+						    		<span class="fa fa-chevron-down pull-right"></span>
+						    	</a>
+						      	<ul class="dashboard sub-menu collapse" id="dashboard">
+						        	<li><a href="gettingstarted.html">Introduction</a></li>
+						        	<li><a href="gettingstarted-core-components.html">Core Components and Native Components</a></li>
+						        	<li><a href="gettingstarted-fundamentals.html">Ashera Fundamentals</a></li>
+						        	<li><a href="gettingstarted-handlingedittext.html">Handling EditText</a></li>
+						        	<li><a href="gettingstarted-scrollview.html">Using a ScrollView</a></li>
+						        	<li><a href="gettingstarted-listview.html">Using List View</a></li>
+						      	</ul>
+						    </li>
+						    <li> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#essentials" class="essentials collapsed" aria-expanded="false"> 
+						    		<span class="nav-label"> The Essentials </span>
+						    		<span class="fa fa-chevron-down pull-right"></span>
+						    	</a>
+						      	<ul class="essentials sub-menu collapse" id="essentials">
+						      		<li><a href="01gettingstarted-essentials.html">Creating your first project</a></li>
+						        	<li><a href="01gettingstarted-devenv.html">Setting up the development environment</a></li>
+						        	<li><a href="01gettingstarted-theming.html">Theming</a></li>
+						        	<li><a href="01gettingstarted-uifragment.html">Creating your ui & backing fragment</a></li>
+						        	<li><a href="01gettingstarted-validation.html">Validation</a></li>
+						        	<li><a href="01gettingstarted-databinding.html">Data binding</a></li>
+						        	<li><a href="01gettingstarted-navigation.html">Navigation</a></li>
+						        	<li><a href="01gettingstarted-animation.html">Animation</a></li>
+						        	<li><a href="01gettingstarted-nativeformatting.html">Native Formatting</a></li>
+						        	<li><a href="01gettingstarted-mixing.html">Mixing</a></li>
+						      	</ul>
+						    </li>
+						    <li> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#advanced" class="advanced active" aria-expanded="true"> 
+						    		<span class="nav-label"> The Advanced </span>
+						    		<span class="fa fa-chevron-down pull-right"></span>
+						    	</a>
+						      	<ul class="show sub-menu" id="advanced">
+						      		<li class="active"><a href="02gettingstarted-recyclerview.html">Mastering RecyclerView</a></li>
+						        	<li><a href="02gettingstarted-newvalidation.html">Add new Validator</a></li>
+						        	<li><a href="02gettingstarted-filtercustom.html">Add new Filter</a></li>
+						        	<li><a href="02gettingstarted-newattribute.html">Add new Attribute to existing widget</a></li>
+						        	<li><a href="02gettingstarted-newnativeformatter.html">Add new Native Formatter</a></li>
+						        	<li><a href="02gettingstarted-newandroidwidget.html">New Android Container View</a></li>
+						        	<li><a href="02gettingstarted-neweventhandler.html">Add new Native Event Handler</a></li>
+						        	<li><a href="02gettingstarted-childapp.html">Create Child application</a></li>
+						      	</ul>
+						    </li>
+						    <li> 
+						    	<a href="#" data-bs-toggle="collapse" data-bs-target="#plugins" class="plugins" aria-expanded="true"> 
+						    		<span class="nav-label"> Plugins </span>
+						    		<span class="fa fa-chevron-down pull-right"></span>
+						    	</a>
+						      	<ul class="plugins sub-menu collapse" id="plugins">
+						      		<li><a href="03ActionSheet.html">ActionSheet</a></li>
+						      		<li><a href="03AppBarLayout.html">AppBarLayout</a></li>
+						        	<li><a href="03AsheraCore.html">AsheraCore</a></li>
+						        	<li><a href="03BrowserDialogs.html">BrowserDialogs</a></li>
+						        	<li><a href="03CapInsets.html">CapInsets</a></li>
+						        	<li><a href="03CardView.html">CardView</a></li>
+						        	<li><a href="03Chip.html">Chip</a></li>
+						        	<li><a href="03ConstraintLayout.html">ConstraintLayout</a></li>
+						        	<li><a href="03CoordinatorLayout.html">CoordinatorLayout</a></li>
+						        	<li><a href="03cordova-plugin-camera-swt.html">cordova-plugin-camera-swt</a></li>
+						        	<li><a href="03cordova-plugin-qrscanner-swt.html">cordova-plugin-qrscanner-swt</a></li>
+						        	<li><a href="03cordova-plugin-sqlite-2-swt.html">cordova-plugin-sqlite-2-swt</a></li>
+						        	<li><a href="03cordova-swt.html">cordova-swt</a></li>
+						        	<li><a href="03cordova-web.html">cordova-web</a></li>
+						        	<li><a href="03CSSBorder.html">CSSBorder</a></li>
+						        	<li><a href="03Custom.html">Custom</a></li>
+						        	<li><a href="03CustomWidgetExtension.html">CustomWidgetExtension</a></li>
+						        	<li><a href="03DateTime.html">DateTime</a></li>
+						        	<li><a href="03Dialog.html">Dialog</a></li>
+						        	<li><a href="03Drawer.html">Drawer</a></li>
+						        	<li><a href="03Glide.html">Glide</a></li>
+						        	<li><a href="03GridLayout.html">GridLayout</a></li>
+						        	<li><a href="03IndexedDb.html">IndexedDb</a></li>
+						        	<li><a href="03IQkeyboardManager.html">IQkeyboardManager</a></li>
+						        	<li><a href="03NavigationView.html">NavigationView</a></li>
+						        	<li><a href="03NestedScrollView.html">NestedScrollView</a></li>
+						        	<li><a href="03Picasso.html">Picasso</a></li>
+						        	<li><a href="03RecycleView.html">RecycleView</a></li>
+						        	<li><a href="03SDWebImagePlugin.html">SDWebImagePlugin</a></li>
+						        	<li><a href="03ShutterBug.html">ShutterBug</a></li>
+						        	<li><a href="03Snackbar.html">Snackbar</a></li>
+						        	<li><a href="03SpatialKit.html">SpatialKit</a></li>
+						        	<li><a href="03SWTSpatialKit.html">SWTSpatialKit</a></li>
+						        	<li><a href="03Splash.html">Splash</a></li>
+						        	<li><a href="03SwipeRefresh.html">SwipeRefresh</a></li>
+						        	<li><a href="03SWTSwitch.html">SWTSwitch</a></li>
+						        	<li><a href="03TabLayout.html">TabLayout</a></li>
+						        	<li><a href="03TextInputLayout.html">TextInputLayout</a></li>
+						        	<li><a href="03Toolbar.html">Toolbar</a></li>
+						        	<li><a href="03ViewPager.html">ViewPager</a></li>
+						      	</ul>
+						    </li>
+						  </ul>						
+						</div>
+                    </div><!--//doc-sidebar-->
+                    <div class="doc-content col-md-8 col-12">
+                        <div class="content-inner">
+							<h1 style="font-size: 35px; font-weight:bold">RecyclerView</h1>
+                                <p>
+									The Recycler View in android requires an adapter being configured with view holder pattern being core of its implementation. Ashera provides a generic implementation of the view holder pattern. Hence recycler view can be written by configuring a few attributes.
+								</p>  
+								<p>	
+								Also 2 types of adapter has been provided:
+								<ul>
+								<li>ListAdapter - a very basic adapter implementation for simple list and list with header and footer.</li>
+								<li>GroupieAdapter - an adapter based on <a href="https://github.com/lisawray/groupie"  target="_blank">https://github.com/lisawray/groupie.</a></li> 
+								</ul>
+								</p>
+								<p>	
+								Also the following layout managers are supported by RecyclerView
+								<ul>
+								<li>androidx.recyclerview.widget.LinearLayoutManager</li>								
+								<li>androidx.recyclerview.widget.GridLayoutManager</li>
+								<li>androidx.recyclerview.widget.StaggeredGridLayoutManager</li>
+								<li>com.ashera.recycleview.FixedGridViewManager - A custom layout which simulates GridView.</a></li>
+								</ul>
+								</p>
+								<section id="howtouse" class="doc-section">
+	                                <h2 class="section-title">List Adapter</h2>
+	                                <div class="section-block">
+	                                    <div class="answer">
+				                            <p>
+				                               Recyclerview is configured with ListAdapter by default.
+				                            </p>
+				                            <h3>ListAdapter - Basic</h3>
+				                            <p>   
+				                                 The layout for recyclerview is configured using 
+				                               <code>tools:listitem="@layout/recyclerview_text"</code> attribute.. This example creates a basic RecyclerView of hard coded data using ListAdapter.  
+											</p>
+											<p>
+												<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecyclerview.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											</p>
+											<h3>ListAdapter - Header and Footer</h3>
+				                            <p> 
+				                            ListAdpater also support non draggable header and footer. The layout for recyclerview is configured using layout attribute. The type simple indicates that ListAdapter should be created. 				                            				                                
+											</p>
+											<p> 
+											<p>   
+				                                 The layout for recyclerview is configured using 
+				                               <code>layput="@xml/recyclerview_simple"</code> attribute.. This example creates a basic RecyclerView of hard coded data with header and footer using ListAdapter.  
+											</p> 
+<pre><code class="language-markup">&lt;layout adapter="simple"&gt;
+    &lt;header layout="@layout/listheader"&gt;&lt;/header&gt;
+    &lt;footer layout="@layout/listfooter"&gt;&lt;/footer&gt;
+    &lt;item viewHolderIds="@+id/name" layout="@layout/recyclerview_text"&gt;&lt;/item&gt;
+&lt;/layout&gt;</code></pre>
+</p>
+											<p>
+												<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecyclerview_simple.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											</p>
+											<h3>ListAdapter - DragnDrop and Swipe</h3>
+											<p>
+												The list adapter can be configured to so that the items can be deleted on swipe and the ordering can be changed using drag and drop. The following example demonstrates the same using the following attributes:
+        										<code>deleteOnSwipe="true" <br>dragDropMode="swaponhighlight" <br>dragSwapMode="notifyItemMoved" <br>dragStartMode="longpress"</code>
+												<pre><code class="language-markup">&lt;androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/recyclerview"
+        onAndroidTouch=""
+        modelIdPath="name"
+        swtAttachEventBubbler="mousedown,mouseup,mousemove"
+        deleteOnSwipe="true"
+        dragDropMode="swaponhighlight"
+        dragSwapMode="notifyItemMoved"
+        dragStartMode="longpress"
+        onMoved="getDragAndDropData(model=. from testObj->view)"
+        modelFor="let item in . from testObj->parentview into loopvar as map"
+        viewHolderIds="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        layout="@xml/recyclerview_simple"
+        tools:listitem="@layout/recyclerview_text"/&gt;</pre></code> 
+											</p>
+											<p>
+												<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecyclerview_dragndrop_simple.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											</p>
+											<h3>ListAdapter - Filter</h3>
+											<p>
+												The list adapter also supports filtering using the <code>filterItemPath="name"</code> attribute. 
+											<pre><code class="language-markup">&lt;androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        layout="@xml/recyclerview_simple"
+        modelFor="let item in . from testObj->parentview into loopvar as map"
+        modelIdPath="name"
+        viewHolderIds="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        filterItemPath="name"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/recyclerview_text" /&gt;</pre></code>
+											</p>
+											<p>
+												<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecyclerview_filter_simple.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											</p>
+											<h3>ListAdapter - Jigsaw Puzzle</h3>
+											<p>
+												A fun Puzzle game which can be implemented using RecyclerView drag and drop.
+											<pre><code class="language-markup">&lt;androidx.recyclerview.widget.RecyclerView
+            onAndroidTouch=""
+            swtAttachEventBubbler="mousedown,mouseup,mousemove"
+            modelIdPath="id"
+            android:id="@+id/recyclerview"
+            modelFor="let item in . from testObj->view into loopvar as map"
+            viewHolderIds="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            app:layoutManager="com.ashera.recycleview.FixedGridViewManager"
+            dragDirs="up|down|left|right"
+            swipeDirs="none"
+            fixedgrid_rowCount="3"
+            fixedgrid_columnCount="3"
+            fixedgrid_tileWidth="230"
+            fixedgrid_tileHeight="170"
+            dragDropMode="swapwhendropped"
+            dragSwapMode="notifyDataSetChanged"
+            dragStartMode="onclick"
+            onMoved="getDragAndDropData(model=. from testObj->view)"
+            dragSelectHighlightAttributes="scaleX: 1.2;scaleY: 1.2;alpha: 0.7;elevation:20dp;"
+            dragResetHighlightAttributes="scaleX: 1;scaleY: 1;alpha: 1;elevation:0dp"
+            tools:listitem="@layout/recyclerview_dragndrop_item"  /&gt;</pre></code>
+											</p>
+											<p>
+												<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecyclerview_dragndrop.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											</p>
+	                                    </div>
+	                                </div><!--//section-block-->                                
+                            	</section>
+                            	<section id="howtouse" class="doc-section">
+	                                <h2 class="section-title">GroupieAdapter</h2>
+	                                <div class="section-block">
+	                                    <div class="answer">
+				                            <p>
+				                               RecyclerViewAdapter can be very complex especially when it comes to dealing with different types of items. Groupie simplifies that for us.
+											</p>
+											<p>
+											Groupie is a simple, flexible library for complex RecyclerView layouts. It makes it easy to handle asynchronous content updates and insertions and user-driven content changes. At the item level, It abstracts the boilerplate of item view types, item layouts, viewholders, and span sizes.
+				                            </p>
+				                            <p>
+				                            Groupie helps with more complex implementation of RecyclerView like treating your content as logical groups and handles change notifications for you, Think of sections with headers and footers, expandable groups, blocks of vertical columns, and much more.
+				                            </p>
+				                            <h3>GroupieAdapter - Basic</h3>
+				                           <p>
+											This example creates a sectioned list layout implemented using groupie adapter.
+											<pre><code class="language-markup">&lt;layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    adapter="groupie"&gt;
+    &lt;section id="test1"
+        modelFor="let item in . from testObj-&gt;parentview into loopvar as map"&gt;
+        &lt;header
+            layout="@layout/recyclerview_text"
+            viewHolderIds="@+id/name"/&gt;
+        &lt;item
+            layout="@layout/recyclerview_text"
+            modelFor="let item in subitems from item-&gt;loopvar into loopvar as map"
+            viewHolderIds="@+id/name" /&gt;
+    &lt;/section&gt;
+&lt;/layout&gt;</pre></code>
+											</p>	
+											<p>
+												<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecyclerview_groupie.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											</p>
+											<h3>GroupieAdapter - Complex</h3>
+				                           <p>
+											This example shows how groupie adapter section can be used to create a complex layout. The example also illustrates how drag and drag can be implemented in groupie adpater. 
+											The enabling of drag and drop is similar to that of ListAdapter but at header, footer and item level, drag and drop can be enabled and disabled using swipeDirs and dragDirs attribute.
+											<pre><code class="language-markup">&lt;layout adapter="groupie" xmlns:app="http://schemas.android.com/apk/res-auto"&gt;
+    &lt;section id="test"&gt;
+        &lt;header layout="@layout/listheader" swipeDirs="none" dragDirs="none" /&gt;
+        &lt;footer layout="@layout/listfooter" swipeDirs="none" dragDirs="none"/&gt;
+        &lt;item layout="@layout/listview_testitem" modelFor="let item in test.items from sectionInfo-&gt;view into loopvar as map" viewHolderIds="@+id/name" dragAcrossSections="true"/&gt;
+    &lt;/section&gt;
+    &lt;section id="test1"&gt;
+        &lt;header layout="@layout/listheader" swipeDirs="none" dragDirs="none"/&gt;
+        &lt;footer layout="@layout/listfooter" swipeDirs="none" dragDirs="none"/&gt;
+        &lt;section1 id="test2" modelFor="let item in test1.items from sectionInfo-&gt;view into loopvar as map"&gt;
+            &lt;header layout="@layout/listheader_data" viewHolderIds="@+id/textView" swipeDirs="none" dragDirs="none"/&gt;
+            &lt;item layout="@layout/listview_testitem" modelFor="let item in subitems from item-&gt;loopvar into loopvar as map" viewHolderIds="@+id/name"/&gt;
+        &lt;/section1&gt;
+    &lt;/section&gt;
+    &lt;section id="test3" modelFor="let item in test1.items from sectionInfo-&gt;view into loopvar as map"&gt;
+        &lt;header layout="@layout/listheader_data" viewHolderIds="@+id/textView" swipeDirs="none" dragDirs="none"/&gt;
+        &lt;item layout="@layout/listview_testitem" modelFor="let item in subitems from item-&gt;loopvar into loopvar as map" viewHolderIds="@+id/name"/&gt;
+    &lt;/section&gt;
+    &lt;section id="fullbleeditemParent" modelVar="let item = fullbleeditem from sectionInfo-&gt;view  into loopvar as map"&gt;
+        &lt;header layout="@layout/item_header" viewHolderIds="title,subtitle,icon"  swipeDirs="none" dragDirs="none"/&gt;
+        &lt;item gridInsets="10dp" layout="@layout/item_card" modelFor="let item in subitems from item-&gt;loopvar into loopvar as map" viewHolderIds="FrameLayout,text"/&gt;
+    &lt;/section&gt;
+    &lt;section id="grid" modelVar="let item = grid from sectionInfo-&gt;view into loopvar as map"&gt;
+        &lt;header layout="@layout/item_header" viewHolderIds="title,subtitle,icon"  swipeDirs="none" dragDirs="none"/&gt;
+        &lt;item swipeDirs="none" dragDirs="up|down|left|right|" gridInsets="10dp" layout="@layout/item_card" modelFor="let item in subitems from item-&gt;loopvar into loopvar as map" viewHolderIds="FrameLayout,text"  numberOfColumns="3"/&gt;
+    &lt;/section&gt;
+    &lt;section id="carousel" modelVar="let item = carousel from sectionInfo-&gt;view into loopvar as map"&gt;
+        &lt;header layout="@layout/item_header" viewHolderIds="title,subtitle,icon"  swipeDirs="none" dragDirs="none"/&gt;
+        &lt;item layout="@layout/item_carousel" swipeDirs="none"/&gt;
+    &lt;/section&gt;
+    &lt;section id="expandabletest" modelVar="let item = expand from sectionInfo-&gt;view into loopvar as map"&gt;
+        &lt;expandable  layout="@layout/item_header" viewHolderIds="title,subtitle,icon" expand="true" onclick="icon"&gt;
+            &lt;section1 id="expandable"&gt;
+                &lt;item gridInsets="10dp" layout="@layout/item_card" modelFor="let item in subitems from item-&gt;loopvar into loopvar as map" viewHolderIds="FrameLayout,text"  numberOfColumns="1"/&gt;
+            &lt;/section1&gt;
+        &lt;/expandable&gt;
+    &lt;/section&gt;
+&lt;/layout&gt;</pre></code>
+											</p>	
+											<p>
+												<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecycleview_groupie_dragndrop.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											</p>
+				                            <h3>GroupieAdapter - Filter</h3>
+											<p>
+												The groupie adapter also supports filtering using the <code>filterItemPath="name"</code> attribute. 
+											<pre><code class="language-markup">&lt;androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        layout="@xml/recyclerview_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        filterItemPath="name"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="12" /&gt;</pre></code>
+											</p>
+											<p>
+												<iframe loading="lazy" src="https://asheracordova.github.io/interactivesamples/index.html?url=https%3A%2F%2Fraw.githubusercontent.com%2FAsheraCordova%2FInteractivePlayGround%2Fmain%2Fandroid_backup%2Fres%2Flayout%2Frecyclerview_filter_groupie.xml" height="500px" width="100%" frameborder="0" data-snack-iframe="true" style="display: block;"></iframe>                                    
+											</p>
+				                      	</div>
+				                 	</div>
+				               </section>
+                        </div><!--//content-inner-->
+                      <div class="row" style="margin-bottom: 10px">
+	                        <div class="col-md-6 col-12">
+								<a class="pagination-nav__link pagination-nav__link--previous" href="01gettingstarted-mixing.html"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Mixing</div></a>
+							</div>
+	                        <div class="col-md-6 col-12">
+								<a class="pagination-nav__link pagination-nav__link--next" href="02gettingstarted-newvalidation.html"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Adding new validator</div></a>
+							</div>
+						</div>
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar col-md-2 col-12 d-none d-md-flex">
+                    	<div class="sidebar left " style="position: relative">
+                    		<div id="doc-nav" class="doc-nav" style="position : inherit">
+	                            <ul id="doc-menu" class="nav doc-menu flex-column sticky">
+	                            </ul><!--//doc-menu-->
+                        	</div>
+                    	</div>
+                    </div>
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+    </div><!--//page-wrapper-->
+	<footer class="footer">
+    	<div class="container">
+    		<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+					<p>Big thanks to the following projects which made Ashera possible</p>
+				</div>
+				<hr>
+			</div>
+			<div class="row text-center text-xs-center text-sm-left text-md-left">
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Frameworks</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="https://www.android.com/" target="_blank"><i class="fa fa-angle-double-right"></i> Android</a></li>
+						<li><a href="https://www.oracle.com/in/java/"  target="_blank"><i class="fa fa-angle-double-right"></i> Java</a></li>
+						<li><a href="https://www.eclipse.org/swt/"  target="_blank"><i class="fa fa-angle-double-right"></i> SWT</a></li>
+						<li><a href="https://cordova.apache.org/"  target="_blank"><i class="fa fa-angle-double-right"></i> Apache Cordova</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>IDE</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="https://developer.android.com/studio"  target="_blank"><i class="fa fa-angle-double-right"></i> Android Studio</a></li>
+						<li><a href="https://code.visualstudio.com/"  target="_blank"><i class="fa fa-angle-double-right"></i> VS Code</a></li>
+						<li><a href="https://www.eclipse.org/"  target="_blank"><i class="fa fa-angle-double-right"></i> Eclipse</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Open Source Projects</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="https://developers.google.com/j2objc"  target="_blank"><i class="fa fa-angle-double-right"></i> J2ObjC</a></li>
+						<li><a href="https://teavm.org/"  target="_blank"><i class="fa fa-angle-double-right"></i> Teavm</a></li>
+						<li><a href="https://github.com/lisawray/groupie"  target="_blank"><i class="fa fa-angle-double-right"></i> Recycle View - Groupie</a></li>
+						<li><a href="https://github.com/hackiftekhar/IQKeyboardManager"  target="_blank"><i class="fa fa-angle-double-right"></i> IQKeyboardManager</a></li>
+						<li><a href="https://github.com/Telefonica/java-plainmap"  target="_blank"><i class="fa fa-angle-double-right"></i> PlainMap</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+					<p>Thanks to <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for providing this template for developers and <a href="https://icons8.com/"  target="_blank">Icons8</a> for icons</p>
+				</div>
+			</div>
+    </footer><!--//footer-->
+    <!-- Main Javascript -->          
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/prism/prism.js"></script>      
+    <script src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>      
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script> 
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>                                                          
+    <script src="assets/js/main.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>   
+</body>
+</html> 
