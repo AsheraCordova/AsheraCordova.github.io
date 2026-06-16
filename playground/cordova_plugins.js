@@ -27,6 +27,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "runs": true
     },
     {
+      "id": "cordova-plugin-splashscreen-ashera.SplashScreen",
+      "file": "plugins/cordova-plugin-splashscreen-ashera/browser/www/splashscreen.js",
+      "pluginId": "cordova-plugin-splashscreen-ashera",
+      "clobbers": [
+        "navigator.splashscreen"
+      ]
+    },
+    {
       "id": "com.filfatstudios.spinnerdialog.SpinnerDialog",
       "file": "plugins/com.filfatstudios.spinnerdialog/android_ios/www/SpinnerDialog.js",
       "pluginId": "com.filfatstudios.spinnerdialog",
