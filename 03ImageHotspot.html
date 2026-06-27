@@ -122,7 +122,7 @@
 						        	<li><a href="03Drawer.html">Drawer</a></li>
 						        	<li><a href="03Glide.html">Glide</a></li>
 						        	<li><a href="03GridLayout.html">GridLayout</a></li>
-						        	<li><a href="03ImageHotspot.html">ImageHotspot</a></li>
+						        	<li class="active"><a href="03ImageHotspot.html">ImageHotspot</a></li>
 						        	<li><a href="03IndexedDb.html">IndexedDb</a></li>
 						        	<li><a href="03IQkeyboardManager.html">IQkeyboardManager</a></li>
 						        	<li><a href="03NavigationView.html">NavigationView</a></li>
@@ -136,7 +136,7 @@
 						        	<li><a href="03SWTSpatialKit.html">SWTSpatialKit</a></li>
 						        	<li><a href="03Splash.html">Splash</a></li>
 						        	<li><a href="03SwipeRefresh.html">SwipeRefresh</a></li>
-						        	<li class="active"><a href="03SWTSwitch.html">SWTSwitch</a></li>
+						        	<li><a href="03SWTSwitch.html">SWTSwitch</a></li>
 						        	<li><a href="03TabLayout.html">TabLayout</a></li>
 						        	<li><a href="03TextInputLayout.html">TextInputLayout</a></li>
 						        	<li><a href="03Toolbar.html">Toolbar</a></li>
@@ -148,14 +148,73 @@
                     </div><!--//doc-sidebar-->
                     <div class="doc-content col-md-8 col-12">
                         <div class="content-inner">
-                        	<h1>SWTSwitch</h1>
-<p>Project which adds switch support for swt based on nebula project.</p>
+                        	<h1>ImageHotspot</h1>
+<p>Project which adds support for clickable hotspots for ImageView.</p>
 <h2>Installation</h2>
 <p>To install the plugin use:</p>
-<pre class="language-markup"><code class="language-markup">cordova plugin add https://github.com/AsheraCordova/SWTSwitch.git
+<pre class="language-markup"><code class="language-markup">cordova plugin add https://github.com/AsheraCordova/ImageHotspot.git
 </code></pre>
 <h2>Important Links</h2>
-<p><a href="https://asheracordova.github.io/doc/android/widget/Switch.html" class="link">https://asheracordova.github.io/doc/android/widget/Switch.html</a></p>
+<p><a href="https://asheracordova.github.io/" class="link">https://asheracordova.github.io/</a></p>
+<p><a href="https://asheracordova.github.io/doc/help-doc.html" class="link">https://asheracordova.github.io/doc/help-doc.html</a></p>
+<p><a href="https://asheracordova.github.io/doc/com/ashera/plugin/ImageHotspot.html" class="link">https://asheracordova.github.io/doc/com/ashera/plugin/ImageHotspot.html</a></p>
+<h2>Usage</h2>
+<p>The following is simple example of configuring a ImageView with hotspots:</p>
+<pre class="language-markup"><code class="language-markup">  &lt;FrameLayout android:layout_width=&quot;match_parent&quot; android:layout_height=&quot;wrap_content&quot;&gt;
+     &lt;ImageView
+        android:id=&quot;@+id/hotspotOverlayDrawable0&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:src=&quot;@drawable/cathedral_rock&quot;
+        onTouch-android=&quot;+hotspot#onTouch&quot;
+        onAndroidTouch=&quot;+hotspot#onTouch&quot;
+        onhotspotClick='logHotspot'
+        hotspots=&quot;id: test; type:target; imageWidth : 200; imageHeight : 150; percX: 0; percY:0; percWidth: 0.1; percHeight: 0.1333, id: test1; type: decoy; imageWidth : 200; imageHeight : 150; percX: 0.9; percY : 0.86666; percWidth: 0.1; percHeight: 0.1333&quot;
+        hotspotOverlayDrawable=&quot;@drawable/calatrava_cross&quot;&gt;&lt;/ImageView&gt;
+&lt;/FrameLayout&gt;
+</code></pre>
+<p>The above example creates 2 hotspots on the cathedral_rock image. The hotspots are trained on a image which is 200X150. When the hotspot is clicked, a overlay image is drawn on the hotspot.</p>
+<h2>Attributes supported</h2>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hotspots *</td>
+<td>Simple CSS array of expressions supporting the following attributes: id, type, imageWidth, imageHeight, percX, percY, percWidth, percHeight</td>
+</tr>
+<tr>
+<td>onhotspotClick *</td>
+<td>Call back to be called on click of the hotspot</td>
+</tr>
+<tr>
+<td>hotspotOverlayDrawable</td>
+<td>Overlay drawable to be drawn when we click on the hotspot</td>
+</tr>
+<tr>
+<td>hotspotOverlayDrawablesByType</td>
+<td>If Overlay drawable needs to be drawn only for a particular type</td>
+</tr>
+<tr>
+<td>hotspotDetectOnlyOnce</td>
+<td>Detect the hotspot only once. Once a hotspot is found dont call the callback again.</td>
+</tr>
+<tr>
+<td>hotspotDebug</td>
+<td>Show debug hotspots i.e rectangles with border green. Only works in android.</td>
+</tr>
+</tbody>
+</table>
+<p>Note:</p>
+<ul>
+<li>* indicates mandatory.</li>
+<li>onTouch-android and onAndroidTouch are mandatory as touch events are directed to onhotspotClick internally.</li>
+<li>id for ImageView is needed for the working of the hotspot.</li>
+</ul>
 						</div>	
                     </div><!--//doc-content-->
                 </div><!--//doc-body-->              
